@@ -12,10 +12,10 @@ import numpy as np
 # y = np.array([1,2,3,4,5])
 
 
-# 위에 데이터를 올바르게 수정한 아래 데이터.
+# 위에 데이터를 올바르게 수정한 아래 데이터. // 열=column=피처
 x = np.array([[1,6], [2,7], [3,8], [4,9], [5,10]])
 y = np.array([1,2,3,4,5])
 
 
-print(x.shape)
-print(y.shape)
+print(x.shape)  # (5,2)
+print(y.shape)  # (5,)
