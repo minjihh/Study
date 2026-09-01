@@ -18,7 +18,7 @@ model.add(Dense(1, input_dim=1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=100, batch_size=4)   # 1epoch에 bathc4로 한번 batch 3으로 한번 총 두번돌음
+model.fit(x_train, y_train, epochs=100, batch_size=4)   # 1epoch에 bathc 4로 한번 batch 3으로 한번 총 두번돌음
 
 #4. 추론, 예측
 loss = model.evaluate(x_test, y_test)
