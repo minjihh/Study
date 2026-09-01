@@ -23,7 +23,7 @@ model.fit(x_train, y_train, epochs=100, batch_size=4)   # 1epoch에 bathc 4로 �
 #4. 추론, 예측
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
-results = model.predict(x_test, y_test)
-print("results: ", results)
+# results = model.predict(x_test, y_test)
+# print("results: ", results)
 
 
