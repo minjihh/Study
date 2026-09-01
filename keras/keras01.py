@@ -1,3 +1,5 @@
+# hidden layer: 몇개의 노드, 몇개의 층이 best인지 알수 없으므로 hidden 이라고 한다. 
+
 import tensorflow as tf
 
 print(tf.__version__)
