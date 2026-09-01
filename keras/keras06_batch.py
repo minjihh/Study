@@ -1,4 +1,5 @@
 # 훈련횟수가 늘어날수록 모델의 성능이 좋아짐. (9000장 한번 훈련보다 3000장 세번 훈련이 더 좋다.)
+# 배치를 자를때 랜덤하게 조합해서 과적합을 방지할 수 있음.
 # 2개이상 list / array?
 
 from tensorflow.keras.models import Sequential

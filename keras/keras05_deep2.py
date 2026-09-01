@@ -1,4 +1,5 @@
-#### model.add를 더 간략하게 나타내기
+#### model.add를 더 간략하게 나타내기 
+# keras04에서는 인풋노드와 아웃풋 노드 개수를 다 적어줬지만 keras 05에서 간략하게 표기
 
 
 from tensorflow.keras.models import Sequential
