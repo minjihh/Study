@@ -1,4 +1,5 @@
-# x, y 데이터 정의하는 부분이 바뀜 (fetch_california_housing 데이터는 자체적으로 data와 target이 구분되어 있음)
+# x, y 데이터 정의하는 부분이 바뀜, dataset 정의하는 부분 확인
+# fetch_california_housing 데이터는 자체적으로 data와 target이 구분되어 있음)
 # import ssl
 # ssl._create_default_https_context = ssl._create_unverified_                   # 데이터 안불러와질 경우 이 2개 라인 포함해서 실행
 
