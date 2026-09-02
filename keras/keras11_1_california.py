@@ -3,6 +3,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 import numpy as np
+import matplotlib.pyplot as plt
 
 #1. 데이터
 datasets = fetch_california_housing()  # 소문자로 시작하고 뒤에 () 붙으므로 함수임을 짐작할 수 있음
@@ -26,3 +27,4 @@ model.fit(x_train, y_train, epochs=100, batch_size=4)
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
+
