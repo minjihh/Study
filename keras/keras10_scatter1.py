@@ -57,6 +57,6 @@ print("results: ", results)
 # 그래프 그리기
 import matplotlib.pyplot as plt
 plt.scatter(x, y)   # 모든 데이터 점찍기
-plt.plot(x, results)
+plt.plot(x, results, color= 'red')
 plt.show()
 
