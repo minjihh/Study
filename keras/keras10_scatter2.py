@@ -34,6 +34,6 @@ print("results: ", results)
 import matplotlib.pyplot as plt
 
 plt.scatter(x,y)
-plt.plot(x, results)
+plt.plot(x_test, results)
 plt.show()
 
