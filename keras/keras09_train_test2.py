@@ -1,4 +1,6 @@
+# train/test 슬라이싱으로 나누기
 # 09 카피
+
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
