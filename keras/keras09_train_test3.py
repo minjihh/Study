@@ -21,7 +21,7 @@ x_train, x_test, y_train, y_test = train_test_split(
     shuffle=True,       # shuffle은 설정하지 않아도 default=True   
     # train_size + test_size가 1보다 적어도 ok but 데이터를 쓰지 않으므로 손해
     # test_size default는 0.25이고 이때 train은 test의 나머지가 default로 설정 
-    # 
+    random_state = 333,
 )
 
 # x_train,x_test,y_train,y_test=train_test_split(x, y, test_size=0.3, random_state=2024)
