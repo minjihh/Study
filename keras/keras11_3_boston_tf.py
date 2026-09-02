@@ -12,8 +12,6 @@ print(y_train.shape, y_test.shape) # (404,) (102,)
 model = Sequential()
 model.add(Dense(5, input_dim =13))
 model.add(Dense(8))
-model.add(Dense(9))
-model.add(Dense(5))
 model.add(Dense(1))
 
 #3. 컴파일, 훈련
