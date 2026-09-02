@@ -27,7 +27,7 @@ model.add(Dense(2))
 model.compile(loss='mse', optimizer='adam')
 model.fit(x,y, epochs=500, batch_size=2)
 
-#4. 예측, 추론
+#4. 평가, 예측
 
 loss = model.evaluate(x,y)
 print('loss: ', loss)

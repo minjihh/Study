@@ -23,7 +23,7 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 model.fit(x_train, y_train, epochs=500, batch_size=2)   # 1epoch에 bathc 4로 한번 batch 3으로 한번 총 두번돌음
 
-#4. 추론, 예측
+#4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 # results = model.predict(x_test, y_test)
