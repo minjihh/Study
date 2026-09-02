@@ -1,5 +1,5 @@
 # import ssl
-# ssl._create_default_https_context = ssl._create_unverified_
+# ssl._create_default_https_context = ssl._create_unverified_                   # 데이터 안불러와질 경우 이 2개 라인 포함해서 실행
 
 from sklearn.datasets import fetch_california_housing    # import 후에 ctrl + space 하면 어떤 리스트들이 있는지 확인 가능
 from tensorflow.keras.models import Sequential
