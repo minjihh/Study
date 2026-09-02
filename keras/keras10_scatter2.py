@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 x = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
 y = np.array([1,2,4,3,5,7,9,3,8,12,13,8 ,14,15,9 ,6 ,17,23,21,20])
 
-x_train, x_test, y_train, y_test = train_test_split(train_size=0.7, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 
 #2. 모델 구성
 
@@ -34,6 +34,6 @@ print("results: ", results)
 import matplotlib.pyplot as plt
 
 plt.scatter(x,y)
-plt.plot(x_test, y_test)
+plt.plot(x, results)
 plt.show()
 
