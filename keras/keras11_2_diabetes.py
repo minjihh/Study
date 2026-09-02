@@ -13,12 +13,12 @@ print(x.shape, y.shape)  # (442,10) (442,)
 
 # [실습] 맹그러봐요!!
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state = 15)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.75, random_state = 15)
 
-print('x_train :', x_train.shape)   # (309, 10)
-print('x_test :', x_test.shape)     # (133, 10)
-print('y_train :', y_train.shape)   # (309,)
-print('y_test :', y_test.shape)     # (133,)
+print('x_train :', x_train.shape)   # (331, 10)
+print('x_test :', x_test.shape)     # (111, 10)
+print('y_train :', y_train.shape)   # (331,)
+print('y_test :', y_test.shape)     # (111,)
 
 #2. 모델 구성
 model = Sequential()
