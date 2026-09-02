@@ -13,7 +13,7 @@ datasets = fetch_california_housing()  # 소문자로 시작하고 뒤에 () 붙
 x = datasets.data
 y = datasets.target
 print(x.shape, y.shape)    # (20640, 8)  (20640,)
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=42)
 
 
 #2. 모델 구성
@@ -29,7 +29,7 @@ model.fit(x_train, y_train, epochs=10, batch_size=4)
 
 #4. 평가, 예측
 print("=================================================")
-loss = model.evaluate(x_test, y_test)
+loss = model.evaluate(x_test, y_test,)  # batch_size=32
 print("loss: ", loss)
 results = model.predict(x_test)
 print("results: ", results)
