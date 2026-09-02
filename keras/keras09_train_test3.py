@@ -10,4 +10,6 @@ from tensorflow.keras.layers import Dense
 x = np.array([1,2,3,4,5,6,7,8,9,10])
 y = np.array([1,2,3,4,5,6,7,8,9,10]) 
 
+# [검색] train과 test를 섞어서 7:3 나눈다.
+# 힌트 : scikitlearn
 
