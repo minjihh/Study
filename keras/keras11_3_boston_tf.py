@@ -1,3 +1,5 @@
+# boston_housing 데이터는 train/test로 구별되어 있음. 데이터 불러오는 부분 참고
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.datasets import boston_housing
