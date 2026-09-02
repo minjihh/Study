@@ -31,3 +31,6 @@ print("x_test: ", x_test)
 print("y_train: ", y_train)
 print("y_test: ", y_test)
 
+#2. 모델 구성
+
+
