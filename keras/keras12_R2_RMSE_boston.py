@@ -20,6 +20,8 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 model.fit(x_train, y_train, epochs=20, batch_size=4)
 
+print("================================================")
+
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
