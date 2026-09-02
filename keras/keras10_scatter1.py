@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 
 #1. 데이터
 x = np.array([1,2,3,4,5,6,7,8,9,10])
-y = np.array([1,2,3,4,5,6,7,8,9,10]) 
+y = np.array([1,2,3,4,7,5,7,8,6,10]) 
 
 # [검색] train과 test를 섞어서 7:3 나눈다.
 # 힌트 : scikitlearn
@@ -49,7 +49,7 @@ print("=============================")
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
-results = model.predict(x_test)
+results = model.predict(x)
 print("results: ", results)
 
 
