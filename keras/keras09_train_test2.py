@@ -18,5 +18,10 @@ y = np.array([1,2,3,4,5,6,7,8,9,10])
 x_train= x[:7]
 y_train= y[:7]
 
+x_test = x[7:]
+y_test = y[7:]
+
+
+
 
 #2. 모델 구성
