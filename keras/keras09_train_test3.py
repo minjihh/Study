@@ -21,4 +21,8 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 # x_train,x_test,y_train,y_test=train_test_split(x, y, test_size=0.3, random_state=2024)
 
-print(x_train, x_test)
+print("x_train: ", x_train)
+print("x_test: ", x_test)
+print("y_train: ", y_train)
+print("y_test: ", y_test)
+
