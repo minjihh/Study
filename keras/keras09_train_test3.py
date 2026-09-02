@@ -32,5 +32,20 @@ print("y_train: ", y_train)
 print("y_test: ", y_test)
 
 #2. 모델 구성
+model = Sequential()
+model.add(Dense(7, input_dim=1))
+model.add(Dense(8))
+model.add(Dense(5))
+model.add(Dense(1))
 
+
+#3. 컴파일, 훈련
+model.compile(loss='mse', optimizer='adam')
+model.fit(x_train, y_train, epochs=100, batch_size=4)
+
+#4. 추론, 예측
+loss = model.evaluate(x_test, y_test)
+print("loss: ", loss)
+results = model.predict(x_test, y_test)
+print("results: ", results)
 
