@@ -13,7 +13,7 @@ print(x.shape, y.shape)  # (442,10) (442,)
 
 # [실습] 맹그러봐요!!
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state = 10)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state = 15)
 
 
 #2. 모델 구성
@@ -29,7 +29,7 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=30, batch_size=2)
+model.fit(x_train, y_train, epochs=30, batch_size=4)
 
 
 #4. 평가, 예측
