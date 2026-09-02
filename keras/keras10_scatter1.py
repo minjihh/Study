@@ -1,3 +1,4 @@
+# matplotlib으로 plot 그리기 
 # 09 test3 카피
 
 import numpy as np
