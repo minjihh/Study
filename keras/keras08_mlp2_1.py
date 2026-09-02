@@ -1,3 +1,5 @@
+# 행렬의 전치 -> .T or .transpose()
+
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
