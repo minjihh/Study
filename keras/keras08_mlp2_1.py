@@ -1,4 +1,4 @@
-# 행렬의 전치 -> .T or .transpose()
+# 행렬의 전치 -> "x.T" or "x.transpose()"
 
 import numpy as np
 from tensorflow.keras.models import Sequential
