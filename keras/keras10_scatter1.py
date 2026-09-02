@@ -53,5 +53,6 @@ results = model.predict(x_test)
 print("results: ", results)
 
 
-
+# 그래프 그리기
+import matplotlib.pyplot as plt
 
