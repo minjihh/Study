@@ -26,7 +26,7 @@ model.compile(loss = 'mse', optimizer = 'adam')
 model.fit(x,y,epochs=500, batch_size=2)
 
 
-#4. 추론, 예측
+#4. 평가, 예측
 loss = model.evaluate(x,y)
 print("loss: ", loss)
 results = model.predict(np.array([10]))
