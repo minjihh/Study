@@ -16,7 +16,8 @@ y = np.array([1,2,3,4,5,6,7,8,9,10])
 
 x_train, x_test, y_train, y_test = train_test_split(
     x, y,
-    train_size=0.7, 
+    train_size=0.7,     # train 사이즈만 설정해도 test는 자동으로 나머지로 설정됨 // train_size=0.7 == test_size=0.3
+    shuffle=True,       # shuffle은 설정하지 않아도 default=True    
 )
 
 # x_train,x_test,y_train,y_test=train_test_split(x, y, test_size=0.3, random_state=2024)
