@@ -28,11 +28,10 @@ model.compile(loss='mse', optimizer='adam')
 model.fit(x_train, y_train, epochs=10, batch_size=4)
 
 #4. 평가, 예측
+print("=================================================")
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 results = model.predict(x_test)
 print("results: ", results)
 
-# plt.scatter(x,y)
-# plt.plot(x_test,results, colot='red')
-# plt.show()
+
