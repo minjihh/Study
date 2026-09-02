@@ -15,6 +15,10 @@ print(x.shape, y.shape)  # (442,10) (442,)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state = 15)
 
+print('x_train :', x_train.shape)
+print('x_test :', x_test.shape)
+print('y_train :', y_train.shape)
+print('y_test :', y_test.shape)
 
 #2. 모델 구성
 model = Sequential()
