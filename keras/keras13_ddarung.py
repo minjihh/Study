@@ -40,6 +40,10 @@ print(train_csv.columns)
 
 print(train_csv.info())
 
+################################### 결측치 처리 1. 
+
+
+
 
 
 
