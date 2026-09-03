@@ -66,6 +66,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random
 model = Sequential()
 model.add(Dense(5, input_dim= 9))
 model.add(Dense(13))
+model.add(Dense(20))
 model.add(Dense(7))
 model.add(Dense(3))
 model.add(Dense(1))
