@@ -1,6 +1,7 @@
 # 11_3 카피
 # RMSE: MSE에서 error값이 큰경우 조정하기 위해서 mse에 root값을 씌움
 # R2 (R squared) = 1 - (MSE)/Var(y)d: loss로 판단이 안될경우 보조 지표로 활용, 우선적으로 확인할 것은 loss // 회귀모델에서 사용하며 1에 가까울수록 모델 성능이 좋음
+# Tensorflow에 R2가 없음
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
