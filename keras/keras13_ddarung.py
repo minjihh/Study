@@ -28,9 +28,18 @@ print(test_csv)  # [715 rows x 9 columns]
 submission = pd.read_csv(path + "submission.csv", index_col=0)
 print(submission)
 
-print(train_csv.shape)
-print(test_csv.shape)
-print(submission.shape)
+print(train_csv.shape)  # (1459, 10)
+print(test_csv.shape)   # (715, 9)
+print(submission.shape)  # (715, 1)
+
+print(train_csv.columns)
+# Index(['hour', 'hour_bef_temperature', 'hour_bef_precipitation',
+#        'hour_bef_windspeed', 'hour_bef_humidity', 'hour_bef_visibility',
+#        'hour_bef_ozone', 'hour_bef_pm10', 'hour_bef_pm2.5', 'count'],
+#       dtype='str')
+
+print(train_csv.info())
+
 
 
 
