@@ -12,7 +12,8 @@ train_csv = pd.read_csv(path + "train.csv", index_col=0)
 test_csv = pd.read_csv(path + "test.csv", index_col=0)
 
 print(train_csv.shape)   # (1459, 10)
+print(train_csv)
 
-submission = pd.read_csv(path + "submission.csv")
+submission = pd.read_csv(path + "submission.csv", index_col=0)
 
 print(submission)
