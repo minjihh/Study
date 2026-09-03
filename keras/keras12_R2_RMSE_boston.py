@@ -1,4 +1,5 @@
 # 11_3 카피
+# RMSE: MSE에서 error값이 큰경우 조정하기 위해서 mse에 root값을 씌움
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
