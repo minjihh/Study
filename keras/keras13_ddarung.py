@@ -47,7 +47,7 @@ print(test_csv.info())
 train_csv = train_csv.dropna()   # 결측치를 제거하겠다, 결측치가 있는 행 모두 삭제 
 print(train_csv) # [1328 rows x 10 columns]
 
-# train_csv를 x와 y로 분리
+##################### train_csv를 x와 y로 분리  #####################
 x = train_csv.drop(['count'], axis=1)  # count 칼럼을 삭제하겠다.   // axis = 0 -> 행 , axis = 1 -> 열
 # train_csv 데이터는 건들지 않은채로 필요한 부분만 x로 지정
 
