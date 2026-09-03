@@ -28,8 +28,12 @@ print("================================================")
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
-results = model.predict(x_test)
-print("results: ", results)
+
+y_predict = model.predict(x_test)
+from sklearn.metrics
+
+
+# print("results: ", results)
 
 
 
