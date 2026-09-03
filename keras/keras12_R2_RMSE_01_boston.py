@@ -16,9 +16,9 @@ print(y_train.shape, y_test.shape) # (404,) (102,)
 
 #2. 모델 구성
 model = Sequential()
-model.add(Dense(5, input_dim =13))
-model.add(Dense(8))
-model.add(Dense(7))
+model.add(Dense(10, input_dim =13))
+model.add(Dense(3))
+model.add(Dense(5))
 model.add(Dense(9))
 model.add(Dense(1))
 
