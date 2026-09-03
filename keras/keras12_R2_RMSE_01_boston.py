@@ -19,12 +19,12 @@ model = Sequential()
 model.add(Dense(10, input_dim =13))
 model.add(Dense(3))
 model.add(Dense(5))
-model.add(Dense(9))
+model.add(Dense(13))
 model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')  # 훈련할 때마다 loss 계산 // loss 값 비교해서 역전파 -> weight update
-model.fit(x_train, y_train, epochs=30, batch_size=2)
+model.fit(x_train, y_train, epochs=100, batch_size=2)
 
 print("================================================")
 
