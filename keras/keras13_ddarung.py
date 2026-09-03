@@ -13,3 +13,4 @@ import pandas as pd
 
 path = "./_data/ddarung/"
 
+pd.read_csv(path + "train.csv")
