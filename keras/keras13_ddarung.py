@@ -53,7 +53,7 @@ x = train_csv.drop(['count'], axis=1)  # count 칼럼을 삭제하겠다.   // a
 
 print(x)  # [1328 rows x 9 columns]
 
-y = train_csv['count']
+y = train_csv['count']  # 컬럼하나 -> 벡터형태와 동일
 print(y)
 print(y.shape)  # (1328,)
 
