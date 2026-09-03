@@ -22,7 +22,7 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')  # 훈련할 때마다 loss 계산 // loss 값 비교해서 역전파 -> weight update
-model.fit(x_train, y_train, epochs=20, batch_size=4)
+model.fit(x_train, y_train, epochs=20, batch_size=2)
 
 print("================================================")
 
