@@ -27,12 +27,12 @@ print("================================================")
 
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
-print("loss: ", loss)
+print("loss(mse): ", loss)
 
 y_predict = model.predict(x_test)
 from sklearn.metrics import r2_score
 r2 = r2_score(y_test, y_predict)
-
+print("r2: ", r2)
 
 # print("results: ", results)
 
