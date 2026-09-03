@@ -81,7 +81,7 @@ loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 y_predict = model.predict(x_test)
 
-rmse = root_mean_squared_error(x_test, y_predict)
+rmse = root_mean_squared_error(y_test, y_predict)
 print("rmse: ", rmse)
 
 
