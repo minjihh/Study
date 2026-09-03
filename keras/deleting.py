@@ -14,3 +14,5 @@ test_csv = pd.read_csv(path + "test.csv", index_col=0)
 print(train_csv.shape)   # (1459, 10)
 
 submission = pd.read_csv(path + "submission.csv")
+
+print(submission)
