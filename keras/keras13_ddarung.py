@@ -9,4 +9,4 @@ from sklearn.metrics import r2_score, mean_squared_error
 
 #1. 데이터
 
-path = 
+path = "./_data/ddarung/"
