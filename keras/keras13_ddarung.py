@@ -18,3 +18,5 @@ print(train_csv)  # id열 포함 [1459 rows x 11 columns]  // id열 안포함 [1
 # 출력시 제일 첫 컬럼은 실제 데이터에서는 존재하지 않는 컬럼이지만 판다스에서 보여줌
 # 판다스에서 통상적으로 첫번째 row는 컬럼명으로 데이터에 포함시키지 않음
 
+test_csv = pd.read_csv(path + "test.csv", index_col=0)
+
