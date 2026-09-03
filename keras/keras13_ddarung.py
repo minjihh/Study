@@ -12,3 +12,4 @@ import pandas as pd
 #1. 데이터
 
 path = "./_data/ddarung/"
+
