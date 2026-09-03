@@ -19,6 +19,7 @@ model = Sequential()
 model.add(Dense(5, input_dim =13))
 model.add(Dense(8))
 model.add(Dense(7))
+model.add(Dense(9))
 model.add(Dense(1))
 
 #3. 컴파일, 훈련
