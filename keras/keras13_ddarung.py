@@ -21,3 +21,8 @@ print(train_csv)  # id열 포함 [1459 rows x 11 columns]  // id열 안포함 [1
 test_csv = pd.read_csv(path + "test.csv", index_col=0)
 print(test_csv)  # [715 rows x 9 columns]
 
+submission = pd.read_csv(path + "submission.csv", index_col=0)
+print(submission)
+
+
+
