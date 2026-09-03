@@ -72,8 +72,8 @@ model.add(Dense(3))
 model.add(Dense(1))
 
 #3. 컴파일, 훈련
-model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=100, batch_size=4)
+model.compile(loss='mse', optimizer='adamw')
+model.fit(x_train, y_train, epochs=300, batch_size=4)
 
 
 #4. 평가, 예측
