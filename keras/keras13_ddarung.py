@@ -58,6 +58,28 @@ print(y)
 print(y.shape)  # (1328,)
 
 
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+
+
+#2. 모델 구성
+
+model = Sequential()
+model.add(Dense(5, input_dim= 9))
+model.add(Dense(13))
+model.add(Dense(7))
+model.add(Dense(3))
+model.add(Dense(1))
+
+#3. 컴파일, 훈련
+model.compile(loss='mse', optimizer='adam')
+model.fit(x_train, y_train, epochs=10, batch_size=4)
+
+
+#4. 평가, 예측
+
+loss = model.evaluate(x_test, y_test)
+
+
 
 
 
