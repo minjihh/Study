@@ -13,4 +13,5 @@ import pandas as pd
 
 path = "./_data/ddarung/"
 
-pd.read_csv(path + "train.csv")
+train_csv = pd.read_csv(path + "train.csv")
+print(train_csv)
