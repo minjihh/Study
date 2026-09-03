@@ -14,4 +14,6 @@ import pandas as pd
 path = "./_data/ddarung/"
 
 train_csv = pd.read_csv(path + "train.csv")
-print(train_csv)  # 출력시 제일 첫 컬럼은 실제 데이터에서는 존재하지 않는 컬럼이지만 판다스에서 보여줌
+print(train_csv)  # [1459 rows x 11 columns]
+
+# 출력시 제일 첫 컬럼은 실제 데이터에서는 존재하지 않는 컬럼이지만 판다스에서 보여줌
