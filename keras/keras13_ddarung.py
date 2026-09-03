@@ -41,14 +41,21 @@ print(train_csv.columns)
 print(train_csv.info())
 print(test_csv.info())
 
-exit()
+# exit()
 ################################### 결측치 처리 1. 삭제 ###############################################
 
-train_csv = train_csv.dropna()
+train_csv = train_csv.dropna()   # 결측치를 제거하겠다.
 print(train_csv) # [1328 rows x 10 columns]
 
 # train_csv를 x와 y로 분리
+x = train_csv.drop(['count'], axis=1)  # count 칼럼을 삭제하겠다.   // axis = 0 -> 행 , axis = 1 -> 열
+# train_csv 데이터는 건들지 않은채로 필요한 부분만 x로 지정
 
+print(x)  # [1328 rows x 9 columns]
+
+y = train_csv['count']
+print(y)
+print(y.shape)  # (1328,)
 
 
 
