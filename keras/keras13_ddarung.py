@@ -42,7 +42,9 @@ print(train_csv.info())
 
 ################################### 결측치 처리 1. 삭제 ###############################################
 
-train_csv.dropna()
+train_csv = train_csv.dropna()
+print(train_csv) # [1328 rows x 10 columns]
+
 
 
 
