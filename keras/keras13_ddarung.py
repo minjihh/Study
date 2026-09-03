@@ -14,6 +14,7 @@ import pandas as pd
 path = "./_data/ddarung/"
 
 train_csv = pd.read_csv(path + "train.csv", index_col=0)  # index_col 표기해서 데이터로 쓰지 않도록 함. // 모델 훈련전 인덱스 포함시키지 않도록 전처리
-print(train_csv)  # [1459 rows x 11 columns]
-
+print(train_csv)  # id열 포함 [1459 rows x 11 columns]  // id열 안포함 [1459 rows x 10 columns]
 # 출력시 제일 첫 컬럼은 실제 데이터에서는 존재하지 않는 컬럼이지만 판다스에서 보여줌
+
+
