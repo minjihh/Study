@@ -1,4 +1,5 @@
 # 11_3 카피
+# RSME 함수 정의해보기
 # RMSE: MSE에서 error값이 큰경우 조정하기 위해서 mse에 root값을 씌움
 # R2 (R squared) = 1 - (MSE)/Var(y)d: loss로 판단이 안될경우 보조 지표로 활용, 우선적으로 확인할 것은 loss
 # R2 score는 회귀모델에서 사용하며 1에 가까울수록 모델 성능이 좋음, 높을수록 좋은 값
@@ -7,6 +8,7 @@
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.datasets import boston_housing
+import numpy as np
 
 #1. 데이터
 (x_train, y_train), (x_test, y_test) = boston_housing.load_data()
@@ -33,9 +35,18 @@ loss = model.evaluate(x_test, y_test)
 print("loss(mse): ", loss)
 
 y_predict = model.predict(x_test)
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_squared_error
 r2 = r2_score(y_test, y_predict)
 print("r2: ", r2)
+
+mse = mean_squared_error(y_test, y_predict)
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
+
+rmse = RMSE(y_test, y_predict)
+print("RMSE :", rmse)
+
 
 # print("results: ", results)
 
