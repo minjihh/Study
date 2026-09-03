@@ -44,7 +44,7 @@ print(test_csv.info())
 # exit()
 ################################### 결측치 처리 1. 삭제 ###############################################
 
-train_csv = train_csv.dropna()   # 결측치를 제거하겠다.
+train_csv = train_csv.dropna()   # 결측치를 제거하겠다, 결측치가 있는 행 모두 삭제 
 print(train_csv) # [1328 rows x 10 columns]
 
 # train_csv를 x와 y로 분리
