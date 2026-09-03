@@ -47,6 +47,7 @@ exit()
 train_csv = train_csv.dropna()
 print(train_csv) # [1328 rows x 10 columns]
 
+# train_csv를 x와 y로 분리
 
 
 
