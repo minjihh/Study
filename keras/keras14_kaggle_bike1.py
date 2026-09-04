@@ -34,8 +34,6 @@ print(train_csv.describe())
 print(train_csv.isna().sum())
 print(test_csv.isna().sum())  # 동일: print(test_csv.isnull().sum())
 
-
-
 ############ x, y 분리 ##############
 x = train_csv.drop(['casual','registered', 'count'], axis=1)   # 두개 이상은 list
 print(x)   # [10886 rows x 8 columns]
@@ -43,4 +41,22 @@ print(x)   # [10886 rows x 8 columns]
 y = train_csv['count']
 print(y.shape)   # (10886,)
 
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, random_state=1)
 
+
+### 모델 구성 ###
+
+model = Sequential()
+model.add((Dense(5, input_dim = 8)))
+model.add(Dense(9))
+model.add(Dense(13))
+model.add(Dense(7))
+model.add(Dense(3))
+model.add(Dense(1))
+
+### 컴파일, 훈련 ###
+
+model.compile(loss='mse', optimizer='adam')
+model.fit(x, y, epochs=10, batch_size=16)
+
+### 평가, 추론
