@@ -22,6 +22,8 @@ path = "./_data/ddarung/"   # 상대경로
 
 
 train_csv = pd.read_csv(path + "train.csv", index_col=0)  # index_col 표기해서 데이터로 쓰지 않도록 함, index_col=0 을 써서 default로 들어가는 첫번째 index column 삭제시킴 // 모델 훈련전 인덱스 포함시키지 않도록 전처리
+#첫컬럼에 index 없는 경우는 나중에 설명
+
 print(train_csv)  # id열 포함 [1459 rows x 11 columns]  // id열 안포함 [1459 rows x 10 columns]
 # 출력시 제일 첫 컬럼은 실제 데이터에서는 존재하지 않는 컬럼이지만 판다스에서 보여줌
 # 판다스에서 통상적으로 첫번째 row는 컬럼명으로 데이터에 포함시키지 않음
