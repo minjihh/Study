@@ -99,7 +99,24 @@ print("rmse: ", rmse)
 '''
 블럭 주석 -> 쌍따옴표, 단따옴표 상관 없음
 '''
+### 하이퍼파라미터 튜닝 ###
+
+#1. 데이터 단계 
+random_state, train_size
+#2. 모델 구성 단계
+layer 깊이, node 개수
+#3. 컴파일, 훈련 단계
+epochs, batch_size
 """
+
+
+'''
+random : 337
+train_size = 0.75
+epochs = 50e
+batch_size =1
+
+'''
 
 ############################################################
 
