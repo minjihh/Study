@@ -1,4 +1,5 @@
 # https://www.kaggle.com/competitions/bike-sharing-demand/data
+# activation 함수 -> 레이어마다 적용
 
 import numpy as np 
 import pandas as pd
