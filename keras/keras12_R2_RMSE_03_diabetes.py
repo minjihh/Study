@@ -1,3 +1,4 @@
+# RMSE 직접 함수로 정의해서 사용해보기 
 # R2 기준 0.62 이상
 
 from sklearn.datasets import fetch_california_housing, load_diabetes    # import 후에 ctrl + space 하면 어떤 리스트들이 있는지 확인 가능
