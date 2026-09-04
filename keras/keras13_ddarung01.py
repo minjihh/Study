@@ -95,6 +95,11 @@ y_predict = model.predict(x_test)
 rmse = root_mean_squared_error(y_test, y_predict)
 print("rmse: ", rmse)
 
+"""
+'''
+블럭 주석 -> 쌍따옴표, 단따옴표 상관 없음
+'''
+"""
 
 ############################################################
 
