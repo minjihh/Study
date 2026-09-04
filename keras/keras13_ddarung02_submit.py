@@ -51,7 +51,7 @@ print(train_csv.columns)   # ".columns -> 판다스 문법"
 print(train_csv.info())   # ".info() -> 판다스 문법"
 print(test_csv.info())
 
-# exit()
+
 ################################### 결측치 처리 1. 삭제 ###############################################
 
 train_csv = train_csv.dropna()   # 결측치를 제거하겠다, 결측치가 있는 행 모두 삭제 
@@ -73,11 +73,15 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random
 ############## submit 물밑작업 ##############
 
 print(test_csv.info())
- 
 
 
 
 
+
+
+
+
+exit()
 
 #2. 모델 구성
 
