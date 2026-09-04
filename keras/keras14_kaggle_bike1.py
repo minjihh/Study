@@ -48,7 +48,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, rando
 ### 모델 구성 ###
 
 model = Sequential()
-model.add((Dense(5, activation='relu', input_dim = 8)))
+model.add((Dense(5, activation='relu', input_dim = 8)))  # relu: 값들을 양수만 나오도록
 model.add(Dense(9, activation='relu'))
 model.add(Dense(13, activation='relu'))
 model.add(Dense(7, activation='relu'))
