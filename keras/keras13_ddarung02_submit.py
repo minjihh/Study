@@ -124,7 +124,9 @@ y_submit = model.predict(test_csv)    # train에서 split했던 test셋 말고 t
 
 submission['count'] = y_submit
 print(submission)
-print(submission.shape)
+print(submission.shape)  # (715, 1)
+
+
 
 
 
