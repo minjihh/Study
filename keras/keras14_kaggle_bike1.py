@@ -11,4 +11,16 @@ from sklearn.metrics import r2_score, mean_squared_error
 path = "./_data/kaggle_bike/" 
 
 train_csv = pd.read_csv(path + "train.csv", index_col=0)
-print(train_csv)
+print(train_csv) # [10886 rows x 11 columns]
+
+test_csv = pd.read_csv(path + 'test.csv', index_col=0)
+print(test_csv)  # [6493 rows x 8 columns]
+
+submission = pd.read_csv(path + "sampleSubmission.csv", index_col=0)
+print(submission)   # [6493 rows x 1 columns]
+
+print(train_csv.shape)    # (10886, 11)
+print(test_csv.shape)     # (6493, 8)
+print(submission.shape)   # (6493, 1)
+
+
