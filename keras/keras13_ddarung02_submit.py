@@ -77,8 +77,8 @@ print(test_csv.info())
 ################################### 결측치 처리 2. 평균값 넣기 ###############################################
 # pandas 데이터 형태: dataframe, series
 
-test_csv 
-
+test_csv = test_csv.fillna(test_csv.mean())
+print(test_csv.info())
 
 
 
