@@ -59,4 +59,14 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 model.fit(x, y, epochs=10, batch_size=16)
 
-### 평가, 추론
+### 평가, 추론 ###
+
+loss = model.evaluate(x_test,y_test)
+print("loss: ", loss)
+
+def RSME(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))
+
+y_submit = model.predict(test_csv)
+
+submission['count'] = y_submit 
