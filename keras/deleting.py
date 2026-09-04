@@ -21,3 +21,10 @@ print(submission)
 print(train_csv.columns)
 
 print(train_csv.info())
+print(test_csv.info())
+
+train_csv = train_csv.dropna()
+print(train_csv)
+
+
+x = train_csv.drop(['count'], axis = 1)
