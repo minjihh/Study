@@ -32,6 +32,14 @@ print(train_csv.describe())
 ############ 결측치 확인 ##############
 
 print(train_csv.isna().sum())
-print(test_csv.isna().sum())  # print(test_csv.isnull().sum())
+print(test_csv.isna().sum())  # 동일: print(test_csv.isnull().sum())
+
+
+
+############ x, y 분리 ##############
+x = train_csv.drop(['casual','registerd', 'count'], axis=1)   # 두개 이상은 list
+print(x)
+
+
 
 
