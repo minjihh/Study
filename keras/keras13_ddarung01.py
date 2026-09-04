@@ -111,10 +111,14 @@ epochs, batch_size
 
 
 '''
+1차시도
 random : 337
 train_size = 0.75
 epochs = 50e
 batch_size =1
+결과
+rmse: 37
+r2 : 0.66
 
 '''
 
