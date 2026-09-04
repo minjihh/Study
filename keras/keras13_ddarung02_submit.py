@@ -74,6 +74,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random
 
 print(test_csv.info())
 
+################################### 결측치 처리 2. 평균값 넣기 ###############################################
 
 
 
