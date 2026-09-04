@@ -28,3 +28,4 @@ print(train_csv)
 
 
 x = train_csv.drop(['count'], axis = 1)
+print(x)
