@@ -28,7 +28,7 @@ print(train_csv)  # id열 포함 [1459 rows x 11 columns]  // id열 안포함 [1
 # 출력시 제일 첫 컬럼은 실제 데이터에서는 존재하지 않는 컬럼이지만 판다스에서 보여줌
 # 판다스에서 통상적으로 첫번째 row는 컬럼명으로 데이터에 포함시키지 않음
 # train csv내 train/test분리하기 
-
+# 열=column=feature=속성=attribute=특성
 
 
 
@@ -39,7 +39,7 @@ submission = pd.read_csv(path + "submission.csv", index_col=0)
 print(submission)
 
 print(train_csv.shape)  # (1459, 10)
-print(test_csv.shape)   # (715, 9)
+print(test_csv.shape)   # (715, 9)  
 print(submission.shape)  # (715, 1)
 
 print(train_csv.columns)   # ".columns -> 판다스 문법"
