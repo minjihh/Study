@@ -85,7 +85,7 @@ print(test_csv.shape)  # (715,9)
 
 
 
-exit()
+# exit()
 
 #2. 모델 구성
 
@@ -117,6 +117,9 @@ print("rmse: ", rmse)
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test,y_predict))
 
+
+##################### subission.csv 만들기 // count 칼럼에 값 넣어준다. #####################
+print(submission)
 
 
 
