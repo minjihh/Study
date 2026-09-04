@@ -1,4 +1,5 @@
 # hidden layer: 몇개의 노드, 몇개의 층이 best인지 알수 없으므로 hidden 이라고 한다. 
+# loss로 mae보다 mse 선호하는 이유: mse가 역전파 계산하기에 편함
 
 import tensorflow as tf
 
