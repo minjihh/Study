@@ -13,6 +13,13 @@ import pandas as pd
 
 path = "./_data/ddarung/"   # 상대경로
 # path = "c:/study/_data/ddarung/"    # 절대경로
+# path = "c:\study\_data\ddarung/"    # /, \ 상관없으나 "\n" 주의
+# path = "c://study//_data//ddarung/"    # // 로 구별해도 상관없음. /로 문제 있을 경우 //사용
+# path = "c:\\study\\_data\\ddarung\\"    # \\ 로 구별해도 상관없음. \로 문제 있을 경우 //사용, "\t"의 경우 탭으로 인식할 가능성 주의
+# path = "c:\study/_data\\ddarung\\"    # 
+
+
+
 
 train_csv = pd.read_csv(path + "train.csv", index_col=0)  # index_col 표기해서 데이터로 쓰지 않도록 함, index_col=0 을 써서 default로 들어가는 첫번째 column 삭제시킴 // 모델 훈련전 인덱스 포함시키지 않도록 전처리
 print(train_csv)  # id열 포함 [1459 rows x 11 columns]  // id열 안포함 [1459 rows x 10 columns]
