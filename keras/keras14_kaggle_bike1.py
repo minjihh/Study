@@ -42,7 +42,7 @@ print(x)   # [10886 rows x 8 columns]
 y = train_csv['count']
 print(y.shape)   # (10886,)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, random_state=50)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, random_state=55)
 
 
 ### 모델 구성 ###
@@ -58,7 +58,7 @@ model.add(Dense(1)) # activation없을때, default linear
 ### 컴파일, 훈련 ###
 
 model.compile(loss='mse', optimizer='adam')
-model.fit(x, y, epochs=1000, batch_size=16)
+model.fit(x, y, epochs=100, batch_size=16)
 
 ### 평가, 추론 ###
 
@@ -80,4 +80,4 @@ submission['count'] = y_submit
 # print(submission)
 # print(submission.shape)
 
-submission.to_csv(path + "submit/submission_0904_0417.csv")
+submission.to_csv(path + "submit/submission_0904_0504.csv")
