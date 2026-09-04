@@ -25,3 +25,4 @@ model.add(Dense(3))
 model.add(Dense(1))
 
 
+model.compile()

@@ -48,12 +48,12 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, rando
 ### 모델 구성 ###
 
 model = Sequential()
-model.add((Dense(5, input_dim = 8)))
-model.add(Dense(9))
-model.add(Dense(13))
-model.add(Dense(7))
-model.add(Dense(3))
-model.add(Dense(1))
+model.add((Dense(5, activation='relu', input_dim = 8)))
+model.add(Dense(9, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(7, activation='relu'))
+model.add(Dense(3, activation='relu'))
+model.add(Dense(1)) # activation없을때, default linear
 
 ### 컴파일, 훈련 ###
 
