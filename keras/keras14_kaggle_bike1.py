@@ -43,7 +43,7 @@ print(x)   # [10886 rows x 8 columns]
 y = train_csv['count']
 print(y.shape)   # (10886,)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, random_state=56)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.7, random_state=57)
 
 
 ### 모델 구성 ###
