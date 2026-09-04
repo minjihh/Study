@@ -57,7 +57,7 @@ model.add(Dense(1))
 ### 컴파일, 훈련 ###
 
 model.compile(loss='mse', optimizer='adam')
-model.fit(x, y, epochs=10, batch_size=16)
+model.fit(x, y, epochs=1000, batch_size=16)
 
 ### 평가, 추론 ###
 
@@ -69,4 +69,8 @@ def RSME(y_test, y_predict):
 
 y_submit = model.predict(test_csv)
 
-submission['count'] = y_submit 
+submission['count'] = y_submit
+print(submission)
+print(submission.shape)
+
+submission.to_csv(path + "submission_0904_0413.csv")
