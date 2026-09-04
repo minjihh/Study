@@ -11,10 +11,10 @@ import pandas as pd
 
 #1. 데이터
 
-# path = "./_data/ddarung/"   # 상대경로
-# path = "c:/study/_data/ddarung/"    # 절대경로
-# path = "c:\study\_data\ddarung/"    # /, \ 상관없으나 "\n" 주의
-path = "c://study//_data//ddarung/"    # // 로 구별해도 상관없음. /로 문제 있을 경우 //사용
+path = "./_data/ddarung/"   # 상대경로
+# path = "c:/study/_data/ddarung/"    # 절대경로 #  /, \ 섞어서 써도 상관없으나 "\n" 주의
+# path = "c:\study\_data\ddarung\"    # "\s"를 인식해서 에러
+# path = "c://study//_data//ddarung/"    # // 로 구별해도 상관없음. /로 문제 있을 경우 //사용, fsspec 다운받으러는 에러 발생해서 다운완료 상태.
 # path = "c:\\study\\_data\\ddarung\\"    # \\ 로 구별해도 상관없음. \로 문제 있을 경우 //사용, "\t"의 경우 탭으로 인식할 가능성 주의
 # path = "c:\\study\_data\\ddarung/"    #  /, \ 섞어서 사용할 경우 코드실행은 문제없으나 가급적 비권장
 
