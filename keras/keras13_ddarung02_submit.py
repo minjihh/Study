@@ -94,7 +94,6 @@ print(test_csv.shape)  # (715,9)
 model = Sequential()
 model.add(Dense(5, input_dim= 9))
 model.add(Dense(7))   # 추가 , 1337
-model.add(Dense(9))   # 추가 , 1347
 model.add(Dense(13))
 model.add(Dense(15))
 model.add(Dense(7))
@@ -103,7 +102,7 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=1000, batch_size=2)
+model.fit(x_train, y_train, epochs=5000, batch_size=2)   #1356
 
 
 #4. 평가, 예측
@@ -130,7 +129,7 @@ submission['count'] = y_submit
 print(submission)
 print(submission.shape)  # (715, 1)
 
-submission.to_csv(path + "submit/" + "submit_0904_1347.csv")
+submission.to_csv(path + "submit/" + "submit_0904_1356.csv")
 
 
 
