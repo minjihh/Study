@@ -126,7 +126,7 @@ submission['count'] = y_submit
 print(submission)
 print(submission.shape)  # (715, 1)
 
-submission.to_csv(path + "submit/" + "submit_0904_1141.csv")
+submission.to_csv(path + "submit/" + "submit_0904_1147.csv")
 
 
 
