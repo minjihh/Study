@@ -45,7 +45,11 @@ model.add(Dense(10))
 model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
-model.fit(x, y, epochs=10, batch_size=4)
+model.fit(x_train, y_train, epochs=10, batch_size=4)
 
 loss = model.evaluate(x_test, y_test)
 y_predict = model.predict(x_test)
+
+
+rsme = root_mean_squared_error(y_test, y_predict)
+print("rseme: ", rsme)
