@@ -120,7 +120,7 @@ def RMSE(y_test, y_predict):
 
 ##################### subission.csv 만들기 // count 칼럼에 값 넣어준다. #####################
 print(submission)
-
+submission['count'] = y_predict
 
 
 
