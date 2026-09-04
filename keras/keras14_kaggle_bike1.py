@@ -37,9 +37,10 @@ print(test_csv.isna().sum())  # 동일: print(test_csv.isnull().sum())
 
 
 ############ x, y 분리 ##############
-x = train_csv.drop(['casual','registerd', 'count'], axis=1)   # 두개 이상은 list
-print(x)
+x = train_csv.drop(['casual','registered', 'count'], axis=1)   # 두개 이상은 list
+print(x)   # [10886 rows x 8 columns]
 
-
+y = train_csv['count']
+print(y.shape)   # (10886,)
 
 
