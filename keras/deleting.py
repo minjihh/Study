@@ -35,3 +35,17 @@ print(y)
 print(y.shape)
 
 
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size= 0.7, random_state=1)
+
+
+model = Sequential()
+model.add(Dense(1, input_dim=10))
+model.add(Dense(5))
+model.add(Dense(10))
+model.add(Dense(1))
+
+model.compile(loss='mse', optimizer='adam')
+model.fit(x, y, epochs=10, batch_size=4)
+
+loss = model.evaluate(x_test, y_test)
+y_predict = model.predict(x_test)
