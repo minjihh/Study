@@ -64,13 +64,19 @@ model.fit(x, y, epochs=1000, batch_size=16)
 loss = model.evaluate(x_test,y_test)
 print("loss: ", loss)
 
-def RSME(y_test, y_predict):
+y_predict = model.predict(x_test)
+
+def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))
+
+rmse = RMSE(y_test, y_predict)
+print('RMSE: ', rmse)
 
 y_submit = model.predict(test_csv)
 
-submission['count'] = y_submit
-print(submission)
-print(submission.shape)
 
-submission.to_csv(path + "submit/submission_0904_0413.csv")
+submission['count'] = y_submit
+# print(submission)
+# print(submission.shape)
+
+submission.to_csv(path + "submit/submission_0904_0417.csv")
