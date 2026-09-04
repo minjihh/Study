@@ -12,3 +12,5 @@ train_csv = pd.read_csv(path + "train.csv", index_col=0)
 test_csv = pd.read_csv(path+'test.csv', index_col=0)
 
 submission = pd.read_csv(path+'sampleSubmission.csv', index_col=0)
+
+x = train_csv.drop(['casual', 'registered', 'count'])
