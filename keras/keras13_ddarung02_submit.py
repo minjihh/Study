@@ -78,7 +78,8 @@ print(test_csv.info())
 # pandas 데이터 형태: dataframe, series
 
 test_csv = test_csv.fillna(test_csv.mean())
-print(test_csv.info())
+print(test_csv.info()) 
+print(test_csv.shape)  # (715,9)
 
 
 
