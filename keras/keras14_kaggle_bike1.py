@@ -23,4 +23,9 @@ print(train_csv.shape)    # (10886, 11)
 print(test_csv.shape)     # (6493, 8)
 print(submission.shape)   # (6493, 1)
 
+############ 결측치 확인 ##############
+print(train_csv.info())
+print(test_csv.info())
+
+print(train_csv.describe())
 
