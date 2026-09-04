@@ -1,5 +1,6 @@
 # https://www.kaggle.com/competitions/bike-sharing-demand/data
 # activation 함수 -> 레이어마다 적용
+# relu 사용해서 역전파시 속도도 빠르고 성능도 좋아짐.
 
 import numpy as np 
 import pandas as pd
