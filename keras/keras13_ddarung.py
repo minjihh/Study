@@ -96,6 +96,11 @@ rmse = root_mean_squared_error(y_test, y_predict)
 print("rmse: ", rmse)
 
 
+############################################################
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test,y_predict))
+
 
 
 
