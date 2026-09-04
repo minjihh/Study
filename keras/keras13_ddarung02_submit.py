@@ -93,7 +93,8 @@ print(test_csv.shape)  # (715,9)
 
 model = Sequential()
 model.add(Dense(5, input_dim= 9))
-model.add(Dense(7))   # 추가 , 1330 바로전
+model.add(Dense(7))   # 추가 , 1337
+model.add(Dense(9))   # 추가 , 1337
 model.add(Dense(13))
 model.add(Dense(15))
 model.add(Dense(7))
@@ -129,7 +130,7 @@ submission['count'] = y_submit
 print(submission)
 print(submission.shape)  # (715, 1)
 
-submission.to_csv(path + "submit/" + "submit_0904_1337.csv")
+submission.to_csv(path + "submit/" + "submit_0904_1347.csv")
 
 
 
