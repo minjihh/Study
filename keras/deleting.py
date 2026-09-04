@@ -22,3 +22,5 @@ print(test_csv.info())
 train_csv = train_csv.dropna()
 
 x = train_csv.drop(['count'], axis = 1)
+
+y = train_csv['count']
