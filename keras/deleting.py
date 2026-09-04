@@ -29,3 +29,9 @@ print(train_csv)
 
 x = train_csv.drop(['count'], axis = 1)
 print(x)
+
+y = train_csv['count']
+print(y)
+print(y.shape)
+
+
