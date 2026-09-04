@@ -16,3 +16,9 @@ submission = pd.read_csv(path + "submission.csv", index_col=0)
 print(train_csv.columns)
 
 print(train_csv.info())
+print(test_csv.info())
+
+
+train_csv = train_csv.dropna()
+
+x = train_csv.drop(['count'], axis = 1)
