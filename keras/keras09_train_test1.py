@@ -1,3 +1,5 @@
+# train/test 분리하는 목적: 과적합 방지, 테스트가 잘 되고 있는지 검증
+
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
