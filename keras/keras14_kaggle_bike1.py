@@ -54,7 +54,7 @@ model.add(Dense(9, activation='relu'))
 model.add(Dense(13, activation='relu'))
 model.add(Dense(7, activation='relu'))
 model.add(Dense(3, activation='relu'))
-model.add(Dense(1)) # activation없을때, default linear
+model.add(Dense(1)) # activation없을때, default linear // 통상적으로 마지막 layer에는 activation 넣지 않음
 
 ### 컴파일, 훈련 ###
 
