@@ -16,7 +16,7 @@ path = "./_data/ddarung/"   # 상대경로
 # path = "c:\study\_data\ddarung/"    # /, \ 상관없으나 "\n" 주의
 # path = "c://study//_data//ddarung/"    # // 로 구별해도 상관없음. /로 문제 있을 경우 //사용
 # path = "c:\\study\\_data\\ddarung\\"    # \\ 로 구별해도 상관없음. \로 문제 있을 경우 //사용, "\t"의 경우 탭으로 인식할 가능성 주의
-# path = "c:\study/_data\\ddarung\\"    # 
+# path = "c:\\study\_data\\ddarung/"    #  /, \ 섞어서 사용할 경우 
 
 
 
