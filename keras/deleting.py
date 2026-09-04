@@ -24,3 +24,6 @@ train_csv = train_csv.dropna()
 x = train_csv.drop(['count'], axis = 1)
 
 y = train_csv['count']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, index_col=0)
+
