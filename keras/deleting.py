@@ -14,3 +14,5 @@ test_csv = pd.read_csv(path +"test.csv", index_col=0)
 submission = pd.read_csv(path + "submission.csv", index_col=0)
 
 print(train_csv.columns)
+
+print(train_csv.info())
