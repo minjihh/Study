@@ -99,7 +99,7 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=1000, batch_size=2)
+model.fit(x_train, y_train, epochs=10, batch_size=2)
 
 
 #4. 평가, 예측
@@ -120,7 +120,11 @@ def RMSE(y_test, y_predict):
 
 ##################### subission.csv 만들기 // count 칼럼에 값 넣어준다. #####################
 print(submission)
-submission['count'] = y_predict
+y_submit = model.predict(test_csv)    # train에서 split했던 test셋 말고 test.csv에 있던 데이터로 실제 예측
+
+submission['count'] = y_submit
+print(submission)
+print(submission.shape)
 
 
 
