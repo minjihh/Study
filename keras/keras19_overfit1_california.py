@@ -44,10 +44,13 @@ print("===================== history ========================")
 print(hist)
 print("===================== hist.history ========================")
 print(hist.history)
-print("===================== loss ========================")
+print("========================= loss ============================")
 print(hist.history['loss'])    # hist.history 딕셔너리에 있는 loss값만 빼자.
-print("===================== val_loss ========================")
+print("======================== val_loss ===========================")
 print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_loss값만 빼자.
+print("============================================================")
+
+
 
 import matplotlib.pyplot as plt
 
