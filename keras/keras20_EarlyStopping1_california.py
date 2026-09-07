@@ -35,13 +35,13 @@ from tensorflow.keras.callbacks import EarlyStopping  # EarlyStopping 카멜케�
 es = EarlyStopping(
     monitor='val_loss',
     mode = ' min',
-    patience = 10,
+    patience = 5,
     restore_best_weights=True,   # restore_best_weights 의 default 값은 False, 원칙은 True나 실제로 돌려보면 False일때 잘나오는 경우도 있음
 )
 
 start_time = time.time()
 hist = model.fit(x_train, y_train, 
-                 epochs=500, 
+                 epochs=500000, 
                  batch_size=4, 
                  verbose=1, 
                  validation_data = (x_val, y_val),
