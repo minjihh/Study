@@ -4,4 +4,4 @@ cmd에서 가상환경 세팅.
 환경이름 설정, tensorflow 설치
 
 vs 코드설치
-좌측 extentsions에서 python extension 설치
+좌측 extentsions에서 python extension 설치 python enviroment
