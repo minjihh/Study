@@ -49,6 +49,12 @@ print(hist.history['loss'])    # hist.history 딕셔너리에 있는 loss값만 
 print("===================== val_loss ========================")
 print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_loss값만 빼자.
 
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(9,6))    # 그래프그릴판 사이즈
+plt.plot(hist.history['loss'], c='red', label='loss')
+
+
 
 
 
