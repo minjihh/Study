@@ -30,14 +30,20 @@ model.add(Dense(1))
 
 
 #3. 컴파일 훈련
+### mse  ###
+# model.compile(loss = 'mse', optimizer = 'adam')
+# hist = model.fit(x_train, y_train, epochs = 10, batch_size=4, validation_split=0.33)
 
-model.compile(loss = 'mse', optimizer = 'adam')
+### r2 ### 
+model.compile(loss='r2_score',  optimizer= 'adam')
 hist = model.fit(x_train, y_train, epochs = 10, batch_size=4, validation_split=0.33)
 
 #4. 평가 예측
 
 loss = model.evaluate(x_test, y_test)
 results = model.predict(x_test)
+
+
 
 
 #### plot 그리기 ####
@@ -63,4 +69,26 @@ plt.show()
 
 #### R2 그리기 ###
 
+
+
+
+
+
+
+import matplotlib.pyplot as plt
+
+plt.rcParams['font_family'] = 'Malgun Gothic'
 plt.figure(figsize=(9,6))
+
+plt.plot(hist.history['loss'], c = 'red', label = 'loss')
+plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
+
+plt.title('kaggle bike R2_loss')
+
+plt.xlabel('epoch')
+plt.ylabel('loss')
+
+plt.legend(loc = 'upper right')
+
+plt.grid()
+plt.show()
