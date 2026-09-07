@@ -1,5 +1,5 @@
 # 17-1 카피
-
+# hist.history를 통해 loss, val_loss이 리스트를 반환할 수 있다.
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
