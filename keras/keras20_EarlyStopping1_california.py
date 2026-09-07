@@ -74,7 +74,7 @@ plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로
 plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
 plt.plot(hist.history['loss'][1:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
-plt.plot(hist.history['val_loss'][1:], c='blue', label='val_loss')  
+plt.plot(hist.history['val_loss'][1:], c='blue', label='val_loss')  # epoch때 loss가 너무 크면 val_loss가 그래프상에서 0에 가깝게 나타나므로 1에폭을 스킵하고 그려서 볼 수 있도록 [1:] 설정
 
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
