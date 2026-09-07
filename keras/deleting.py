@@ -22,14 +22,23 @@ model.add(Dense(1))
 
 
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=10, batch_size=4, validation_data=(x_val, y_val))
+hist = model.fit(x_train, y_train, epochs=10, batch_size=4, validation_data=(x_val, y_val))
 
 loss = model.evaluate(x_test, y_test)
 results = model.predict(x_test)
 
 
+
+
+print(hist.history)
+
 import matplotlib.pyplot as plt
 
 plt.grid()
 
+plt.plot(hist.history['loss'][2:], c = 'red', label = 'loss' )
+plt.plot(hist.history['val_loss'][2:], c = 'blue', label = 'val_loss')
+
+
 plt.legend('updder right')
+

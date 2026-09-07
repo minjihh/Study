@@ -1,4 +1,5 @@
 # 17-1 카피
+# model.fit을 hist로 저장하면 loss와 val_loss의 갑승ㄹ 딕셔너리 형태로 저장할 수 있다.
 # hist.history를 통해 loss, val_loss이 리스트를 반환할 수 있다.
 # plot에서 한글폰트 깨질때 처리하기
 # hist.history 딕셔너리에서 키값이가진 value 리스트에서 일부만 가져오기 
