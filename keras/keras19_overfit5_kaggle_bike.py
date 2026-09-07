@@ -47,7 +47,7 @@ results = model.predict(x_test)
 
 import matplotlib.pyplot as plt
 
-plt.rcParams['font_family'] = 'Malgun Gothic'
+plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.figure(figsize=(9,6))
 
 plt.plot(hist.history['loss'], c = 'red', label = 'loss')
@@ -66,20 +66,20 @@ plt.show()
 
 #### R2 그리기 ###
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
-plt.rcParams['font_family'] = 'Malgun Gothic'
-plt.figure(figsize=(9,6))
+# plt.rcParams['font.family'] = 'Malgun Gothic'
+# plt.figure(figsize=(9,6))
 
-plt.plot(hist.history['loss'], c = 'red', label = 'loss')
-plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
+# plt.plot(hist.history['loss'], c = 'red', label = 'loss')
+# plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
 
-plt.title('kaggle bike R2_loss')
+# plt.title('kaggle bike R2_loss')
 
-plt.xlabel('epoch')
-plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.ylabel('loss')
 
-plt.legend(loc = 'upper right')
+# plt.legend(loc = 'upper right')
 
-plt.grid()
-plt.show()
+# plt.grid()
+# plt.show()
