@@ -10,3 +10,8 @@ import time
 
 datasets = fetch_california_housing()
 
+x = datasets.data
+y = datasets.target
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+
