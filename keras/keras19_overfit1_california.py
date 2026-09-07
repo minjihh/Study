@@ -57,8 +57,8 @@ print("============================================================")
 
 import matplotlib.pyplot as plt
 
-plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
-# plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
+# plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
+plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
 
 plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
