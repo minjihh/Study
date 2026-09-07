@@ -1,6 +1,7 @@
 # 앞서했던 train/test 나누는 방식은 순차적으로 잘랐기 때문에 데이터의 편향을 일으킬 수 있음 (랜덤이 아님)
 # scikit-learn을 활용해서 train/test 나눠보기
 # shift + delete : line 삭제하는 단축키
+# 나중에는 train_test_split을 커스터마이징해서 쓰는 수준까지
 
 import numpy as np
 from tensorflow.keras.models import Sequential
