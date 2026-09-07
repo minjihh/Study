@@ -1,4 +1,5 @@
 # 19-1 카피
+# EarlyStopping 적용하기
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -29,6 +30,7 @@ model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
 
+from tensorflow.keras.callbacks import EarlyStopping
 
 
 
