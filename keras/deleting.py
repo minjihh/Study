@@ -21,3 +21,8 @@ print(x_train.shape, y_train.shape)
 model = Sequential()
 model.add(Dense(5, input_dim=8))
 model.add(Dense(1))
+
+
+model.compile(loss='mse', optimizer='adam')
+
+from tensorflow.keras.callbacks import EarlyStopping
