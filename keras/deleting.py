@@ -54,10 +54,11 @@ print("loss: ", loss)
 # print("results: ", results)
 
 
-from sklearn.metrics import r2_score, root_mean_squared_error
+from sklearn.metrics import r2_score, root_mean_squared_error, 
 
 y_predict = model.predict(x_test)
 r2 = r2_score(y_test, y_predict)
 rmse = root_mean_squared_error(y_test, y_predict)
 
-def RMSE(y_test, y_predict)
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test,y_predict))
