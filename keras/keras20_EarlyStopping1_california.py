@@ -73,8 +73,8 @@ plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로
 
 plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
-plt.plot(hist.history['loss'][2:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
-plt.plot(hist.history['val_loss'][2:], c='blue', label='val_loss')
+plt.plot(hist.history['loss'], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
+plt.plot(hist.history['val_loss'], c='blue', label='val_loss')
 
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
