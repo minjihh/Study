@@ -43,4 +43,8 @@ import matplotlib.pyplot as plt
 plt.rcParams["font_family"] = "Malgun Gothic"
 plt.figure(figsize=(9,6))
 
+plt.plot(hist['loss'], c = 'red', label = 'loss')
+
+
+plt.legend(loc = 'upper right')
 
