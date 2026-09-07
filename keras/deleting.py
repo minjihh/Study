@@ -53,3 +53,14 @@ print(hist.history)
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(9,6))
+
+plt.rcPrams(['font.family']) = 'Malcun Gothic' 
+
+plt.plot(hist['loss'], c = 'red', label = 'loss')
+plt.plot(hist['val_loss'], c = 'blue', label = 'val_loss')
+
+plt.title('california loss')
+
+plt.legend(loc = 'upper right')
+
+plt.show()
