@@ -33,7 +33,12 @@ model.compile(loss='mse', optimizer='adam')
 from tensorflow.keras.callbacks import EarlyStopping  # EarlyStopping 카멜케이스
 
 EarlyStopping(
-    monitor='val_loss'
+    monitor='val_loss',
+    mode = ' min',
+    patience = 10,
+    
+
+
 )
 
 start_time = time.time()
