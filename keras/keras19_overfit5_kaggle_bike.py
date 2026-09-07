@@ -31,12 +31,9 @@ model.add(Dense(1))
 
 #3. 컴파일 훈련
 ### mse  ###
-# model.compile(loss = 'mse', optimizer = 'adam')
-# hist = model.fit(x_train, y_train, epochs = 10, batch_size=4, validation_split=0.33)
-
-### r2 ### 
-model.compile(loss='r2_score',  optimizer= 'adam')
+model.compile(loss = 'mse', optimizer = 'adam')
 hist = model.fit(x_train, y_train, epochs = 10, batch_size=4, validation_split=0.33)
+
 
 #4. 평가 예측
 
@@ -68,12 +65,6 @@ plt.show()
 
 
 #### R2 그리기 ###
-
-
-
-
-
-
 
 import matplotlib.pyplot as plt
 
