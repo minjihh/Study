@@ -31,7 +31,7 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=10, batch_size=4, verbose=1, validation_data = (x_val, y_val)
+hist = model.fit(x_train, y_train, epochs=1, batch_size=4, verbose=1, validation_data = (x_val, y_val)
         #   valdiatoin_split=0.5
           )
 end_time = time.time()
@@ -61,7 +61,9 @@ plt.plot(hist.history['val_loss'][3:], c='blue', label='val_loss')
 
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
-plt.rcParams['font.family'] ='Malgun Gothic'
+plt.rc('font', family='Malgun Gothic') 
+
+# plt.rcParams['font.family'] ='Malgun Gothic'
 # plt.rcParams['axes.unicode_minus'] =False
 plt.title('캘리포니아 Loss')
  
