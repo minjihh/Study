@@ -47,3 +47,7 @@ results = model.predict(x_test)
 
 
 #### plot 그리기 ####
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(9,6))
