@@ -31,7 +31,7 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=10, batch_size=4, verbose=1, validation_data = (x_val, y_val)
+hist = model.fit(x_train, y_train, epochs=100, batch_size=4, verbose=1, validation_data = (x_val, y_val)
         #   valdiatoin_split=0.5
           )
 end_time = time.time()
