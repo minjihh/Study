@@ -55,4 +55,15 @@ plt.show()
 
 import matplotlib.pyplos as plt
 
+
+plt.rcParams['font.family']
+
+
+plt.figure(figsize=(9,6))
+
+plt.plot(hist['loss'], c = 'red', label= 'loss')
+
+
+plt.rcParams['font.family'] = 'malgun gothic'
+
 plt.figure(figsize=(9,6))
