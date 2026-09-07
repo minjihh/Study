@@ -30,9 +30,11 @@ model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
 
-from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping  # EarlyStopping 카멜케이스
 
-
+EarlyStopping(
+    monitor='val_loss'
+)
 
 start_time = time.time()
 hist = model.fit(x_train, y_train, 
