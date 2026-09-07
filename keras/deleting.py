@@ -50,8 +50,14 @@ model.fit(x_train, y_train, epochs=100, batch_size = 4)
 
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
-results = model.predict(x_test)
-print("results: ", results)
+# results = model.predict(x_test)
+# print("results: ", results)
 
 
+from sklearn.metrics import r2_score, root_mean_squared_error
 
+y_predict = model.predict(x_test)
+r2 = r2_score(y_test, y_predict)
+
+
+rmse = 
