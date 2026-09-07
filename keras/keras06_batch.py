@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Dense
 import numpy as np
 
 #1. 데이터
-x = np.array([1,2,3,4,5,6])
+x = np.array([1,2,3,4,5,6])ㄴ
 y = np.array([1,2,4,3,5,6])
 
 #2. 모델구성

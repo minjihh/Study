@@ -1,64 +1,53 @@
-import numpy as np 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-## california
+path = "./_data/ddarung/"
 
-from sklearn.datasets import fetch_california_housing
 
-datasets = fetch_california_housing()
-x = datasets.data
-y = datasets.target
+train_csv = pd.read_csv(path + "train.csv", index_col=0)
+test_csv = pd.read_csv(path + "test.csv", index_col=0)
+submission = pd.read_csv(path + "submission.csv", index_col=0)
+
+print(train_csv.info())
+print(train_csv.columns)
+
+x = train_csv.dropna()
+x = train_csv.drop(['count'], axis =1)
+
+y = train_csv(['count'])
+
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 
-print(x_train.shape, y_train.shape)
 
-# ## diabets
-
-# from sklearn.datasets import load_diabetes
-
-# datasets = load_diabetes()
-# x = datasets.data
-# y = datasets.target
-
-# x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+model = Sequential()
 
 
+submission['count'] = model.predict(x_test)
 
-# ## boston_housing
+submission.to_csv(path + "submit/" + "submit_0904_333.csv")
 
-# from tensorflow.keras.datasets import boston_housing
+import pandas as pd
 
-# (x_train, x_test), (y_train, y_test) = boston_housing.load_data()
-# print(x_train.shape, x_test.shape)
-# print(y_train.shape, y_test.shape)
+path = "./_data/ddarung/"
 
-
-
-model= Sequential()
-model.add((Dense(5, input_dim=8)))
-model.add(Dense(9))
-model.add(Dense(13))
-model.add(Dense(1))
+train_csv = pd.read_csv(path + "train.csv", index_col=0)
+test_csv = pd.read_csv(path + 'test.csv', index_col=0)
+submission = pd.read_csv(path + "submission.csv", index_col =0)
 
 
-model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=100, batch_size = 4)
-
-loss = model.evaluate(x_test, y_test)
-print("loss: ", loss)
-# results = model.predict(x_test)
-# print("results: ", results)
+train_csv = train_csv.dropna()
+x = train_csv.drop(['count'], axis = 1)
+y = train_csv(['count'])
 
 
-from sklearn.metrics import r2_score, root_mean_squared_error, mean_squared_error
+x_train, x_test..
+
 
 y_predict = model.predict(x_test)
-r2 = r2_score(y_test, y_predict)
-rmse = root_mean_squared_error(y_test, y_predict)
 
-def RMSE(y_test, y_predict):
-    return np.sqrt(mean_squared_error(y_test,y_predict))
+submission(['count']) = y_predict
+
+submission.to_csv(path + "submit/" + "subission_092222.csv")

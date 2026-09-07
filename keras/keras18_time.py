@@ -1,3 +1,6 @@
+# 모델 훈련시간 측정하기
+# 14-1 카피
+
 # https://www.kaggle.com/competitions/bike-sharing-demand/data
 # activation 함수 -> 레이어마다 적용
 # relu 사용해서 역전파시 속도도 빠르고 성능도 좋아짐.
@@ -8,6 +11,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
+import time 
+
+
 
 #1. 데이터
 path = "./_data/kaggle_bike/" 
@@ -59,7 +65,13 @@ model.add(Dense(1)) # activation없을때, default linear // 통상적으로 마
 ### 컴파일, 훈련 ###
 
 model.compile(loss='mse', optimizer='adam')
-model.fit(x, y, epochs=100, batch_size=16)
+
+start_time = time.time()    # 현재시간을 반환, 시작시간
+model.fit(x, y, epochs=3, batch_size=16)
+end_time = time.time()    # 현재시간 반환, 끝시간
+
+
+
 
 ### 평가, 추론 ###
 
@@ -74,11 +86,20 @@ def RMSE(y_test, y_predict):
 rmse = RMSE(y_test, y_predict)
 print('RMSE: ', rmse)
 
-y_submit = model.predict(test_csv)
+print("걸린시간: ", round(end_time - start_time, 2), "초")
 
+# round
+
+
+
+"""
+#### submission.csv 만들기 ####
+
+y_submit = model.predict(test_csv)
 
 submission['count'] = y_submit
 # print(submission)
 # print(submission.shape)
 
 submission.to_csv(path + "submit/submission_0907_1011.csv")
+"""

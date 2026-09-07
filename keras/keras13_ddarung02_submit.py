@@ -1,5 +1,6 @@
 # 데이터 -> 이상치, 결측치 처리후 사용
 # 데이콘 설명 링크: https://dacon.io/competitions/open/235576/overview/description
+# 결측치 처리: 삭제 / 평균값 사용
 
 # model.fit에 가중치 초기화 작업 포함되지 않음 
 
