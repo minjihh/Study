@@ -1,3 +1,5 @@
+# 데이터가 많아질 수록 성능이 좋아짐
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 import numpy as np
