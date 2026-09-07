@@ -1,5 +1,6 @@
 # 17-1 카피
 # hist.history를 통해 loss, val_loss이 리스트를 반환할 수 있다.
+# plot에서 한글폰트 깨질때 처리하기
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -31,7 +32,7 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=1, batch_size=4, verbose=1, validation_data = (x_val, y_val)
+hist = model.fit(x_train, y_train, epochs=10, batch_size=4, verbose=1, validation_data = (x_val, y_val)
         #   valdiatoin_split=0.5
           )
 end_time = time.time()
@@ -54,6 +55,9 @@ print("============================================================")
 
 import matplotlib.pyplot as plt
 
+plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
+# plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
+
 plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
 plt.plot(hist.history['loss'][3:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
@@ -61,10 +65,6 @@ plt.plot(hist.history['val_loss'][3:], c='blue', label='val_loss')
 
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
-plt.rc('font', family='Malgun Gothic') 
-
-# plt.rcParams['font.family'] ='Malgun Gothic'
-# plt.rcParams['axes.unicode_minus'] =False
 plt.title('캘리포니아 Loss')
  
 plt.xlabel('epoch')
