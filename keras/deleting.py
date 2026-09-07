@@ -14,4 +14,8 @@ x = datasets.data
 y = datasets.target
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, random_state=1)
 
+print(x_train.shape, y_train.shape)
+
+model = Sequential()
