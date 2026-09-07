@@ -1,6 +1,7 @@
 # 17-1 카피
 # hist.history를 통해 loss, val_loss이 리스트를 반환할 수 있다.
 # plot에서 한글폰트 깨질때 처리하기
+# hist.history 딕셔너리에서 키값이가진 value 리스트에서 일부만 가져오기 
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -60,8 +61,8 @@ plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때
 
 plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
-plt.plot(hist.history['loss'][3:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
-plt.plot(hist.history['val_loss'][3:], c='blue', label='val_loss')
+plt.plot(hist.history['loss'][2:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
+plt.plot(hist.history['val_loss'][2:], c='blue', label='val_loss')
 
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
