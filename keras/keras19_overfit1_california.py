@@ -62,7 +62,7 @@ plt.plot(hist.history['val_loss'][3:], c='blue', label='val_loss')
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
 plt.rcParams['font.family'] ='Malgun Gothic'
-plt.rcParams['axes.unicode_minus'] =False
+# plt.rcParams['axes.unicode_minus'] =False
 plt.title('캘리포니아 Loss')
  
 plt.xlabel('epoch')
