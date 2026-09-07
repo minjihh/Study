@@ -25,4 +25,24 @@ model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
 
+
 from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'min',
+    patience =10,
+    restore_best_weights=True,
+)
+
+start_time = time.time()
+
+hist = model.fit(x_train, y_train, epochs = 10, batch_size =16, validation_data = (x_val, y_val))
+
+
+
+loss = model.evauate(x_test, y_test)
+results = model.predict(x_test)
+
+print
