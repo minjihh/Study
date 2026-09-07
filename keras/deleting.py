@@ -38,11 +38,18 @@ es = EarlyStopping(
 
 start_time = time.time()
 
-hist = model.fit(x_train, y_train, epochs = 10, batch_size =16, validation_data = (x_val, y_val))
+hist = model.fit(x_train, y_train, epochs = 10, batch_size =16, validation_data = (x_val, y_val),
+                 callbacks=[es])
 
 
+end_time = time.time()
 
-loss = model.evauate(x_test, y_test)
+loss = model.evaluate(x_test, y_test)
 results = model.predict(x_test)
 
-print
+print("===================== hist.history ========================")
+print(hist.history)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(9,6))
