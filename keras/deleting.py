@@ -34,11 +34,19 @@ print(hist.history)
 
 import matplotlib.pyplot as plt
 
-plt.grid()
+
+plt.figure(figsize=(9,6))
 
 plt.plot(hist.history['loss'][2:], c = 'red', label = 'loss' )
 plt.plot(hist.history['val_loss'][2:], c = 'blue', label = 'val_loss')
 
 
-plt.legend('updder right')
+plt.legend(loc = 'updder right')
 
+plt.title('캘리포니아 Loss')
+
+plt.xlabel('epoch')
+plt.ylabel('loss')
+
+plt.grid()
+plt.show()
