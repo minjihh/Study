@@ -1,4 +1,5 @@
 # 데이터가 많아질 수록 성능이 좋아짐
+# 훈련을 많이 시켰을때는 과적합이 발생할 수 있으나 데이터 자체는 많으면 많을수록 좋다. (좋은데이터라는 가정하에)
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
