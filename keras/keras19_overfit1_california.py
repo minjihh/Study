@@ -51,9 +51,20 @@ print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_los
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(9,6))    # 그래프그릴판 사이즈
-plt.plot(hist.history['loss'], c='red', label='loss')
+plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
+plt.plot(hist.history['loss'], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
+plt.plot(hist.history['val_loss'], c='blue', label='val_loss')
+
+plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
+
+plt.title('캘리포니아 Loss')
+ 
+plt.xlabel('epoch')
+plt.ylabel('loss')
+
+plt.grid()    # 격자표시 추가
+plt.show()
 
 
 
