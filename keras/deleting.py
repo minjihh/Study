@@ -1,69 +1,13 @@
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from sklearn.datasets import fetch_california_housing
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score
-import numpy as np
-import time
-
-datasets = fetch_california_housing
-x = datasets.data
-y = datasets.target
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.5, random_state=1)
-x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size=0.5, random_state=1)
-
-print(x_train.shape, y_train.shape)
-
-model=Sequential()
-model.add(Dense(5, input_dim=8))
-model.add(Dense(1))
 
 
 
-model.compile(loss='mse', optimizer='adam')
-hist = model.fit(x_train, y_train, epochs=10, batch_size=4, validation_data=(x_val, y_val))
+from tensorflow.keras.callbacks import EarlyStopping
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'min',
+    patience = 10,
+    restore_best_weights=True,
 
-loss = model.evaluate(x_test, y_test)
-results = model.predict(x_test)
+)
 
-
-
-
-print(hist.history)
-
-import matplotlib.pyplot as plt
-
-plt.rcParams['font.family'] = 'Malgun Gothic'
-
-plt.figure(figsize=(9,6))
-
-plt.plot(hist.history['loss'][2:], c = 'red', label = 'loss' )
-plt.plot(hist.history['val_loss'][2:], c = 'blue', label = 'val_loss')
-
-
-plt.legend(loc = 'updder right')
-
-plt.title('캘리포니아 Loss')
-
-plt.xlabel('epoch')
-plt.ylabel('loss')
-
-plt.grid()
-plt.show()
-
-
-import matplotlib.pyplos as plt
-
-
-plt.rcParams['font.family']
-
-
-plt.figure(figsize=(9,6))
-
-plt.plot(hist['loss'], c = 'red', label= 'loss')
-
-
-plt.rcParams['font.family'] = 'malgun gothic'
-
-plt.figure(figsize=(9,6))
+start_time = time.time()
