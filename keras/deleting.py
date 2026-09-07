@@ -12,3 +12,24 @@ y = datasets.target
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.5, random_state=1)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size=0.5, random_state=1)
+
+print(x_train.shape, y_train.shape)
+
+model=Sequential()
+model.add(Dense(5, input_dim=8))
+model.add(Dense(1))
+
+
+
+model.compile(loss='mse', optimizer='adam')
+model.fit(x_train, y_train, epochs=10, batch_size=4, validation_data=(x_val, y_val))
+
+loss = model.evaluate(x_test, y_test)
+results = model.predict(x_test)
+
+
+import matplotlib.pyplot as plt
+
+plt.grid()
+
+plt.legend('updder right')
