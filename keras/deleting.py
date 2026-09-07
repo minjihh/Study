@@ -19,3 +19,5 @@ x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, 
 print(x_train.shape, y_train.shape)
 
 model = Sequential()
+model.add(Dense(5, input_dim=8))
+model.add(Dense(1))
