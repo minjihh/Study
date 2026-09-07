@@ -51,3 +51,8 @@ plt.ylabel('loss')
 
 plt.grid()
 plt.show()
+
+
+import matplotlib.pyplos as plt
+
+plt.figure(figsize=(9,6))
