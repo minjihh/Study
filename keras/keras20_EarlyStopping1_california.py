@@ -1,5 +1,6 @@
 # 19-1 카피
 # EarlyStopping 적용하기
+# es로 earlystoopping 정의하고, model.fit에서 callbakcs으로 [es] 불러오기
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
