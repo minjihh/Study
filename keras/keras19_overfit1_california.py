@@ -1,5 +1,6 @@
 # 17-1 카피
 
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.datasets import fetch_california_housing
@@ -41,7 +42,7 @@ results = model.predict(x_test)
 
 print("===================== history ========================")
 print(hist)
-print("===================== history ========================")
+print("===================== hist.history ========================")
 print(hist.history)
 print("===================== history ========================")
 
