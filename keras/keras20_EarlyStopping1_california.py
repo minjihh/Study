@@ -45,7 +45,7 @@ hist = model.fit(x_train, y_train,
                  batch_size=4, 
                  verbose=1, 
                  validation_data = (x_val, y_val),
-                 callbacks = [es]
+                 callbacks = [es], # early stopping 적용하기
         #   valdiatoin_split=0.5
           )
 end_time = time.time()
