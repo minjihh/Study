@@ -31,7 +31,7 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=100, batch_size=4, verbose=1, validation_data = (x_val, y_val)
+hist = model.fit(x_train, y_train, epochs=10, batch_size=4, verbose=1, validation_data = (x_val, y_val)
         #   valdiatoin_split=0.5
           )
 end_time = time.time()
@@ -56,8 +56,8 @@ import matplotlib.pyplot as plt
 
 plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
-plt.plot(hist.history['loss'], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
-plt.plot(hist.history['val_loss'], c='blue', label='val_loss')
+plt.plot(hist.history['loss'[3:]], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
+plt.plot(hist.history['val_loss'[3:]], c='blue', label='val_loss')
 
 plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
