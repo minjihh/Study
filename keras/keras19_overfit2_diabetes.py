@@ -40,3 +40,7 @@ results = model.predict(x_test)
 
 import matplotlib.pyplot as plt
 
+plt.rcParams["font_family"] = "Malgun Gothic"
+plt.figure(figsize=(9,6))
+
+
