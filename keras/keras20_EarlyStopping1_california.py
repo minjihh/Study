@@ -36,7 +36,7 @@ EarlyStopping(
     monitor='val_loss',
     mode = ' min',
     patience = 10,
-    
+    restore_best_weights=True,   # restore_best_weights 의 default 값은 False
 
 
 )
