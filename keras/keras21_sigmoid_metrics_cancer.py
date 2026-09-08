@@ -41,5 +41,9 @@ print(np.unique(y, return_counts=True)) # (array([0, 1]), array([212, 357]))
 print(pd.DataFrame(y).value_counts())
 # 1    357
 # 0    212
+print(pd.Series(y).value_counts())
+# 1    357
+# 0    212
+print(pd.value_counts(y))
 
 
