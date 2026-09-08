@@ -44,4 +44,6 @@ submission.to_csv(path + 'submission_0909_3.csv')
 
 
 print(train_csv.info())
-print(np.unique(y, return_counts=True)
+print(np.unique(y, return_counts=True))
+print(pd.DataFrame(y_pred).value_counts())
+print(pd.Series(y).value_counts())
