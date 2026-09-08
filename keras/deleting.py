@@ -17,6 +17,8 @@ x_val, y_val, x_test, y_test = train_test_split(x_test, y_test, test_size =0.5, 
 
 
 model = Sequential()
+model.add(Dense(5, input_dim=8))
+model.add(Dense(1))
 
 
-model.compile(loss)
+model.compile(loss = 'mse', optimizer='adam')
