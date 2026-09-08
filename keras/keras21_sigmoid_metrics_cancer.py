@@ -3,7 +3,7 @@
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
 # train_test_split에서 stratify 설정 (분류모델일 경우)
 # 이진분류 모델 마지막 layer에서 activaiton sigmoid 사용
-# 이진분류에서 loss BCE 사용
+# 모든 이진분류에서 loss BCE 사용, activation은 sigmoid
 # compile에서 loss BCE로 변경, metrics=['acc'] 추가하여 훈련 로그에 출력되도록 
 # accuracy로 훈련은 불가능
 
