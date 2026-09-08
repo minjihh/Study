@@ -58,8 +58,10 @@ print(np.unique(y_train, return_counts=True))
 print(np.unique(y_test, return_counts=True))
 # (array([0, 1]), array([53, 118]))
 
-print(x_train.shape, x_test.shape)  # 
-print(y_train.shape, y_test.shape)
+print(x_train.shape, x_test.shape)  # (398, 30) (171, 30)
+print(y_train.shape, y_test.shape)  # (398,) (171,)
+
+#2. 모델 구성
 
 model = Sequential()
 model.add((Dense(5, input_dim = 30)))
