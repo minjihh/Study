@@ -1,3 +1,6 @@
+# load_breast_cancer 데이터 불러오기
+# type()를 통해 데이터 형태 확인
+
 import numpy as np
 import pandas as pd
 from tensorflow.keras.models import Sequential
@@ -24,6 +27,7 @@ y = datasets.target
 print(x.shape, y.shape) # (569, 30) (569,)
 print(type(x))   # <class 'numpy.ndarray'>  type: data 형태 보여줌
 # -> pandas 데이터도 numpy로 만들어져 있다.
+
 
 
 
