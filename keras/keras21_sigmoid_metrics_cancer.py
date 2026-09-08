@@ -110,7 +110,9 @@ print("걸린시간: ", round(end_time - start_time, 2))
 
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
-results = model.predict(x_test)
+
+y_pred = model.predict(x_test)
+print(y_pred)
 
 import matplotlib.pyplot as plt
 
