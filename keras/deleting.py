@@ -44,3 +44,7 @@ import matplotlib.pyplot as plt
 plt.rcParams(['font.family']) = 'Magul Gothic'
 
 plt.figure(figsize = (9,6))
+
+plt.plot(hist['loss'], c = 'red', label = 'loss')
+plt.plot(hist['val_loss'], c = 'blue', label='val_loss')
+
