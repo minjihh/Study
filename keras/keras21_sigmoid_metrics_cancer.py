@@ -50,8 +50,7 @@ print(pd.Series(y).value_counts())
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1,
                                                     stratify=y,) 
 # stratify 사용하면 원래 데이터 비율 유지
-
-
+# stratify=y -> y의 클래스 비율을 유지하면서 분할
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
 
 print(np.unique(y_train, return_counts=True))  
@@ -59,7 +58,8 @@ print(np.unique(y_train, return_counts=True))
 print(np.unique(y_test, return_counts=True))
 # (array([0, 1]), array([53, 118]))
 
-
+print(x_train.shape, x_test.shape)
+print(y_train.shape, y_test.shape)
 
 model = Sequential()
 model.add((Dense(5, input_dim = 30)))
