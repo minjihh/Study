@@ -43,16 +43,29 @@ model.add(Dense(15))
 model.add(Dense(1))
 
 
-model.compile(loss='binarycrossentropy', optimizer = 'adam',)
-hist = model.fit(x_train, y_train, epochs = 10000, batch_size=16, validation_split = 0.3, metrics=['acc'])
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode='min',
+    patience=10,
+    restore_best_weights=True
+)
+
+model.compile(loss='BCE', optimizer = 'adam', metrics=['acc'])
+hist = model.fit(x_train, y_train, epochs = 10000, batch_size=16, validation_split = 0.3, callbacks = [es], )
 
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 
 y_pred = np.round(model.predict(x_test))
 
-Accuracy = accuracy_score(y_test, y_pred)
+Accuracy = np.round(accuracy_score(y_test, y_pred) ,2)
 print("Accuracy: ", Accuracy)
+
+
+submission = submission_csv['target']
+submission = y_pred
+
+submission.to_csv(path + "submission_0908_0438.csv")
 
 
 
