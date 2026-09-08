@@ -1,3 +1,5 @@
+# 모든 loss들은 음수값을 방지하기 위한 장치가 들어간다.
+
 import numpy as np 
 import pandas as pd
 from tensorflow.keras.models import Sequential
