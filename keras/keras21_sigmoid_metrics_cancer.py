@@ -8,6 +8,8 @@
 # accuracy로 훈련은 불가능
 
 # sigmoid 함수 = 1 / (1 + e^(-z)) -> z가 무한대로 커질때: = e^(-z) 0으로 수렴 -> sigmoid: 0.9999...
+# sigmoid 통과하고 나면 0과 1사이의 값이 나옴
+# tensorflow에서는 sigmoid 적용후 반올림하도록 되어있음 -> 모델에서 sigmoid 통과후에는 0 또는 1의 값이 나옴 -> 이진분류
 
 
 import numpy as np
