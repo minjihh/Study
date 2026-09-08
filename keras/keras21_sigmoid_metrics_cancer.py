@@ -44,6 +44,7 @@ print(pd.DataFrame(y).value_counts())
 print(pd.Series(y).value_counts())
 # 1    357
 # 0    212
-print(pd.value_counts(y))
+
+
 
 
