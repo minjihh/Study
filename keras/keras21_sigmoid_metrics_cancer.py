@@ -55,7 +55,23 @@ model.add((Dense(5, input_dim = 30)))
 model.add((Dense(1)))
 
 model.compile(loss='BCE', optimizer='adam')
-hist = model.fit(x_train, y_train, epochs = 10, batch_size = 16, validation_data = (x_val, y_val))
+
+from tensorflow.keras.callbacks import EarlyStopping
+
+es  = EarlyStopping(
+    monitor='val_loss',
+    mode = 'min',
+    patience = 10,
+    restore_best_weights=True
+)
+start_time = time.time()
+hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 16, validation_data = (x_val, y_val))
+end_time = time.time()
+
+print("걸린시간: ", end_time - start_time)
 
 loss = model.evaluate(x_test, y_test)
+print("loss: ", loss)
 results = model.predict(x_test)
+
+import matplotlib.pyplot as plt
