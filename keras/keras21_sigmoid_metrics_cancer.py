@@ -29,6 +29,8 @@ print(type(x))   # <class 'numpy.ndarray'>  type: data 형태 보여줌
 # -> pandas 데이터도 numpy로 만들어져 있다.
 
 
+# 분류형 모델 꼭 y를 확인해야함 -> label 종류 개수 확인필요
+print(y)
 
 
 
