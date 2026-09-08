@@ -23,7 +23,14 @@ print(test_csv.shape)  #  (200000, 201)
 print(submission_csv.shape)  #  (200000, 2)
 
 # 결측치 확인
-print(train_csv.info())
+print(train_csv.info())   # 방법1 (지금 santander 데이터는 데이터 개수가 너무 많아서 이방법으로 확인 힘듦)
+print(train_csv.isna().sum())  # 방법2
+print(train_csv.isnull().sum())  # 방법3
+
+x = train_csv.drop(['target'], axis = 1)
+y = train_csv['target']
+print(x.shape, y.shape)  # (200000, 200) (200000,)
+
 
 
 
