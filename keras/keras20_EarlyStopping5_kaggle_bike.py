@@ -51,7 +51,7 @@ end_time = time.time()
 #4. 평가 예측
 
 loss = model.evaluate(x_test, y_test)
-results = model.predict(x_test)
+results = model.predict(test_csv)
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
 

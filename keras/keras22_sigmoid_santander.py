@@ -34,13 +34,15 @@ print(x.shape, y.shape)  # (200000, 200) (200000,)
 print(np.unique(y, return_counts=True))
 # (array([0, 1]), array([179902,  20098]))
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 1, stratify=y)
+x_train, x_val, y_train, y_val = train_test_split(x, y, train_size = 0.7, random_state = 1, stratify=y)
+
+x_test = test_csv
 
 model = Sequential()
-model.add(Dense(5, input_dim = 200))
-model.add(Dense(9))
-model.add(Dense(15))
-model.add(Dense(1))
+model.add(Dense(5, input_dim = 200, activation = 'relu'))
+model.add(Dense(9, activation = 'relu'))
+model.add(Dense(15, activation = 'relu'))
+model.add(Dense(1, activation = 'sigmoid'))
 
 
 es = EarlyStopping(
@@ -50,22 +52,24 @@ es = EarlyStopping(
     restore_best_weights=True
 )
 
-model.compile(loss='BCE', optimizer = 'adam', metrics=['acc'])
-hist = model.fit(x_train, y_train, epochs = 10000, batch_size=16, validation_split = 0.3, callbacks = [es], )
+model.compile(loss='binary_crossentropy', optimizer = 'adam', metrics=['acc'])
+hist = model.fit(x_train, y_train, epochs = 10000, batch_size=16, 
+                #  validation_split = 0.3,
+                 validation_data = (x_val, y_val), 
+                 callbacks = [es], )
 
-loss = model.evaluate(x_test, y_test)
-print("loss: ", loss)
+# loss = model.evaluate(x_test, y_test)
+# print("loss: ", loss)
 
 y_pred = np.round(model.predict(x_test))
 
-Accuracy = np.round(accuracy_score(y_test, y_pred) ,2)
-print("Accuracy: ", Accuracy)
+# Accuracy = np.round(accuracy_score(y_test, y_pred) ,2)
+# print("Accuracy: ", Accuracy)
 
 
-submission = submission_csv['target']
-submission = y_pred
+submission_csv['target'] = y_pred
 
-submission.to_csv(path + "submission_0908_0438.csv")
+submission_csv.to_csv(path + "submission_0908_0523.csv")
 
 
 
