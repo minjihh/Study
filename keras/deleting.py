@@ -31,7 +31,27 @@ es = EarlyStopping(
     restore_best_weights=True
 )
 
-model.compile(loss = 'BCE', optimizer = 'adam')
+model.compile(loss = 'BCE', optimizer = 'adam',
+              metrics=['acc'])
 hist = model.fit(x_train, y_train, epochs =10, batch_size=16, validatoin_data = (x_val, y_val), callbacks = [es])
 
 print(hist.history)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(9,6))
+
+plt.rcParams['font.family'] = 'Malgun Gothic'
+
+plt.plot(hist.history['loss'], c = 'red', label ='loss')
+plt.plot(hist.history['val_loss'], c = 'red', label ='val_loss')
+
+plt.title('breast cancer loss')
+
+plt.legend(loc = 'upper right')
+
+plt.xlabel('epoch')
+plt.ylabel('loss')
+
+plt.grid()
+plt.show()
