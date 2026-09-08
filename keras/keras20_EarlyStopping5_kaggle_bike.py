@@ -42,7 +42,7 @@ end_time = time.time()
 loss = model.evaluate(x_test, y_test)
 results = model.predict(x_test)
 
-
+print("걸린시간: ", round(end_time - start_time), 2)
 
 
 #### plot 그리기 ####
