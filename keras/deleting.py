@@ -25,5 +25,10 @@ print(pd.DataFrame.value_counts())
 print(pd.Series.value_counts())
 
 es = EarlyStopping(
-    monitor = 'val_loss'
+    monitor = 'val_loss',
+    mode = 'min',
+    patience = 10,
+    restore_best_weights=True
 )
+
+model.compile(loss = 'BCE', optimizer = 'adam')
