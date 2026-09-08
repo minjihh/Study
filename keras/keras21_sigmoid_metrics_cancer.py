@@ -120,7 +120,7 @@ print("===============================")
 
 y_pred = model.predict(x_test)
 # print(y_pred[:10])   # model 통과한후에는 값이 0과 1사이의 값으로 나옴, 결과값은 따로 반올림 필요
-y_pred = round(y_pred, 2)
+y_pred = round(y_pred, 1)
 
 
 
