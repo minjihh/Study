@@ -1,7 +1,7 @@
 # load_breast_cancer 데이터 불러오기
 # type()를 통해 데이터 형태 확인
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
-# train_test_split에서 stratify (분류모델일 경우)
+# train_test_split에서 stratify 설정 (분류모델일 경우)
 # 이진분류 모델 마지막 layer에서 activaiton sigmoid 사용
 # 이진분류에서 loss BCE 사용
 # compile에서 loss BCE로 변경, metrics=['acc'] 추가하여 훈련 로그에 출력되도록 
