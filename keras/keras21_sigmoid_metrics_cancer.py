@@ -12,6 +12,13 @@
 # tensorflow에서는 sigmoid 적용후 반올림하도록 되어있음 -> 모델에서 sigmoid 통과후에는 0 또는 1의 값이 나옴 -> 이진분류
 
 
+"""
+            회귀        분류(이진)
+Activation  linear     sigmoid
+Loss        mse         BCE
+
+"""
+
 
 import numpy as np
 import pandas as pd
