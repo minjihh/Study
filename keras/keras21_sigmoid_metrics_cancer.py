@@ -16,7 +16,7 @@ print(datasets.DESCR)  # Number of Attributes: 30 numeric
 print(datasets.feature_names)
 ######################
 
-# x = datasets.data
+# x = datasets.data   # datasets.data == datasets['data']
 x = datasets['data']
 y = datasets.target
 
