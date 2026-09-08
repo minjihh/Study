@@ -112,7 +112,8 @@ loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 
 y_pred = model.predict(x_test)
-print(y_pred)   # model 통과한후에는 값이 0과 1사이의 값으로 나옴, 결과값은 따로 반올림 필요
+print(y_pred[:10])   # model 통과한후에는 값이 0과 1사이의 값으로 나옴, 결과값은 따로 반올림 필요
+
 
 import matplotlib.pyplot as plt
 
@@ -131,4 +132,4 @@ plt.xlabel('epoch')
 plt.ylabel('loss')
 
 plt.grid()
-plt.show()
+# plt.show()
