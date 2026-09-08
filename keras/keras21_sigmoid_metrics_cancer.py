@@ -87,8 +87,8 @@ plt.figure(figsize=(9,6))
 
 plt.rcParams['font.family'] = 'Malgun Gothic'
 
-plt.plot(hist['loss'], c = 'red', label = 'loss')
-plt.plot(hist['val_loss'], c = 'blue', label = 'val_loss')
+plt.plot(hist.history['loss'], c = 'red', label = 'loss')
+plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
 
 plt.title('breast_cancer_loss')
 
