@@ -1,7 +1,7 @@
 # load_breast_cancer 데이터 불러오기
 # type()를 통해 데이터 형태 확인
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
-# train_test_split에서 stratify
+# train_test_split에서 stratify (분류모델일 경우)
 
 import numpy as np
 import pandas as pd
@@ -48,7 +48,10 @@ print(pd.Series(y).value_counts())
 # 0    212
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1,
-                                                    stratify=y,)
+                                                    stratify=y,) 
+
+
+
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
 
 print(np.unique(y_train, return_counts=True))  
