@@ -10,7 +10,12 @@ from sklearn.datasets import load_breast_cancer  # 유방암관련 데이터셋 
 #1. 데이터 
 
 datasets = load_breast_cancer
+print(datasets.DESCR)
+
+
+
 
 x = datasets.data
 y = datasets.target
+
 
