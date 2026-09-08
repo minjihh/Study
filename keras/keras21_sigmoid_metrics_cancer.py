@@ -21,6 +21,6 @@ x = datasets['data']  # datasets은 딕셔너리형태의 데이터였다.
 y = datasets.target
 
 print(x.shape, y.shape) # (569, 30) (569,)
-
+print(type)
 
 
