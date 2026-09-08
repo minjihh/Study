@@ -10,9 +10,11 @@ from sklearn.datasets import load_breast_cancer  # 유방암관련 데이터셋 
 #1. 데이터 
 
 datasets = load_breast_cancer()
+
+### 보통은 데이터 판다스로 많이 불러오기 때문에 아래 2개랑 비슷한 역할하는 pandas 문법을 주로 사용 ###
 print(datasets.DESCR)  # Number of Attributes: 30 numeric 
 print(datasets.feature_names)
-
+######################
 
 
 
