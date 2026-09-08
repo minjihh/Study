@@ -1,5 +1,6 @@
 # load_breast_cancer 데이터 불러오기
 # type()를 통해 데이터 형태 확인
+# numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
 
 import numpy as np
 import pandas as pd
@@ -45,6 +46,7 @@ print(pd.Series(y).value_counts())
 # 1    357
 # 0    212
 
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1)
 
 
 
