@@ -48,3 +48,30 @@ plt.figure(figsize = (9,6))
 plt.plot(hist['loss'], c = 'red', label = 'loss')
 plt.plot(hist['val_loss'], c = 'blue', label='val_loss')
 
+plt.title('california loss')
+
+plt.legend(loc = 'upper right')
+
+plt.xlabel('epoch')
+plt.ylabel('loss')
+
+plt.gird()
+plt.show()
+
+
+
+from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'min',
+    patience =10,
+    restore_best_wegiths = True)
+
+start_time = time.time()
+
+hist = model.fit(x_train, y_train, epochs = 10, batch_size =16, callbacks = [es])
+
+
+end_time = time.time()
+
