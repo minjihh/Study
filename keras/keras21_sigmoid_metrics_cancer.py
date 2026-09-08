@@ -80,8 +80,6 @@ model.add(Dense(1, activation= 'sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer='adam')  # 이진분류 loss는 무조건 BCE
 
-from tensorflow.keras.callbacks import EarlyStopping
-
 es  = EarlyStopping(
     monitor='val_loss',
     mode = 'min',
@@ -89,7 +87,8 @@ es  = EarlyStopping(
     restore_best_weights=True
 )
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 16, 
+hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 32, 
+                 verbose=1,
                 #  validation_data = (x_val, y_val), 
                  callbacks = [es])
 end_time = time.time()
