@@ -34,11 +34,27 @@ print(x.shape, y.shape)  # (200000, 200) (200000,)
 print(np.unique(y, return_counts=True))
 # (array([0, 1]), array([179902,  20098]))
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 1, stratify=y)
+
+model = Sequential()
+model.add(Dense(5, input_dim = 200))
+model.add(Dense(9))
+model.add(Dense(15))
+model.add(Dense(1))
 
 
+model.compile(loss='binarycrossentropy', optimizer = 'adam',)
+hist = model.fit(x_train, y_train, epochs = 10000, batch_size=16, validation_split = 0.3, metrics=['acc'])
 
-      
+loss = model.evaluate(x_test, y_test)
+print("loss: ", loss)
+
+y_pred = np.round(model.predict(x_test))
+
+Accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy: ", Accuracy)
+
+
 
 
 
