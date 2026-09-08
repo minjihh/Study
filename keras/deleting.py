@@ -6,3 +6,9 @@ from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+
+datasets = fetch_california_housing
+
+x = datasets.data
+y = datasets.target
+
