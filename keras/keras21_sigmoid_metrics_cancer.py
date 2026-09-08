@@ -109,12 +109,17 @@ end_time = time.time()
 print("걸린시간: ", round(end_time - start_time, 2))
 
 loss = model.evaluate(x_test, y_test)
+
+
+print("===============================")
 # print("loss: ", loss)  # [loss, acc]
 print("loss: ", loss[0]) 
-print('acc:', round(loss[1], 4))
+print('acc:', round(loss[1], 4))  
+print("===============================")
+
 
 y_pred = model.predict(x_test)
-print(y_pred[:10])   # model 통과한후에는 값이 0과 1사이의 값으로 나옴, 결과값은 따로 반올림 필요
+# print(y_pred[:10])   # model 통과한후에는 값이 0과 1사이의 값으로 나옴, 결과값은 따로 반올림 필요
 
 
 import matplotlib.pyplot as plt
