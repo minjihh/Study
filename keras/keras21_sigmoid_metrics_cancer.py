@@ -80,7 +80,9 @@ model.add(Dense(1, activation= 'sigmoid'))
 
 #3. 컴파일 훈련
 
-model.compile(loss='binary_crossentropy', optimizer='adam')  # 이진분류 loss는 무조건 BCE
+model.compile(loss='binary_crossentropy', optimizer='adam',   # 이진분류 loss는 무조건 BCE
+              metrics = ['accuracy'], 
+              ) 
 
 es  = EarlyStopping(
     monitor='val_loss',
