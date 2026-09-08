@@ -90,7 +90,7 @@ start_time = time.time()
 hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 32, 
                  verbose=1,
                 #  validation_data = (x_val, y_val), 
-                 callbacks = [es])
+                 callbacks = [es], validation_split=0.3)
 end_time = time.time()
 
 print("걸린시간: ", end_time - start_time)
