@@ -79,7 +79,7 @@ model.add(Dense(40, activation= 'relu'))
 model.add(Dense(40, activation= 'relu'))
 model.add(Dense(40, activation= 'relu'))
 model.add(Dense(40, activation= 'relu'))
-model.add(Dense(1, activation= 'sigmoid'))  
+model.add(Dense(1, activation= 'sigmoid'))  # 통과후 0과 1사이의 값으로 나옴
 
 # 마지막 layer의 activation은 sigmoid
 # activation 명시하지 않을경우 default = linear
@@ -112,7 +112,7 @@ loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 
 y_pred = model.predict(x_test)
-print(y_pred)
+print(y_pred)   # model 통과한후에는 값이 0과 1사이의 값으로 나옴, 결과값은 따로 반올림 필요
 
 import matplotlib.pyplot as plt
 
