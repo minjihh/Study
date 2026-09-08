@@ -81,7 +81,8 @@ model.add(Dense(1, activation= 'sigmoid'))
 #3. 컴파일 훈련
 
 model.compile(loss='binary_crossentropy', optimizer='adam',   # 이진분류 loss는 무조건 BCE
-              metrics = ['accuracy'], 
+              # metrics = ['accuracy'],   # compile에 accuracy 추가함으로서 훈련로그에 accuracy가 같이 찍혀나오게 됨
+              metrics = ['acc'],
               ) 
 
 es  = EarlyStopping(
