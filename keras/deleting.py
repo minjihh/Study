@@ -11,28 +11,17 @@ from sklearn.datasets import load_breast_cancer  # 유방암관련 데이터셋 
 
 datasets = load_breast_cancer()
 
-print(datasets.DESCR)
-print(datasets.feature_names)
-
 x = datasets.data
 x = datasets['data']
 y = datasets.target
 
 print(x.shape, y.shape)
-print(type(x))
-
-print(np.unique(y))
-print(np.unique(y, return_counts=True))
-
-print(pd.DataFrame(y).value_counts())
-print(pd.Series(y).value_counts())
-
-print(np.unique(y, return_counts=True))
 
 print(datasets.DESCR)
-print(datasets.featre_names)
+print(datasets.feature_names)
 
-print(np.unique(y, return_counts = True))
 
-print(pd.DataFrame(y).value_counts())
-print(pd.Series(y).value_counts())
+print(np.unique(y, return_counts=True))
+
+print(pd.DataFrame.value_counts())
+print(pd.Series.value_counts())
