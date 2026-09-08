@@ -46,7 +46,8 @@ print(pd.Series(y).value_counts())
 # 1    357
 # 0    212
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1,
+                                                    stratify=y,)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
 
 print(np.unique(y_train, return_counts=True))  
