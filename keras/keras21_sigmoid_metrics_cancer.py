@@ -7,6 +7,8 @@
 # compile에서 loss BCE로 변경, metrics=['acc'] 추가하여 훈련 로그에 출력되도록 
 # accuracy로 훈련은 불가능
 
+# sigmoid 함수 = 1 / (1 + e^(-z)) ->  
+
 
 import numpy as np
 import pandas as pd
