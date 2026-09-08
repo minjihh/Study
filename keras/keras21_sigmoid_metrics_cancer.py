@@ -50,6 +50,12 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, rand
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
 
 
+model = Sequential()
+model.add((Dense(5, input_dim = 30)))
+model.add((Dense(1)))
 
+model.compile(loss='BCE', optimizer='adam')
+hist = model.fit(x_train, y_train, epochs = 10, batch_size = 16, validation_data = (x_val, y_val))
 
-
+loss = model.evaluate(x_test, y_test)
+results = model.predict(x_test)
