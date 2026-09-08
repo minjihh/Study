@@ -64,8 +64,14 @@ print(y_train.shape, y_test.shape)  # (398,) (171,)
 #2. 모델 구성
 
 model = Sequential()
-model.add((Dense(5, input_dim = 30)))
-model.add((Dense(1)))
+model.add(Dense(5, input_dim = 30, activation= 'relu'))
+model.add(Dense(40, activation= 'relu'))
+model.add(Dense(40, activation= 'relu'))
+model.add(Dense(40, activation= 'relu'))
+model.add(Dense(40, activation= 'relu'))
+model.add(Dense(1, activation= 'sigmoid'))  # 마지막 layer의 activation은 sigmoid
+
+
 
 model.compile(loss='BCE', optimizer='adam')
 
