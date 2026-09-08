@@ -1,6 +1,7 @@
 # load_breast_cancer 데이터 불러오기
 # type()를 통해 데이터 형태 확인
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
+# train_test_split에서 stratify
 
 import numpy as np
 import pandas as pd
