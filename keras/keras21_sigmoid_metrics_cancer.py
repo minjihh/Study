@@ -2,6 +2,8 @@
 # type()를 통해 데이터 형태 확인
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
 # train_test_split에서 stratify (분류모델일 경우)
+# 모델 마지막 layer에서 activaiton sigmoid 사용
+# 이진분류에서 loss BCE 사용
 
 import numpy as np
 import pandas as pd
@@ -74,7 +76,7 @@ model.add(Dense(1, activation= 'sigmoid'))  # 마지막 layer의 activation은 s
 
 #3. 컴파일 훈련
 
-model.compile(loss='BCE', optimizer='adam')
+model.compile(loss='binary_crossentropy', optimizer='adam')
 
 from tensorflow.keras.callbacks import EarlyStopping
 
