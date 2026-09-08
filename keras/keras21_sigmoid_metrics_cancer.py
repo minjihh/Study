@@ -4,6 +4,8 @@
 # train_test_split에서 stratify (분류모델일 경우)
 # 이진분류 모델 마지막 layer에서 activaiton sigmoid 사용
 # 이진분류에서 loss BCE 사용
+# accuracy로 훈련은 불가능
+
 
 import numpy as np
 import pandas as pd
