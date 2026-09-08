@@ -11,6 +11,8 @@ from sklearn.datasets import load_breast_cancer  # 유방암관련 데이터셋 
 
 datasets = load_breast_cancer()
 print(datasets.DESCR)  # Number of Attributes: 30 numeric 
+print(datasets.feature_names)
+
 
 
 
