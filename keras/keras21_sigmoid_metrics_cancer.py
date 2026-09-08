@@ -93,7 +93,7 @@ hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 32,
                  callbacks = [es], validation_split=0.3)
 end_time = time.time()
 
-print("걸린시간: ", end_time - start_time)
+print("걸린시간: ", round(end_time - start_time, 2))
 
 loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
