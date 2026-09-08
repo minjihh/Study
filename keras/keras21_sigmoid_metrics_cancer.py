@@ -5,6 +5,7 @@ from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 import time
 from tensorflow.keras.callbacks import EarlyStopping
+
 from sklearn.datasets import load_breast_cancer  # 유방암관련 데이터셋 불러오기
 
 #1. 데이터 
@@ -23,5 +24,7 @@ y = datasets.target
 print(x.shape, y.shape) # (569, 30) (569,)
 print(type(x))   # <class 'numpy.ndarray'>  type: data 형태 보여줌
 # -> pandas 데이터도 numpy로 만들어져 있다.
+
+
 
 
