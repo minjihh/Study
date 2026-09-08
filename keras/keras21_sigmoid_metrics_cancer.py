@@ -31,10 +31,15 @@ print(type(x))   # <class 'numpy.ndarray'>  type: data 형태 보여줌
 
 # 분류형 모델 꼭 y를 확인해야함 -> label 종류 개수 확인필요
 print(y)
+# 0과 1의 개수가 몇개인지 찾아보기 -> numpy
 print(np.unique(y))  # [0 1]
 print(np.unique(y, return_counts=True)) # (array([0, 1]), array([212, 357]))
 # 분류/범주형 데이터 받으면 꼭 확인
 # 범주형 데이터에서는 데이터 개수보다는 데이터 balance 좋은것이 좋다. 
 
+# 0과 1의 개수가 몇개인지 찾아보기 -> pandas
+print(pd.DataFrame(y).value_counts())
+# 1    357
+# 0    212
 
 
