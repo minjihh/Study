@@ -14,8 +14,13 @@
 
 """
             회귀        분류(이진)
+
 Activation  linear     sigmoid
-Loss        mse         BCE
+Loss         mse         BCE
+round처리
+(predict값)   X            O
+
+* logistic regression은 회귀
 
 """
 
