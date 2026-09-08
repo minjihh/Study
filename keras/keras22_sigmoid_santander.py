@@ -41,8 +41,10 @@ x_test = test_csv
 
 model = Sequential()
 model.add(Dense(5, input_dim = 200, activation = 'relu'))
-model.add(Dense(9, activation = 'relu'))
-model.add(Dense(15, activation = 'relu'))
+model.add(Dense(40, activation = 'relu'))
+model.add(Dense(40, activation = 'relu'))
+model.add(Dense(40, activation = 'relu'))
+model.add(Dense(40, activation = 'relu'))
 model.add(Dense(1, activation = 'sigmoid'))
 
 
