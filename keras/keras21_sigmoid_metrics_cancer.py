@@ -76,6 +76,19 @@ results = model.predict(x_test)
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize(9,6))
+plt.figure(figsize=(9,6))
 
-plt.rcParams(['font.family']) = 'Malgun Gothic'
+plt.rcParams['font.family'] = 'Malgun Gothic'
+
+plt.plot(hist['loss'], c = 'red', label = 'loss')
+plt.plot(hist['val_loss'], c = 'blue', label = 'val_loss')
+
+plt.title('breast_cancer_loss')
+
+plt.legend(loc = 'upper right')
+
+plt.xlabel('epoch')
+plt.ylabel('loss')
+
+plt.grid()
+plt.show()
