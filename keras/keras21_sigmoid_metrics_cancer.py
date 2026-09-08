@@ -49,8 +49,10 @@ print(pd.Series(y).value_counts())
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
 
-print(np.unique(y_train, return_counts=True))
+print(np.unique(y_train, return_counts=True))  
+# (array([0, 1]), array([159, 239]))
 print(np.unique(y_test, return_counts=True))
+# (array([0, 1]), array([53, 118]))
 
 
 
