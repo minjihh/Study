@@ -45,6 +45,8 @@ results = model.predict(x_test)
 
 y_predict = model.predict(x_test)
 
+print("걸린시간: ", round(end_time - start_time, 2), "초")
+
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))  
 
