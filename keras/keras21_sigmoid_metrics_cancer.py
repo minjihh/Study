@@ -72,6 +72,7 @@ model.add(Dense(40, activation= 'relu'))
 model.add(Dense(1, activation= 'sigmoid'))  # 마지막 layer의 activation은 sigmoid
 
 
+#3. 컴파일 훈련
 
 model.compile(loss='BCE', optimizer='adam')
 
