@@ -13,7 +13,8 @@ from sklearn.metrics import accuracy_score
 # path = "./_data/kaggle_santander/"
 path = "c:/study/_data/kaggle_santander/"
 
-train_csv = pd.read_csv(path + "train.csv", index_col=0)
+# csv 불러올때 index_col=0 설정 까먹지 않도록 주의
+train_csv = pd.read_csv(path + "train.csv", index_col=0) 
 test_csv = pd.read_csv(path + 'test.csv', index_col=0)
 submission_csv = pd.read_csv(path + 'sample_submission.csv', index_col=0)
 
