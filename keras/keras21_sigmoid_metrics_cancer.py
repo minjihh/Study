@@ -51,14 +51,14 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, rand
                                                     stratify=y,) 
 # stratify 사용하면 원래 데이터 비율 유지
 # stratify=y -> y의 클래스 비율을 유지하면서 분할
-x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
+# x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
 
 print(np.unique(y_train, return_counts=True))  
 # (array([0, 1]), array([159, 239]))
 print(np.unique(y_test, return_counts=True))
 # (array([0, 1]), array([53, 118]))
 
-print(x_train.shape, x_test.shape)
+print(x_train.shape, x_test.shape)  # 
 print(y_train.shape, y_test.shape)
 
 model = Sequential()
@@ -76,7 +76,9 @@ es  = EarlyStopping(
     restore_best_weights=True
 )
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 16, validation_data = (x_val, y_val), callbacks = [es])
+hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 16, 
+                #  validation_data = (x_val, y_val), 
+                 callbacks = [es])
 end_time = time.time()
 
 print("걸린시간: ", end_time - start_time)
