@@ -12,3 +12,5 @@ datasets = fetch_california_housing
 x = datasets.data
 y = datasets.target
 
+x_train, y_train, x_test, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+x_val, y_val, x_test, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state=1)
