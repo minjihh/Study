@@ -61,8 +61,8 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.figure(figsize=(9,6))
 
-plt.plot(hist.history['loss'], c = 'red', label = 'loss')
-plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
+plt.plot(hist.history['loss'][1:], c = 'red', label = 'loss')
+plt.plot(hist.history['val_loss'][1:], c = 'blue', label = 'val_loss')
 
 plt.title('kaggle bike loss')
 
