@@ -31,6 +31,8 @@ x = train_csv.drop(['target'], axis = 1)
 y = train_csv['target']
 print(x.shape, y.shape)  # (200000, 200) (200000,)
 
+print(pd.value_counts(y, sort=True))
+
 
 
 
