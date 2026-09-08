@@ -75,3 +75,7 @@ print("loss: ", loss)
 results = model.predict(x_test)
 
 import matplotlib.pyplot as plt
+
+plt.figure(figsize(9,6))
+
+plt.rcParams(['font.family']) = 'Malgun Gothic'
