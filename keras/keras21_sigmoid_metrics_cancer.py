@@ -84,6 +84,8 @@ model.compile(loss='binary_crossentropy', optimizer='adam',   # 이진분류 los
               # metrics = ['accuracy'],   # compile에 accuracy 추가함으로서 훈련로그에 accuracy가 같이 찍혀나오게 됨
               metrics = ['acc'],
               ) 
+# 훈련시 출력되는 loss [BCE, Accuracy] 
+
 
 es  = EarlyStopping(
     monitor='val_loss',
