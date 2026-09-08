@@ -15,13 +15,15 @@ x = datasets.data
 x = datasets['data']
 y = datasets.target
 
-print(x.shape, y.shape)
-
 print(datasets.DESCR)
 print(datasets.feature_names)
 
-
+print(np.unique(y))
 print(np.unique(y, return_counts=True))
 
 print(pd.DataFrame.value_counts())
 print(pd.Series.value_counts())
+
+es = EarlyStopping(
+    monitor = 'val_loss'
+)
