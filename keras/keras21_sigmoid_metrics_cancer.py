@@ -31,8 +31,7 @@ print(type(x))   # <class 'numpy.ndarray'>  type: data 형태 보여줌
 
 # 분류형 모델 꼭 y를 확인해야함 -> label 종류 개수 확인필요
 print(y)
-
-
+print(np.unique(y))  # 분류/범주형 데이터 받으면 꼭 확인
 
 
 
