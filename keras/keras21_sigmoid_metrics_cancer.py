@@ -49,7 +49,7 @@ print(pd.Series(y).value_counts())
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1,
                                                     stratify=y,) 
-
+# stratify 사용하면 원래 데이터 비율 유지
 
 
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size =0.5, random_state =1)
