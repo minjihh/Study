@@ -7,7 +7,7 @@
 # compile에서 loss BCE로 변경, metrics=['acc'] 추가하여 훈련 로그에 출력되도록 
 # accuracy로 훈련은 불가능
 
-# sigmoid 함수 = 1 / (1 + e^(-z)) ->  
+# sigmoid 함수 = 1 / (1 + e^(-z)) -> z가 무한대로 커질때: = e^(-z) 0으로 수렴 -> sigmoid: 0.9999...
 
 
 import numpy as np
