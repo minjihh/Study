@@ -17,7 +17,7 @@ print(datasets.feature_names)
 ######################
 
 # x = datasets.data   # datasets.data == datasets['data']
-x = datasets['data']
+x = datasets['data']  # datasets은 딕셔너리형태의 데이터였다.
 y = datasets.target
 
 print(x.shape, y.shape) # (569, 30) (569,)
