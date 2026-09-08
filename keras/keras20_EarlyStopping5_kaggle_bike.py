@@ -33,8 +33,17 @@ model.add(Dense(1))
 ### mse  ###
 model.compile(loss = 'mse', optimizer = 'adam')
 
+from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'min',
+    patience = 10,
+    restore_best_weight = True
+)
+
 start_time =time.time()
-hist = model.fit(x_train, y_train, epochs = 1000, batch_size=4, validation_split=0.33)
+hist = model.fit(x_train, y_train, epochs = 1000, batch_size=4, validation_split=0.33, callbacks = [es])
 end_time = time.time()
 
 #4. 평가 예측
