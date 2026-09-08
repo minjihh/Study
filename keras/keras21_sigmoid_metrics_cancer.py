@@ -71,7 +71,7 @@ es  = EarlyStopping(
     restore_best_weights=True
 )
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 16, validation_data = (x_val, y_val))
+hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 16, validation_data = (x_val, y_val), callbacks = [es])
 end_time = time.time()
 
 print("걸린시간: ", end_time - start_time)
