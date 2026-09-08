@@ -2,7 +2,7 @@
 # type()를 통해 데이터 형태 확인
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
 # train_test_split에서 stratify (분류모델일 경우)
-# 모델 마지막 layer에서 activaiton sigmoid 사용
+# 이진분류 모델 마지막 layer에서 activaiton sigmoid 사용
 # 이진분류에서 loss BCE 사용
 
 import numpy as np
@@ -71,8 +71,10 @@ model.add(Dense(40, activation= 'relu'))
 model.add(Dense(40, activation= 'relu'))
 model.add(Dense(40, activation= 'relu'))
 model.add(Dense(40, activation= 'relu'))
-model.add(Dense(1, activation= 'sigmoid'))  # 마지막 layer의 activation은 sigmoid
+model.add(Dense(1, activation= 'sigmoid'))  
 
+# 마지막 layer의 activation은 sigmoid
+# activation 명시하지 않을경우 default = linear
 
 #3. 컴파일 훈련
 
