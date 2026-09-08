@@ -39,6 +39,8 @@ model.add(Dense(1))
 
 model.compile(loss= 'mse', optimizer='adam')
 
+from tensorflow.keras.callbacks import EarlyStopping
+
 es = EarlyStopping(
     monitor = 'val_loss',
     mode = 'min',
