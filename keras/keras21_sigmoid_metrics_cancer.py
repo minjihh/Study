@@ -124,7 +124,6 @@ y_pred = np.round(y_pred)
 print(y_pred[:10])
 
 
-
 from sklearn.metrics import accuracy_score
 acc_score = accuracy_score(y_test, y_pred)
 print("acc_score: ", acc_score)
