@@ -22,3 +22,25 @@ model.add(Dense(1))
 
 
 model.compile(loss = 'mse', optimizer='adam')
+
+from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode= 'min',
+    patience =10,
+    restore_best_weights = True
+)
+
+start_time = time.time()
+hist = model.fit(x_train, y_train, epochs = 10, batch_size =16, validation_data = (x_val, y_val), callbacks=[es])
+
+end_time = time.time()
+
+print(hist.history)
+
+import matplotlib.pyplot as plt
+
+plt.rcParams(['font.family']) = 'Magul Gothic'
+
+plt.figure(figsize = (9,6))
