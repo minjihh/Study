@@ -61,5 +61,9 @@ model.fit(x_train, y_train, epochs=100, batch_size=16,
 end_time = time.time()
 
 #4. 평가, 예측
-loss = model.evaluate(x_test, y_test)
-print('loss: ', loss)
+result = model.evaluate(x_test, y_test)
+# print('loss: ', loss)   # loss가 2개 나옴, metrics =['acc']를 추가했기 때문에
+print('loss: ', result[0])
+print('acc: ', round(result[1], 2))
+
+y_predict = model.predict(x_test)
