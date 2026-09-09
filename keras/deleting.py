@@ -9,14 +9,4 @@ import time
 from sklearn.metrics import accuracy_score
 
 
-#1. 데이터
-datasets = load_iris()
-
-print(datasets)
-print(datasets.DECRT)
-print(datasets.feature_names)
-
-from tensorflow.keras.utils import to_categorical
-
-y = to_categorical(y)
 

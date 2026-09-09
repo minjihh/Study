@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
-import time
+import times
 from sklearn.metrics import accuracy_score
 
 #1. 데이터
@@ -46,12 +46,6 @@ y = to_categorical(y)
 print(y)
 print(y.shape)   # (150, 3)
 
-
-
-
-
-exit()
-
 x_train, x_test, y_train, y_test = train_test_split(
     x, y,
     train_size=0.8,
@@ -60,6 +54,11 @@ x_train, x_test, y_train, y_test = train_test_split(
     stratify = y,    # 
 
 )
+
+print(x_train.shape, x_test.shape)
+print(y_train.shape, y_test.shape)
+
+exit()
 
 #2. 모델구성
 model = Sequential()
