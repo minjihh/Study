@@ -59,20 +59,25 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 
 """
 ####################### 원핫1. to_categorial #######################
-from tensorflow.keras.utils import to_categorical
-y = to_categorical(y)
-print(y)
-print(y.shape)   # (150, 3)
+# from tensorflow.keras.utils import to_categorical
+# y = to_categorical(y)
+# print(y)
+# print(y.shape)   # (150, 3)
 
 ####################### 원핫2. padas #######################
 
-y = pd.get_dummies(y)
+# y = pd.get_dummies(y)
+# print(y)
+# print(y.shape)   # (150, 3)
+
 
 ####################### 원핫3. sklearn #######################
 from sklearn.preprocessing import OneHotEncoder
 
 y = OneHotEncoder(sparse=False).fit(y)
-
+print(y)
+print(y.shape)   # (150, 3)
+exit()
 
 # 통상적으로 원핫인코딩 후에 trian_test_split 적용. train_test_split 먼저하면 원핫인코딩을 두번 해야함.
 x_train, x_test, y_train, y_test = train_test_split(
