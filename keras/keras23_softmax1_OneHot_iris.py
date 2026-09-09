@@ -81,6 +81,7 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 # sklearn의 Onehotencoder 사용할때는 reshape에 유의
 # reshape 조건 1) 내용이 그대로 2) 순서가 그대로
 from sklearn.preprocessing import OneHotEncoder
+# ohe = OneHotEncoder()  # 혼돈행렬 형태로 나온다.
 ohe = OneHotEncoder(sparse_output=False)
 print(y)
 # [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
