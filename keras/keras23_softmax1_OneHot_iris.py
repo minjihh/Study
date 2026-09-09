@@ -34,6 +34,13 @@ x_train, x_test, y_train, y_test = train_test_split(
 #2. 모델구성
 model = Sequential()
 model.add(Dense(10, input_dim=4, activation = 'relu'))
+model.add(Dense(10, activation = 'relu'))
+model.add(Dense(10, activation = 'relu'))
+model.add(Dense(10, activation = 'relu'))
+model.add(Dense(10, activation = 'relu'))
+model.add(Dense(1, activation = 'softmax'))
+
+
 
 
 
