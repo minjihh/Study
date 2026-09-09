@@ -21,6 +21,22 @@ print(x.shape, y.shape)
 print(np.unique(y, return_counts=True))
 
 
+from tensorflow.keras.utils import to_categorical
+
+y = to_categorical(y)
+
+
+#####
+y = pd.get_dummies(y)
+print(y)
+
+from sklearn.preprocessing import OneHotEncoder
+
+ohe = OneHotEncoder(sparse_output=False)
+
+
+
+
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1,
                                                   )
 
@@ -51,3 +67,5 @@ y_pred = np.argmax(y_pred, axis = 1)
 y_test = np.argmax(y_test, axis=1)
 
 accuracy_score = accuracy_score(y_test, y_pred)
+print('acc_score: ', accuracy_score)
+print("")
