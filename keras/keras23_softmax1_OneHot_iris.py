@@ -59,7 +59,6 @@ print(x_train.shape, x_test.shape)  # (120, 4) (30, 4)
 print(y_train.shape, y_test.shape)  # (120, 3) (30, 3)
 
 
-
 #2. 모델구성
 model = Sequential()
 model.add(Dense(10, input_dim=4, activation = 'relu'))
