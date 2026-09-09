@@ -11,4 +11,4 @@ from sklearn.metrics import accuracy_score
 #1. 데이터
 datasets = load_iris()
 print(datasets)
-print(datasets.data)
+print(datasets.DESCR)
