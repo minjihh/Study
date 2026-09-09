@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
-import times
+import time
 from sklearn.metrics import accuracy_score
 
 #1. 데이터
@@ -55,8 +55,8 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 )
 
-print(x_train.shape, x_test.shape)
-print(y_train.shape, y_test.shape)
+print(x_train.shape, x_test.shape)  # (120, 4) (30, 4)
+print(y_train.shape, y_test.shape)  # (120, 3) (30, 3)
 
 exit()
 
