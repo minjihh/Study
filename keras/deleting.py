@@ -33,3 +33,12 @@ exit()
 
 
 
+y_predict = model.predict(x_test)
+y_predict = np.argmax(y_predict, axis = 1)
+y_test = np.argmax(y_test, axis = 1)
+
+
+
+
+
+
