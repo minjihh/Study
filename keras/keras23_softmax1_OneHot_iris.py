@@ -98,10 +98,14 @@ print('acc: ', round(result[1], 2))
 
 y_predict = model.predict(x_test)
 
+### softmax 통과한 값 class label 값으로 바꿔주기 ###
+# y_predict = tf.argmax(y_predict,1)
+y_predict = np.argmax(y_predict, axis = 1)
 
-y_predict = tf.argmax(y_predict,1)
 print(y_predict)
 y_test = tf.argmax(y_test,1)
+###################################################
+
 print(y_test)
 
 accuracy_score = accuracy_score(y_test, y_predict)
