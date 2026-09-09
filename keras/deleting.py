@@ -9,4 +9,24 @@ import time
 from sklearn.metrics import accuracy_score
 
 
+#1. 데이터
+datasets = load_iris()
+print(datasets)
+print(datasets.DESCR)  # 판다스의 describe 있음
+print(datasets.feature_names) # 판다스의 ".columns" 똑같은 기능
 
+x = datasets.data
+y = datasets['target']
+print(x.shape, y.shape)
+print(np.unique(y, return_counts=True))
+
+
+x_train, x_val, y_train, y_val = train_test_split(x, y, train_size=0.7, random_state=1)
+
+model = Sequential()
+model.add(Dense(5, input_dim=4, activation = 'relu'))
+model.add(Dense(40, activateion='relu'))
+model.add(Dense(3, activatoin = 'sigmoid'))
+
+
+loss = model.eveluate
