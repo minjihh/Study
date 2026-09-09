@@ -1,5 +1,6 @@
 # 다중분류
 # softmax, categorical cross entropy
+# One Hot Encoding으로 데이터 변형
 
 import numpy as np
 import pandas as pd
@@ -25,7 +26,18 @@ print(x.shape, y.shape)  # (150, 4) (150,)
 print(y)
 print(np.unique(y, return_counts=True)) # 이 코드를 쓰면 분류문제를 다룬다는 것 까지 예측할 수 있음
 
+"""
+One HotEncoding
+벡터형태 y를 행렬 형태로 바꿈
+[0, 0, 1, 1, 2]  # (5,)
+->
+[[1,0,0],
+[1,0,0],
+[0,1,0],
+[0,1,0],
+[0,0,1]]   # (5,3)
 
+"""
 
 
 
