@@ -61,7 +61,7 @@ hist = model.fit(x_train, y_train, epochs = 10000, batch_size=16,
                  validation_data = (x_val, y_val), 
                  callbacks = [es], )
 
-loss = model.evaluate(x_test, y_test)
+loss = model.evaluate(x_test, y_test) # evaluate 안에는 sigmoid 통과후에 round처리까지 포함
 print("loss: ", loss)
 
 y_pred = np.round(model.predict(x_test))
