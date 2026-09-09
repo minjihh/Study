@@ -110,7 +110,15 @@ y = ohe.fit_transform(y)
 print(y)
 print(y.shape)   # (150, 3)
 
+####################### 원핫3. sklearn #######################
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder()
+y = ohe.fit_transform(y)
+print(y)
 exit()
+
+
+#################################################################################
 
 # 통상적으로 원핫인코딩 후에 trian_test_split 적용. train_test_split 먼저하면 원핫인코딩을 두번 해야함.
 x_train, x_test, y_train, y_test = train_test_split(
