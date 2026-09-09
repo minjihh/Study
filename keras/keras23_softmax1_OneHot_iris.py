@@ -74,7 +74,8 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 ####################### 원핫3. sklearn #######################
 from sklearn.preprocessing import OneHotEncoder
 
-y = OneHotEncoder.fit_transform(y)
+ohe = OneHotEncoder(sparse_output=False)
+y = ohe.fit_transform(y)
 print(y)
 print(y.shape)   # (150, 3)
 exit()
