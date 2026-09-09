@@ -17,3 +17,8 @@ print(datasets.feature_names) # 판다스의 ".columns" 똑같은 기능
 
 print(np.unique(y, return_counts=True))
 
+from sklearn.preprocessing import OneHoeEncoder
+
+ohe = OneHoeEncoder(sparse_output=False)
+
+y = y.reshape(-1,1)
