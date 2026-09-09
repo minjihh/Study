@@ -26,7 +26,8 @@ y = pd.get_dummis(y)
 
 from sklearn.preprocessing import OneHotEncoder
 ohd = OneHotEncoder(sparse_output=False)
-
+y = y.reshape(-1,1)
+y = y.reshape(len(y),1)
 
 
 
