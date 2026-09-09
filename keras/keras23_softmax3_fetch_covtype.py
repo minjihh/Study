@@ -27,7 +27,7 @@ model.add(Dense(40, activation = 'relu'))
 model.add(Dense(40, activation = 'relu'))
 model.add(Dense(40, activation = 'relu'))
 model.add(Dense(40, activation = 'relu'))
-model.add(Dense(2, activation = 'sigmoid'))
+model.add(Dense(1, activation = 'sigmoid'))
 
 es = EarlyStopping(
     monitor = 'val_loss',
