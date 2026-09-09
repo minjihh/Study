@@ -94,9 +94,12 @@ print('loss: ', result[0])
 print('acc: ', round(result[1], 2))
 
 y_predict = model.predict(x_test)
+
+
 y_predict = tf.argmax(y_predict,1)
 print(y_predict)
-
+y_test = tf.argmax(y_test,1)
+print(y_test)
 
 accuracy_score = accuracy_score(y_test, y_predict)
 print('acc_score: ', accuracy_score)
