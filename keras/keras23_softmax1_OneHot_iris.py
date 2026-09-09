@@ -41,7 +41,7 @@ model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
-model.add(Dense(3, activation = 'softmax'))
+model.add(Dense(1, activation = 'softmax'))
 
 #3. 컴파일, 훈련
 model.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics = ['acc']) 
@@ -70,6 +70,6 @@ y_predict = model.predict(x_test)
 
 accuracy_score = accuracy_score(y_test, y_predict)
 print('acc_score: ', accuracy_score)
-print('걸린시간: ', round(end_time - start_time))
+print('걸린시간: ', round(end_time - start_time, 2), '초')
 
 
