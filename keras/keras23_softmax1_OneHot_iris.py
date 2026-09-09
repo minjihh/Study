@@ -52,7 +52,7 @@ es = EarlyStopping(
     restore_best_weights=True,
 )
 
-start__time = time.time()
+start_time = time.time()
 model.fit(x_train, y_train, epochs=100, batch_size=16,
           verbose=1,
           validation_split=0.2,
@@ -67,3 +67,9 @@ print('loss: ', result[0])
 print('acc: ', round(result[1], 2))
 
 y_predict = model.predict(x_test)
+
+accuracy_score = accuracy_score(y_test, y_predict)
+print('acc_score: ', accuracy_score)
+print('걸린시간: ', round(end_time - start_time))
+
+
