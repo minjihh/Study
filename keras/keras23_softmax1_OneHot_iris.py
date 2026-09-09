@@ -85,6 +85,8 @@ model.fit(x_train, y_train, epochs=100, batch_size=16,
           )
 end_time = time.time()
 
+import tensorflow as tf
+
 #4. 평가, 예측
 result = model.evaluate(x_test, y_test)  # softmax 통과까지 했지만 가장 높은값을 1로 바꾸는 작업은 아직 진행되지 않음
 # print('loss: ', loss)   # loss가 2개 나옴, metrics =['acc']를 추가했기 때문에
@@ -92,7 +94,7 @@ print('loss: ', result[0])
 print('acc: ', round(result[1], 2))
 
 y_predict = model.predict(x_test)
-y_predict = y_predict.argmax(axis=1).asnumpy()
+y_predict = tf.argmax(y_predict,1)
 print(y_predict)
 
 
