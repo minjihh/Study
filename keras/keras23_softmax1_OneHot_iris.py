@@ -1,6 +1,7 @@
 # 다중분류
 # softmax, categorical cross entropy
 # tensorflow의 to_categorical사용해서 One Hot Encoding으로 데이터 변형
+# 원핫인코딩 문제점: 메모리 많이 차지함, 0이 너무 많아짐, 성능저하 / 속도저하
 
 import numpy as np
 import pandas as pd
