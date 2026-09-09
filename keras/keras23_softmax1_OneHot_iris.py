@@ -78,6 +78,7 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 
 
 ####################### 원핫3. sklearn #######################
+# sklearn의 Onehotencoder 사용할때는 reshape에 유의
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder(sparse_output=False)
 print(y)
