@@ -80,7 +80,9 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 from sklearn.preprocessing import OneHotEncoder
 
 ohe = OneHotEncoder(sparse_output=False)
+print("reshape전", y.shape)  # reshape전 (150,)
 y = y.reshape(len(y), 1)
+print("reshape후", y.shape)  # reshape후 (150, 1)
 y = ohe.fit_transform(y)
 print(y)
 print(y.shape)   # (150, 3)
