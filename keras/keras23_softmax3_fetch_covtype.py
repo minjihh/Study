@@ -20,6 +20,8 @@ print(np.unique(y, return_counts=True)) # (array([1, 2, 3, 4, 5, 6, 7], dtype=in
 
 # one hotencoding
 y = pd.get_dummies(y)
+# one hotencoding to_categorical로 할경우 0부터 생성되므로 나중에 argmax할때 +1하는 작업을 해줘야함
+
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1, stratify=1)
 

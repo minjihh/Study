@@ -32,5 +32,16 @@ from tensorflow.keras.utils import to_categorical
 
 y = to_categorical(y)
 
+y = pd.get_dummies(y)
+
+from tensorflow.keras.utils import to_categorical
+y = to_categorical(y)
+
+from sklearn.preprocessing import OneHotEncoder
+ohe - OneHotEncoder(sparse_output=False)
+y = y.reshape(-1,1)
+y = y.reshape(len(y),1)
+y= ohe.fit_transform(y)
+
 
 
