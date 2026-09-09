@@ -1,3 +1,6 @@
+# 다중분류
+# softmax, categorical cross entropy
+
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -50,7 +53,13 @@ es = EarlyStopping(
 )
 
 start__time = time.time()
-model.fit
+model.fit(x_train, y_train, epochs=100, batch_size=16,
+          verbose=1,
+          validation_split=0.2,
+          callbacks=[es],
+          )
+end_time = time.time()
 
-
-
+#4. 평가, 예측
+loss = model.evaluate(x_test, y_test)
+print('loss: ', loss)
