@@ -1,6 +1,6 @@
 # 다중분류
 # softmax, categorical cross entropy
-# One Hot Encoding으로 데이터 변형
+# tensorflow의 to_categorical사용해서 One Hot Encoding으로 데이터 변형
 
 import numpy as np
 import pandas as pd
@@ -37,8 +37,14 @@ One HotEncoding
 [0,1,0],
 [0,0,1]]   # (5,3)
 
+softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
+
 """
 
+from tensorflow.keras.utils import to_categorical
+y = to_categorical(y)
+print(y)
+print(y.shape)   # (150, 3)
 
 
 
@@ -62,7 +68,7 @@ model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
-model.add(Dense(3, activation = 'softmax'))
+model.add(Dense(3, activation = 'softmax'))  # softmax -> 모든 값 더했을때 1넘지 않도록 함
 
 #3. 컴파일, 훈련
 model.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics = ['acc']) 
