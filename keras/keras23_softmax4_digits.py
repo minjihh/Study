@@ -55,6 +55,4 @@ print("걸린시간: ", round((end_time - start_time),2), "초")
 
 
 
-
-
 # acc: 1.0
