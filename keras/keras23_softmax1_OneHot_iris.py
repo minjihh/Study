@@ -81,9 +81,30 @@ from sklearn.preprocessing import OneHotEncoder
 
 ohe = OneHotEncoder(sparse_output=False)
 print(y)
+# [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+#  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
+#  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+#  2 2]
 print("reshape전", y.shape)  # reshape전 (150,)
 y = y.reshape(len(y), 1)
 print(y)
+# [[0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  [0]
+#  ...]
+ 
 print("reshape후", y.shape)  # reshape후 (150, 1)
 y = ohe.fit_transform(y)
 print(y)
