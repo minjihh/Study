@@ -13,4 +13,10 @@ from sklearn.metrics import accuracy_score
 datasets = load_iris()
 
 print(datasets)
+print(datasets.DECRT)
+print(datasets.feature_names)
+
+from tensorflow.keras.utils import to_categorical
+
+y = to_categorical(y)
 
