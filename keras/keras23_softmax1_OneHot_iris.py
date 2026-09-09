@@ -71,7 +71,8 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 
 ####################### 원핫2. padas #######################
 
-# y = pd.get_dummies(y)
+# y = pd.get_dummies(y)  # default dtype: bool
+# y = pd.get_dummies(y, dtype=int) # dtype 없어도 실행에 문제 없으나 혹시나 문제 없을 경우에는 int타입으로 변경
 # print(y)
 # print(y.shape)   # (150, 3)
 
