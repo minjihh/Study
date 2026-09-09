@@ -15,58 +15,5 @@ print(datasets)
 print(datasets.DESCR)  # 판다스의 describe 있음
 print(datasets.feature_names) # 판다스의 ".columns" 똑같은 기능
 
-x = datasets.data
-y = datasets['target']
-print(x.shape, y.shape)
 print(np.unique(y, return_counts=True))
 
-
-from tensorflow.keras.utils import to_categorical
-
-y = to_categorical(y)
-
-
-#####
-y = pd.get_dummies(y)
-print(y)
-
-from sklearn.preprocessing import OneHotEncoder
-
-ohe = OneHotEncoder(sparse_output=False)
-y = y.reshape(len(y),1)
-
-
-
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1,
-                                                  )
-
-model = Sequential()
-model.add(Dense(5, input_dim=4, activation = 'relu'))
-model.add(Dense(40, activateion='relu'))
-model.add(Dense(3, activatoin = 'sigmoid'))
-
-
-model.compile(loss='categrocial_crossengropy', optimizer='adam', metrics=['acc'])
-es = EarlyStopping(
-    monitor='val_loss',
-    mode = 'auto',
-    patience=10,
-    restore_best_weights=True
-)
-hist = model.fit(x_train, y_train, epochs=10, batch_size=16, callbacks = [es], validation_split=0.2)
-
-
-loss = model.eveluate(x_test,y_test)
-
-print("loss: ", loss[0])
-print("acc: ", loss[1])
-
-y_pred = model.predict(x_test)
-
-y_pred = np.argmax(y_pred, axis = 1)
-y_test = np.argmax(y_test, axis=1)
-
-accuracy_score = accuracy_score(y_test, y_pred)
-print('acc_score: ', accuracy_score)
-print("")
