@@ -19,7 +19,7 @@ print(np.unique(y, return_counts=True)) # (array([1, 2, 3, 4, 5, 6, 7], dtype=in
 # one hotencoding
 y = pd.get_dummies(y)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1, stratify=1)
 
 model=Sequential()
 model.add(Dense(5, input_dim=54, activation='relu'))
