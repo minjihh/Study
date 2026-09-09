@@ -62,7 +62,8 @@ One HotEncoding
 softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 
 """
-####################### 원핫1. to_categorial #######################
+####################### 원핫1. to_categorical #######################
+# to_categorical 방식은 변경할때 0부터 시작함 -> 0클래스가 없는경우 값이 틀어짐
 # from tensorflow.keras.utils import to_categorical
 # y = to_categorical(y)
 # print(y)
