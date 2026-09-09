@@ -75,9 +75,11 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 from sklearn.preprocessing import OneHotEncoder
 
 ohe = OneHotEncoder(sparse_output=False)
+y = y.reshape(len(y), 1)
 y = ohe.fit_transform(y)
 print(y)
 print(y.shape)   # (150, 3)
+
 exit()
 
 # 통상적으로 원핫인코딩 후에 trian_test_split 적용. train_test_split 먼저하면 원핫인코딩을 두번 해야함.
