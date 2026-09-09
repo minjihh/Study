@@ -104,7 +104,7 @@ model.fit(x_train, y_train, epochs=100, batch_size=16,
           )
 end_time = time.time()
 
-import tensorflow as tf
+
 
 #4. 평가, 예측
 result = model.evaluate(x_test, y_test)  # softmax 통과까지 했지만 가장 높은값을 1로 바꾸는 작업은 아직 진행되지 않음
@@ -115,6 +115,7 @@ print('acc: ', round(result[1], 2))
 y_predict = model.predict(x_test)
 
 ### softmax 통과한 값 class label 값으로 바꿔주기 ###
+import tensorflow as tf
 # y_predict = tf.argmax(y_predict,1)
 y_predict = np.argmax(y_predict, axis = 1) # [0 2 0 2 1 1 0 2 0 2 2 2 2 0 0 0 2 0 2 1 0 2 1 1 0 2 1 1 1 1]
 print(y_predict)
