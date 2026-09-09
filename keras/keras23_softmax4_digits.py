@@ -1,10 +1,12 @@
 from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
 import pandas as pd
+import time
 
 
 datasets = load_digits()
@@ -28,13 +30,26 @@ model.add(Dense(10, activation = 'softmax'))
 es = EarlyStopping(
     monitor= 'val_loss',
     mode='auto',
-    patience=10,
+    patience=100,
     restore_best_weights=True
 )
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
+start_time = time.time()
 hist = model.fit(x_train, y_train, epochs=100000, batch_size=16, validation_split=0.2, callbacks=[es])
+end_time = time.time()
 
+loss = model.evaluate(x_test,y_test)
+print("loss: ", loss[0])
+print("acc: ", loss[1])
+
+y_pred = model.predict(x_test)
+y_pred = np.argmax(y_pred, axis=1)
+y_test = np.argmax(y_test, axis=1)
+
+acc_score = accuracy_score(y_test, y_pred)
+print("acc_score: ", acc_score)
+print("걸린시간: ", round((end_time - start_time),2), "초")
 
 
 
