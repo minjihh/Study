@@ -33,6 +33,7 @@ print(y)
 from sklearn.preprocessing import OneHotEncoder
 
 ohe = OneHotEncoder(sparse_output=False)
+y = y.reshape(len(y),1)
 
 
 
