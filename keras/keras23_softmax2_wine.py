@@ -29,6 +29,7 @@ model.add(Dense(40, activation='relu'))
 model.add(Dense(40, activation='relu'))
 model.add(Dense(40, activation='relu'))
 model.add(Dense(40, activation='relu'))
+model.add(Dense(40, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
 
@@ -38,7 +39,7 @@ model.add(Dense(3, activation='softmax'))
 es = EarlyStopping(
     monitor = 'val_loss',
     mode = 'auto',
-    patience =100,
+    patience =400,
     restore_best_weights=True
 )
 
