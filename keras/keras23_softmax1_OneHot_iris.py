@@ -12,5 +12,6 @@ from sklearn.metrics import accuracy_score
 datasets = load_iris()
 print(datasets)
 print(datasets.DESCR)
+print(datasets.feature_names) # pd.columns 똑같은 기능
 # instance : 행
 # 열, column, attribute, 속성
