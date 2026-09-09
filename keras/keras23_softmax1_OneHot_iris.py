@@ -5,7 +5,10 @@
 # 이진분류 loss: BCE, 다중분류 loss: categorical crossentropy 다른건 없음
 
 """
-회귀    분류(이진)  분류(다중)
+            회귀    분류(이진)  분류(다중)
+One-Hot      X        X           O  
+        
+
 
 """
 
