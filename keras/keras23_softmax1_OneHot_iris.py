@@ -4,6 +4,11 @@
 # 원핫인코딩 문제점: 메모리 많이 차지함, 0이 너무 많아짐, 성능저하 / 속도저하
 # 이진분류 loss: BCE, 다중분류 loss: categorical crossentropy 다른건 없음
 
+"""
+회귀    분류(이진)  분류(다중)
+
+"""
+
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -114,4 +119,6 @@ print('acc_score: ', accuracy_score)
 print('걸린시간: ', round(end_time - start_time, 2), '초')
 # acc_score:  0.9666666666666667
 # 걸린시간:  6.72 초
+
+
 
