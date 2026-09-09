@@ -9,8 +9,10 @@
 One-Hot          X        X           O  
 Activation
 (마지막layer)    linear  sigmoid    softmax   
+마지막layer
+ node 개수        N        1        class개수
 
-
+ 
 """
 
 import numpy as np
