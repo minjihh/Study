@@ -89,7 +89,8 @@ print(y)
 #  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 #  2 2]
 print("reshape전", y.shape)  # reshape전 (150,)
-y = y.reshape(len(y), 1)
+y = y.reshape(len(y), 1)  # 아래 코드와 동일
+# y = y.reshape(-1,1)   # = y.reshape(150,1)
 print(y)
 # [[0]
 #  [0]
