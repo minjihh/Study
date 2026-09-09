@@ -112,5 +112,6 @@ print(y_test)
 accuracy_score = accuracy_score(y_test, y_predict)
 print('acc_score: ', accuracy_score)
 print('걸린시간: ', round(end_time - start_time, 2), '초')
-
+# acc_score:  0.9666666666666667
+# 걸린시간:  6.72 초
 
