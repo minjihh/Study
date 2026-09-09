@@ -11,7 +11,15 @@ from sklearn.metrics import accuracy_score
 #1. 데이터
 datasets = load_iris()
 print(datasets)
-print(datasets.DESCR)
-print(datasets.feature_names) # pd.columns 똑같은 기능
+print(datasets.DESCR)  # 판다스의 describe 있음
+print(datasets.feature_names) # 판다스의 ".columns" 똑같은 기능
 # instance : 행
 # 열, column, attribute, 속성
+
+x = datasets.data
+y = datasets['target']
+print(x.shape, y.shape)  # (150, 4) (150,)
+print(y)
+print(np.unique(y, return_counts=True))
+
+
