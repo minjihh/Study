@@ -12,8 +12,8 @@ import time
 datasets = load_digits()
 x = datasets.data
 y = datasets.target
-print(x.shape, y.shape)
-print(np.unique(y, return_counts=True))
+print(x.shape, y.shape)  # (1797, 64) (1797,)
+print(np.unique(y, return_counts=True)) # (array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), array([178, 182, 177, 183, 181, 182, 181, 179, 174, 180]))
 
 y = pd.get_dummies(y)
 
@@ -30,13 +30,13 @@ model.add(Dense(10, activation = 'softmax'))
 es = EarlyStopping(
     monitor= 'val_loss',
     mode='auto',
-    patience=100,
+    patience=300,
     restore_best_weights=True
 )
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=100000, batch_size=16, validation_split=0.2, callbacks=[es])
+hist = model.fit(x_train, y_train, epochs=100000, batch_size=4, validation_split=0.2, callbacks=[es])
 end_time = time.time()
 
 loss = model.evaluate(x_test,y_test)
