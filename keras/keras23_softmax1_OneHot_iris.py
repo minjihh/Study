@@ -47,6 +47,7 @@ y = to_categorical(y)
 print(y)
 print(y.shape)   # (150, 3)
 
+# 통상적으로 원핫인코딩 후에 trian_test_split 적용. train_test_split 먼저하면 원핫인코딩을 두번 해야함.
 x_train, x_test, y_train, y_test = train_test_split(
     x, y,
     train_size=0.8,
@@ -64,7 +65,7 @@ print(y_train.shape, y_test.shape)  # (120, 3) (30, 3)
 model = Sequential()
 model.add(Dense(10, input_dim=4, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
-model.add(Dense(10, activation = 'relu'))
+model.add(Dense(10))  # 중간에 activatoin 빼도 문제 없음
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(3, activation = 'softmax'))  # softmax -> 모든 값 더했을때 1넘지 않도록 함
