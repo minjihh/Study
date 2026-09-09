@@ -22,3 +22,15 @@ from sklearn.preprocessing import OneHoeEncoder
 ohe = OneHoeEncoder(sparse_output=False)
 
 y = y.reshape(-1,1)
+y = ohe.fit_transform(y)
+
+
+y = pd.get_dummies(y, dtype=int)
+
+
+from tensorflow.keras.utils import to_categorical
+
+y = to_categorical(y)
+
+
+
