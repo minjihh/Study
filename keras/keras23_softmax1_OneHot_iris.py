@@ -41,7 +41,7 @@ model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
-model.add(Dense(1, activation = 'softmax'))
+model.add(Dense(3, activation = 'softmax'))
 
 #3. 컴파일, 훈련
 model.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics = ['acc']) 
