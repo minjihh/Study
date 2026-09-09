@@ -31,6 +31,7 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 )
 
-#2. 모델
+#2. 모델구성
+
 
 
