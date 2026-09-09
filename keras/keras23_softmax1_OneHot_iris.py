@@ -2,6 +2,7 @@
 # softmax, categorical cross entropy
 # np.unique로 몇중분류인지 확인
 # tensorflow의 to_categorical사용해서 One Hot Encoding으로 데이터 변형
+# One Hotencoding의 세가지 방법 정리
 # train_ttest_split 하기 전에 one hotencoding 진행
 # softmax 통과후 argmax 사용해서 softmax 통과한 값을 class값으로 변형
 # 원핫인코딩 문제점: 메모리 많이 차지함, 0이 너무 많아짐, 성능저하 / 속도저하
