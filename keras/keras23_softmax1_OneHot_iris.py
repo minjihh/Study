@@ -6,13 +6,18 @@
 
 """
                 회귀    분류(이진)      분류(다중)
-One-Hot          X        X             O  
+ One-Hot          X        X             O  
+
 Activation
 (마지막layer)    linear  sigmoid        softmax   
+
 마지막layer
  node 개수        N        1            class개수
-  loss          MSE       BCE       Categorical CrossEntropy
  
+   loss          MSE       BCE       Categorical CrossEntropy
+ 
+ predict       문제없음  np.round()     np.argmax()
+
 """
 
 import numpy as np
