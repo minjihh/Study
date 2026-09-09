@@ -19,8 +19,9 @@ y = datasets.target
 print(x.shape, y.shape)
 
 from tensorflow.keras.utils import to_categorical
-
 y = to_categorical(y)
+
+
 
 y = pd.get_dummis(y)
 
