@@ -58,7 +58,7 @@ x_train, x_test, y_train, y_test = train_test_split(
 print(x_train.shape, x_test.shape)  # (120, 4) (30, 4)
 print(y_train.shape, y_test.shape)  # (120, 3) (30, 3)
 
-exit()
+
 
 #2. 모델구성
 model = Sequential()
