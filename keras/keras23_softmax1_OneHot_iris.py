@@ -41,7 +41,16 @@ model.add(Dense(10, activation = 'relu'))
 model.add(Dense(3, activation = 'softmax'))
 
 #3. 컴파일, 훈련
-model.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics = ['']) 
+model.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics = ['acc']) 
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'auto',
+    patience=20,
+    restore_best_weights=True,
+)
+
+start__time = time.time()
+model.fit
 
 
 
