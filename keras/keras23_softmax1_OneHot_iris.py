@@ -92,7 +92,7 @@ print('loss: ', result[0])
 print('acc: ', round(result[1], 2))
 
 y_predict = model.predict(x_test)
-
+y_predict = argmax(y_predict)
 
 
 accuracy_score = accuracy_score(y_test, y_predict)
