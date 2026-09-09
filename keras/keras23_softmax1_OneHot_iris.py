@@ -112,11 +112,6 @@ y = ohe.fit_transform(y)
 print(y)
 print(y.shape)   # (150, 3)
 
-####################### 원핫3. sklearn #######################
-from sklearn.preprocessing import OneHotEncoder
-ohe = OneHotEncoder()
-y = ohe.fit_transform(y)
-print(y)
 exit()
 
 
