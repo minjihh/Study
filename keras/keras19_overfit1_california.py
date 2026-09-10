@@ -50,40 +50,42 @@ def RMSE(y_test, y_predict):
 
 rmse = RMSE(y_test, y_predict)
 print("RMSE :", rmse)
-
-# print("걸린시간: ", round(end_time - start_time, 2), "초")
-
-# print("===================== history ========================")
-# print(hist)
-# print("===================== hist.history ========================")
-# print(hist.history)
-# print("========================= loss ============================")
-# print(hist.history['loss'])    # hist.history 딕셔너리에 있는 loss값만 빼자.
-# print("======================== val_loss ===========================")
-# print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_loss값만 빼자.
-# print("============================================================")
+# RMSE : 0.9071186410210031
 
 
+print("걸린시간: ", round(end_time - start_time, 2), "초")
 
-# import matplotlib.pyplot as plt
+print("===================== history ========================")
+print(hist)
+print("===================== hist.history ========================")
+print(hist.history)
+print("========================= loss ============================")
+print(hist.history['loss'])    # hist.history 딕셔너리에 있는 loss값만 빼자.
+print("======================== val_loss ===========================")
+print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_loss값만 빼자.
+print("============================================================")
 
-# # plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
-# plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
 
-# plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
-# plt.plot(hist.history['loss'][2:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
-# plt.plot(hist.history['val_loss'][2:], c='blue', label='val_loss')
+import matplotlib.pyplot as plt
 
-# plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
+# plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
+plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
 
-# plt.title('캘리포니아 Loss')
+plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
+
+plt.plot(hist.history['loss'][2:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
+plt.plot(hist.history['val_loss'][2:], c='blue', label='val_loss')
+
+plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
+
+plt.title('캘리포니아 Loss')
  
-# plt.xlabel('epoch')
-# plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.ylabel('loss')
 
-# plt.grid()    # 격자표시 추가
-# plt.show()
+plt.grid()    # 격자표시 추가
+plt.show()
 
 
 
