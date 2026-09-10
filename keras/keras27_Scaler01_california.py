@@ -33,8 +33,17 @@ Max - Min
 
 """
 
-from sklearn.preprocessing 
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(x)    # sklearn에서 fit은 보통 실행하라는 의미
+x = scaler.transform(x)
 
+print(x)
+print(np.min(x), np.max(x))
+
+
+
+exit()
 
 
 
