@@ -19,6 +19,16 @@ datasets = fetch_california_housing()
 x = datasets.data
 y = datasets.target
 
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(x)    # sklearn에서 fit은 보통 실행하라는 의미
+x = scaler.transform(x)
+
+print(x)
+print(np.min(x), np.max(x))
+# 0.0 1.0000000000000002
+
+
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, random_state=1)
 
@@ -33,18 +43,11 @@ Max - Min
 
 """
 
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-scaler.fit(x)    # sklearn에서 fit은 보통 실행하라는 의미
-x = scaler.transform(x)
-
-print(x)
-print(np.min(x), np.max(x))
-# 0.0 1.0000000000000002
 
 
 
-exit()
+
+# exit()
 
 
 
@@ -52,6 +55,7 @@ exit()
 #2. 모델구성
 model = Sequential()
 model.add(Dense(5, input_dim=8))
+model.add(Dense(40))
 model.add(Dense(1))
 
 #3. 컴파일, 훈련
@@ -82,25 +86,25 @@ print("============================================================")
 
 
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
-# plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
-plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
+# # plt.rc('font', family='Malgun Gothic')   # 한글 폰트 깨질 때 
+# plt.rcParams['font.family']='Malgun Gothic'   # 한글 폰트 깨질 때, 바로 위 코드와 동일한 기능 
 
-plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
+# plt.figure(figsize=(9,6))    # 그래프 그릴판 사이즈
 
-plt.plot(hist.history['loss'][2:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
-plt.plot(hist.history['val_loss'][2:], c='blue', label='val_loss')
+# plt.plot(hist.history['loss'][2:], c='red', label='loss')    # y값만 넣으면 시간순으로 그려줌.
+# plt.plot(hist.history['val_loss'][2:], c='blue', label='val_loss')
 
-plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
+# plt.legend(loc = 'upper right')    # 우측 상단에 라벨표시
 
-plt.title('캘리포니아 Loss')
+# plt.title('캘리포니아 Loss')
  
-plt.xlabel('epoch')
-plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.ylabel('loss')
 
-plt.grid()    # 격자표시 추가
-plt.show()
+# plt.grid()    # 격자표시 추가
+# plt.show()
 
 
 
