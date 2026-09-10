@@ -43,6 +43,10 @@ print(np.min(x), np.max(x))
 # 0.0 1.0000000000000002
 
 
+a = 0.1
+b = 0.2
+print(a+b)
+
 exit()
 
 
