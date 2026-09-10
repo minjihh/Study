@@ -8,7 +8,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_squared_error
 import numpy as np
 import time
 
@@ -43,15 +43,6 @@ Max - Min
 
 """
 
-
-
-
-
-# exit()
-
-
-
-
 #2. 모델구성
 model = Sequential()
 model.add(Dense(5, input_dim=8))
@@ -70,19 +61,31 @@ end_time = time.time()
 
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
-results = model.predict(x_test)
+y_predict = model.predict(x_test)
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
 
-print("===================== history ========================")
-print(hist)
-print("===================== hist.history ========================")
-print(hist.history)
-print("========================= loss ============================")
-print(hist.history['loss'])    # hist.history 딕셔너리에 있는 loss값만 빼자.
-print("======================== val_loss ===========================")
-print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_loss값만 빼자.
-print("============================================================")
+
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
+
+rmse = RMSE(y_test, y_predict)
+print("RMSE :", rmse)
+# 0.7308131612410732
+
+
+
+
+# print("===================== history ========================")
+# print(hist)
+# print("===================== hist.history ========================")
+# print(hist.history)
+# print("========================= loss ============================")
+# print(hist.history['loss'])    # hist.history 딕셔너리에 있는 loss값만 빼자.
+# print("======================== val_loss ===========================")
+# print(hist.history['val_loss'])    # hist.history 딕셔너리에 있는 val_loss값만 빼자.
+# print("============================================================")
 
 
 
