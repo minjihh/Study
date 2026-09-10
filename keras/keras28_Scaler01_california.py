@@ -1,9 +1,9 @@
-# 17-1 카피
-# model.fit을 hist로 저장하면 loss와 val_loss의 갑승ㄹ 딕셔너리 형태로 저장할 수 있다.
-# hist.history를 통해 loss, val_loss이 리스트를 반환할 수 있다.
-# plot에서 한글폰트 깨질때 처리하기
-# hist.history 딕셔너리에서 키값이가진 value 리스트에서 일부만 가져오기 
-
+# 27-1 카피
+# 스케일링 -> 모든 x값에 대해서 같은 비율로 처리하면 데이터 조작 문제 없음
+# x의 값이 너무 클 경우, 역전파할때도 스케일링 하는게 성능향상에 도움될 수 있음
+# 역전파시 가장 잘되는 데이터 -> 부동소수점 형태
+# x값은 0~1사이 값으로 바꾸고 싶을때 -> (x-min)/(max-min) (=minmax scaler)
+# 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.datasets import fetch_california_housing
@@ -19,10 +19,29 @@ datasets = fetch_california_housing()
 x = datasets.data
 y = datasets.target
 
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(x)    # sklearn에서 fit은 보통 실행하라는 의미
+x = scaler.transform(x)
+
+print(x)
+print(np.min(x), np.max(x))
+# 0.0 1.0000000000000002
+
+
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, random_state=1)
 
 print(x_train.shape, y_train.shape)   # (14447, 8) (14447,)
+
+"""
+MinMaxScaler 
+
+원값 - Min
+-----------
+Max - Min
+
+"""
 
 #2. 모델구성
 model = Sequential()
@@ -44,14 +63,19 @@ end_time = time.time()
 loss = model.evaluate(x_test, y_test)
 y_predict = model.predict(x_test)
 
+print("걸린시간: ", round(end_time - start_time, 2), "초")
+
+
 
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))  
 
 rmse = RMSE(y_test, y_predict)
 print("RMSE :", rmse)
+# 0.7308131612410732
 
-# print("걸린시간: ", round(end_time - start_time, 2), "초")
+
+
 
 # print("===================== history ========================")
 # print(hist)
