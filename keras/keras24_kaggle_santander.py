@@ -66,7 +66,7 @@ y_pred = np.argmax(y_pred)
 
 
 submission_csv['target'] = y_pred
-submission_csv.to_cvs(path + "submission_0910_1032.csv")
+submission_csv.to_csv(path + "submission_0910_1032.csv")
 
 
 
