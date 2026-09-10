@@ -26,7 +26,7 @@ print(np.unique(y, return_counts=True))  # (array([0, 1]), array([179902,  20098
 
 y = pd.get_dummies(y, dtype=int)
 print(y)
-exit()
+
 
 
 x_train, x_val, y_train, y_val = train_test_split(x, y,
@@ -46,7 +46,7 @@ model.add(Dense(2, activation = 'softmax'))
 es = EarlyStopping(
     monitor='val_loss',
     mode ='auto',
-    patience =100,
+    patience =10,
     restore_best_weights= True
 )
 
@@ -64,7 +64,7 @@ print("acc: ", loss[1])
 print("걸린시간: ", round((end_time-start_time),2), "초")
 
 y_pred = model.predict(test_csv)
-y_pred = np.argmax(y_pred)
+y_pred = np.argmax(y_pred, axis=1)  # argmax시 axis=1 설정 주의
 
 
 submission_csv['target'] = y_pred
