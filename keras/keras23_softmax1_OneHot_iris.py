@@ -4,6 +4,7 @@
 # tensorflow의 to_categorical사용해서 One Hot Encoding으로 데이터 변형
 # One Hotencoding의 세가지 방법 정리
 # train_ttest_split 하기 전에 one hotencoding 진행
+# softmax : e를 이용해서 큰값으 더 크게 작은 값은 더 작게 만듦
 # softmax 통과후 argmax 사용해서 softmax 통과한 값을 class값으로 변형
 # 원핫인코딩 문제점: 메모리 많이 차지함, 0이 너무 많아짐, 성능저하 / 속도저하
 # 이진분류 loss: BCE, 다중분류 loss: categorical crossentropy 다른건 없음
