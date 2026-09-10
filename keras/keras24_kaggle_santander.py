@@ -50,7 +50,9 @@ es = EarlyStopping(
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
 start_time = time.time()
-model.fit(x_train, y_train, epochs=10000, batch_size=128, callbacks = [es])
+model.fit(x_train, y_train, epochs=10000, batch_size=128, 
+          validation_data=(x_val, y_val),
+          callbacks = [es])
 end_time = time.time()
 
 loss = model.evaluate(x_val, y_val)
