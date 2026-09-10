@@ -2,8 +2,8 @@
 # 스케일링 -> 모든 x값에 대해서 같은 비율로 처리하면 데이터 조작 문제 없음
 # x의 값이 너무 클 경우, 역전파할때도 스케일링 하는게 성능향상에 도움될 수 있음
 # 역전파시 가장 잘되는 데이터 -> 부동소수점 형태
-# x값은 0~1사이 값으로 바꾸고 싶을때 -> x에서 가장 큰 값으로 나눈다. (=minmax scaler)
-
+# x값은 0~1사이 값으로 바꾸고 싶을때 -> (x-min)/(max-min) (=minmax scaler)
+# 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.datasets import fetch_california_housing
