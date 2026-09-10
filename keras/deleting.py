@@ -18,8 +18,11 @@ x = datasets.data
 y = datasets.target
 print(x.shape, y.shape)
 
-from tensorflow.keras.utils import to_categorical
-y = to_categorical(y)
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder(sparse_output=False)
+y = y.reshape(-1,1)
+# y = y.reshape(len(y),1)
+
 
 
 
@@ -30,6 +33,7 @@ ohd = OneHotEncoder(sparse_output=False)
 y = y.reshape(-1,1)
 y = y.reshape(len(y),1)
 y = ohd.fit_transform(y)
+
 exit()
 
 
