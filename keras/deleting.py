@@ -10,16 +10,7 @@ from sklearn.metrics import accuracy_score
 
 
 
-from sklearn.preprocessing import MinMaxScaler
 
-scaler = MinMaxScaler()
-scaler.fit(x_train)
-x_train = scaler.transform(x_train)
-x_test = scaler.transform(x_test)
-
-print(X)
-print(np.min(x_train), np.max(x_train))
-print(np.min(x_test), np.max(x_test))
 
 
 
