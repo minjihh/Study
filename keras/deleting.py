@@ -22,7 +22,7 @@ from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder(sparse_output=False)
 y = y.reshape(-1,1)
 # y = y.reshape(len(y),1)
-
+ohe_y = ohe.fit_transform(y)
 
 
 
