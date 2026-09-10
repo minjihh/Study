@@ -1,3 +1,4 @@
+# x.shape와 y.shape에서 (n,)에서 n값이 다를경우 전치나 또다른 데이터 처리가 필요
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
