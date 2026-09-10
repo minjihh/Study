@@ -49,7 +49,7 @@ model.add(Dense(2, activation = 'softmax'))
 es = EarlyStopping(
     monitor='val_loss',
     mode ='auto',
-    patience =10,
+    patience =100,
     restore_best_weights= True
 )
 

@@ -18,29 +18,7 @@ x = datasets.data
 y = datasets.target
 print(x.shape, y.shape)
 
-from sklearn.preprocessing import OneHotEncoder
-ohe = OneHotEncoder(sparse_output=False)
-y = y.reshape(-1,1)
-# y = y.reshape(len(y),1)
-ohe_y = ohe.fit_transform(y)
 
-
-
-y = pd.get_dummis(y)
-
-from sklearn.preprocessing import OneHotEncoder
-ohd = OneHotEncoder(sparse_output=False)
-y = y.reshape(-1,1)
-y = y.reshape(len(y),1)
-y = ohd.fit_transform(y)
-
-exit()
-
-
-
-y_predict = model.predict(x_test)
-y_predict = np.argmax(y_predict, axis = 1)
-y_test = np.argmax(y_test, axis = 1)
 
 
 
