@@ -24,8 +24,9 @@ y = train_csv['target']
 print(x.shape, y.shape) # (200000, 200) (200000,)
 print(np.unique(y, return_counts=True))  # (array([0, 1]), array([179902,  20098]))
 
-y = pd.get_dummies(y)
+y = pd.get_dummies(y, dtype=int)
 print(y)
+exit()
 
 
 x_train, x_val, y_train, y_val = train_test_split(x, y,
