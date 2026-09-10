@@ -21,20 +21,24 @@ datasets = fetch_california_housing()
 x = datasets.data
 y = datasets.target
 
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-scaler.fit(x)    # sklearn에서 fit은 보통 실행하라는 의미
-x = scaler.transform(x)
-
-print(x)
-print(np.min(x), np.max(x))
-# 0.0 1.0000000000000002
-
-
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, random_state=1)
-
 print(x_train.shape, y_train.shape)   # (14447, 8) (14447,)
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(x_train)    # sklearn에서 fit은 보통 실행하라는 의미, x_train scaling 비율에 맞게 ready
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
+
+
+print(x)
+print(np.min(x_train), np.max(x_train))
+print(np.min(x_test), np.max(x_test))
+
+
+exit()
+
 
 """
 MinMaxScaler 
