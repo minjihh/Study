@@ -11,5 +11,6 @@ model.add(Dense(4))
 model.add(Dense(3))
 model.add(Dense(1))
 
-model.summary()
+model.summary() # 파라미터 개수 세기
+# h1 = w1*x +b 에서 각 weight는 연결된 선의 개수만큼, b는 선과 연결된 다음노드의 개수만큼이라고 계산할 수 있다.
 
