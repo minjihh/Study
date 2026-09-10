@@ -9,14 +9,7 @@ import time
 from sklearn.metrics import accuracy_score
 
 
-#1. 데이터
-datasets = load_iris()
-print(datasets.info())
-print(datasets.feature_names)
 
-x = datasets.data
-y = datasets.target
-print(x.shape, y.shape)
 
 
 
