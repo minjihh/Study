@@ -52,6 +52,7 @@ print("loss: ", loss[0])
 print("acc: ", loss[1])
 
 y_pred = model.predict(x_test)
+
 y_pred = np.argmax(y_pred, axis = 1)
 y_test = np.argmax(y_test, axis = 1)
 acc_score = accuracy_score(y_test, y_pred)
