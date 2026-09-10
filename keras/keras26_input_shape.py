@@ -1,5 +1,5 @@
 # 23-1 카피
-
+# 모델구성 단계에서 input_dim말고 input_shape 사용
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -24,20 +24,7 @@ print(x.shape, y.shape)  # (150, 4) (150,)
 print(y)
 print(np.unique(y, return_counts=True)) # 이 코드를 쓰면 분류문제를 다룬다는 것 까지 예측할 수 있음
 
-"""
-One HotEncoding
-벡터형태 y를 행렬 형태로 바꿈
-[0, 0, 1, 1, 2]  # (5,)
-->
-[[1,0,0],
-[1,0,0],
-[0,1,0],
-[0,1,0],
-[0,0,1]]   # (5,3)
 
-softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
-
-"""
 ####################### 원핫1. to_categorical #######################
 # to_categorical 방식은 변경할때 0부터 시작함 -> 0클래스가 없는경우 값이 틀어짐
 # from tensorflow.keras.utils import to_categorical
@@ -111,7 +98,8 @@ print(y_train.shape, y_test.shape)  # (120, 3) (30, 3)
 
 #2. 모델구성
 model = Sequential()
-model.add(Dense(10, input_dim=4, activation = 'relu'))
+# model.add(Dense(10, input_dim=4, activation = 'relu'))   # input_dim=4는  input_shape(4,) 와 동일
+model.add(Dense(10, input_shape=(4,), activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10))  # 중간에 activatoin 빼도 문제 없음
 model.add(Dense(10, activation = 'relu'))
