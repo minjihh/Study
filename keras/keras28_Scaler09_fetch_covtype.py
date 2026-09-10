@@ -3,7 +3,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, mean_squared_error
 import time
 import numpy as np
 import pandas as pd
@@ -24,6 +24,14 @@ y = pd.get_dummies(y)
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1, stratify=y)
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+scaler = scaler.fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
+
 
 model=Sequential()
 model.add(Dense(5, input_dim=54, activation='relu'))
@@ -59,6 +67,14 @@ acc_score = accuracy_score(y_test, y_pred)
 
 print("acc_score: ", round(acc_score,2))
 print("걸린시간: ", round(end_time - start_time, 2), "초")
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
+
+rmse = RMSE(y_test, y_pred)
+print("RMSE :", rmse)
+# x 전체가지고 스케일링: 
+# x_train만 가지고 스케일링: 0.8720461431932777
 
 
 # 시간재기

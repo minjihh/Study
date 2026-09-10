@@ -3,6 +3,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 import time
 import pandas as pd
 import numpy as np
@@ -21,6 +22,13 @@ print(y)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+scaler = scaler.fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
 
 #2. 모델구성
 model = Sequential()
@@ -59,7 +67,7 @@ y_pred = model.predict(x_test)
 y_pred = np.argmax(y_pred, axis=1)
 y_test = np.argmax(y_test, axis=1)
 
-from sklearn.metrics import accuracy_score, mean_squared_error
+from sklearn.metrics import accuracy_score
 
 accuracy_score = accuracy_score(y_test,y_pred)
 print('acc_score: ', accuracy_score)
@@ -71,5 +79,7 @@ def RMSE(y_test, y_predict):
 
 rmse = RMSE(y_test, y_pred)
 print("RMSE :", rmse)
+# x 전체가지고 스케일링: 0.8050764858994133
+# x_train만 가지고 스케일링: 0.4714045207910317
 
 # acc = 0.95

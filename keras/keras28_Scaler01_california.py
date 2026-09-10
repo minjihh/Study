@@ -7,9 +7,11 @@
 # x값을 0~1사이 값으로 바꾸고 싶을때 -> (x-min)/(max-min) (=minmax scaler)
 # x_train만 가지고 scaling x_test는 나중에 추론시 x_train에 적용했던 스케일링 비율 그대로 x_test에 적용
 # 이에따라 x_test는 1이 넘어가거나 0보다 작은값이 나올 수 있음 
+# x_test까지 scaling 비율에 이용할 경우 과적합의 위험 있음
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
@@ -39,7 +41,7 @@ print(np.min(x_train), np.max(x_train))
 print(np.min(x_test), np.max(x_test))
 
 
-exit()
+# exit()
 
 
 """
@@ -61,9 +63,17 @@ model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
 
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'auto',
+    patience = 100,
+    restore_best_weights= True
+)
+
 start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=10, batch_size=4, verbose=1, validation_data = (x_val, y_val)
-        #   valdiatoin_split=0.5
+hist = model.fit(x_train, y_train, epochs=100000, batch_size=4, verbose=1, validation_data = (x_val, y_val),
+        #   valdiatoin_split=0.5,
+        callbacks = [es]
           )
 end_time = time.time()
 
@@ -80,7 +90,8 @@ def RMSE(y_test, y_predict):
 
 rmse = RMSE(y_test, y_predict)
 print("RMSE :", rmse)
-# 0.7308131612410732
+# x 전체가지고 스케일링: 0.7308131612410732
+# x_train만 가지고 스케일링: 0.7333248910704415
 
 
 

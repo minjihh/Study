@@ -1,0 +1,94 @@
+# 모든 loss들은 음수값을 방지하기 위한 장치가 들어간다.
+
+import numpy as np 
+import pandas as pd
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_squared_error
+import time
+
+#1. 데이터
+ 
+path = './_data/kaggle_bike/'
+
+train_csv = pd.read_csv(path + 'train.csv', index_col=0)
+test_csv = pd.read_csv(path + 'test.csv', index_col=0)
+submission = pd.read_csv(path + 'sampleSubmission.csv', index_col=0)
+
+
+x = train_csv.drop(['casual', 'registered', 'count'], axis = 1)
+y = train_csv['count']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size =0.7, random_state=1)
+print(x_train.shape, y_train.shape)  # (7620, 8) (7620,)
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+scaler = scaler.fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transfor(x_test)
+
+
+#2. 모델 구성
+
+model = Sequential()
+model.add(Dense(3, input_dim= 8))
+model.add(Dense(1))
+
+
+#3. 컴파일 훈련
+### mse  ###
+model.compile(loss = 'mse', optimizer = 'adam')
+
+from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    monitor = 'val_loss',
+    mode = 'min',
+    patience = 10,
+    restore_best_weights = True
+)
+
+start_time =time.time()
+hist = model.fit(x_train, y_train, epochs = 1000, batch_size=4, validation_split=0.33, callbacks = [es])
+end_time = time.time()
+
+#4. 평가 예측
+
+loss = model.evaluate(x_test, y_test)
+y_predict = model.predict(test_csv)
+
+print("걸린시간: ", round(end_time - start_time, 2), "초")
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
+
+rmse = RMSE(y_test, y_predict)
+print("RMSE :", rmse)
+
+submission['target'] = y_predict
+submission.to_csv(path + 'submission_0910_0443.csv')
+
+# #### plot 그리기 ####
+
+# import matplotlib.pyplot as plt
+
+# plt.rcParams['font.family'] = 'Malgun Gothic'
+# plt.figure(figsize=(9,6))
+
+# plt.plot(hist.history['loss'][1:], c = 'red', label = 'loss')
+# plt.plot(hist.history['val_loss'][1:], c = 'blue', label = 'val_loss')
+
+# plt.title('kaggle bike loss')
+
+# plt.xlabel('epoch')
+# plt.ylabel('loss')
+
+# plt.legend(loc = 'upper right')
+
+# plt.grid()
+# plt.show()
+
+
