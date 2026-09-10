@@ -1,3 +1,5 @@
+# 지금껏 통상 y=w*x+b라고 했지만 실제로는 행렬/텐서의 연산이기 때문에 y = x*w + b 가 정석적인 형태
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 import numpy as np
