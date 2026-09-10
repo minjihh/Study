@@ -40,7 +40,7 @@ x = scaler.transform(x)
 
 print(x)
 print(np.min(x), np.max(x))
-
+# 0.0 1.0000000000000002
 
 
 exit()
