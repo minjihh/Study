@@ -56,7 +56,17 @@ end_time = time.time()
 loss = model.evaluate(x_val, y_val)
 print("loss: ", loss[0])
 print("acc: ", loss[1])
+
+print("걸린시간: ", round((end_time-start_time),2), "초")
+
 y_pred = model.predict(test_csv)
+y_pred = np.argmax(y_pred)
+
+
+submission_csv['target'] = y_pred
+submission_csv.to_cvs(path + "submission_0910_1032.csv")
+
+
 
 
 
