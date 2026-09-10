@@ -1,6 +1,7 @@
 # 19-1 카피
 # 스케일링 -> 모든 x값에 대해서 같은 비율로 처리하면 데이터 조작 문제 없음
 # x의 값이 너무 클 경우, 역전파할때도 스케일링 하는게 성능향상에 도움될 수 있음
+# 역전파시 가장 잘되는 데이터 -> 부동소수점 형태
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.datasets import fetch_california_housing
