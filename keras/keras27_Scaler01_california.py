@@ -27,10 +27,12 @@ print(x_train.shape, y_train.shape)   # (14447, 8) (14447,)
 """
 MinMaxScaler 
 
-
-
+원값 - Min
+-----------
+Max - Min
 
 """
+
 
 
 
