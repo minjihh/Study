@@ -106,6 +106,13 @@ model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(3, activation = 'softmax'))  # softmax -> 모든 값 더했을때 1넘지 않도록 함
 
+"""
+원데이터 -> input_shape # 헷갈리면 input_shape로 바꿀때 원데이터의 맨 앞값만 뺀다고 생각하면 됨
+(n,4)   ->    (4,)
+(n,100,3)   ->   (100,3) 
+(n, 100,100,3)   ->    (100,100,3)
+"""
+
 #3. 컴파일, 훈련
 model.compile(loss='categorical_crossentropy', optimizer= 'adam', metrics = ['acc']) 
 es = EarlyStopping(
