@@ -77,15 +77,15 @@ print("걸린시간: ", round((end_time-start_time),2), "초")
 y_pred = model.predict(test_csv)
 y_pred = np.argmax(y_pred, axis=1)  # argmax시 axis=1 설정 주의
 
-def RMSE(y_test, y_predict):
-    return np.sqrt(mean_squared_error(y_test, y_predict))  
+# def RMSE(y_test, y_predict):
+#     return np.sqrt(mean_squared_error(y_test, y_predict))  
 
-rmse = RMSE(y_test, y_pred)
-print("RMSE :", rmse)
+# rmse = RMSE(y_test, y_pred)
+# print("RMSE :", rmse)
 
 
 submission_csv['target'] = y_pred
-submission_csv.to_csv(path + "submission_0910_1032.csv")
+submission_csv.to_csv(path + "submission_0911_MaxAbs.csv")
 
 
 

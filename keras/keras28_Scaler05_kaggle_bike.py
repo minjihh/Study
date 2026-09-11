@@ -23,19 +23,27 @@ y = train_csv['count']
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size =0.7, random_state=1)
 print(x_train.shape, y_train.shape)  # (7620, 8) (7620,)
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
+from sklearn.preprocessing import RobustScaler
+# scaler = MinMaxScaler()
+# scaler = StandardScaler()
+# scaler = MaxAbsScaler()
+scaler = RobustScaler()
 
-scaler = MinMaxScaler()
 scaler = scaler.fit(x_train)
 x_train = scaler.transform(x_train)
-x_test = scaler.transfor(x_test)
+x_test = scaler.transform(x_test)
 
 
 #2. 모델 구성
 
 model = Sequential()
-model.add(Dense(3, input_dim= 8))
-model.add(Dense(1))
+model.add((Dense(5, activation='relu', input_dim = 8)))  # relu: 값들을 양수만 나오도록
+model.add(Dense(9, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(7, activation='relu'))
+model.add(Dense(3, activation='relu'))
+model.add(Dense(1)) # activation없을때, default linear // 통상적으로 마지막 layer에는 activation 넣지 않음
 
 
 #3. 컴파일 훈련
@@ -62,14 +70,14 @@ y_predict = model.predict(test_csv)
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
 
-def RMSE(y_test, y_predict):
-    return np.sqrt(mean_squared_error(y_test, y_predict))  
+# def RMSE(y_test, y_predict):
+#     return np.sqrt(mean_squared_error(y_test, y_predict))  
 
-rmse = RMSE(y_test, y_predict)
-print("RMSE :", rmse)
+# rmse = RMSE(y_test, y_predict)
+# print("RMSE :", rmse)
 
-submission['target'] = y_predict
-submission.to_csv(path + 'submission_0910_0443.csv')
+submission['count'] = y_predict
+submission.to_csv(path + 'submit/submission_0911_MaxAbs.csv')
 
 # #### plot 그리기 ####
 

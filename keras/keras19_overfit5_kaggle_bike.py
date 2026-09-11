@@ -18,14 +18,18 @@ submission = pd.read_csv(path + 'sampleSubmission.csv', index_col=0)
 x = train_csv.drop(['casual', 'registered', 'count'], axis = 1)
 y = train_csv['count']
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size =0.7, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size =0.7, random_state=55)
 print(x_train.shape, y_train.shape)  # (7620, 8) (7620,)
 
 
 #2. 모델 구성
 
 model = Sequential()
-model.add(Dense(3, input_dim= 8))
+model.add((Dense(5, activation='relu', input_dim = 8)))  # relu: 값들을 양수만 나오도록
+model.add(Dense(9, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(7, activation='relu'))
+model.add(Dense(3, activation='relu'))
 model.add(Dense(1))
 
 

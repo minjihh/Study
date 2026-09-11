@@ -29,9 +29,13 @@ print(x.shape, y.shape)
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1)
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, test_size=0.5, random_state=1)
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
+from sklearn.preprocessing import RobustScaler
+# scaler = MinMaxScaler()
+# scaler = StandardScaler()
+# scaler = MaxAbsScaler()
+scaler = RobustScaler()
 
-scaler = MinMaxScaler()
 scaler = scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
@@ -69,12 +73,14 @@ y_predict = model.predict(test_csv)
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
 
-def RMSE(y_test, y_predict):
-    return np.sqrt(mean_squared_error(y_test, y_predict))  
+# def RMSE(y_test, y_predict):
+#     return np.sqrt(mean_squared_error(y_test, y_predict))  
 
-rmse = RMSE(y_test, y_predict)
-print("RMSE :", rmse)
+# rmse = RMSE(y_test, y_predict)
+# print("RMSE :", rmse)
 
+submission['count'] = y_predict
+submission.to_csv(path + 'submit/submission_0911_MaxAbs.csv')
 
 
 

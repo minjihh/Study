@@ -14,9 +14,13 @@ print(y_train.shape, y_test.shape) # (404,) (102,)
 
 x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, random_state=1)
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
+from sklearn.preprocessing import RobustScaler
+# scaler = MinMaxScaler()
+# scaler = StandardScaler()
+# scaler = MaxAbsScaler()
+scaler = RobustScaler()
 
-scaler = MinMaxScaler()
 scaler = scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
@@ -44,7 +48,8 @@ def RMSE(y_test, y_predict):
 rmse = RMSE(y_test, y_predict)
 print("RMSE :", rmse)
 # x 전체로 scaling : # RMSE : 8.672873642737752
-# x_train만으로 scaling : RMSE : 12.013473382237372
-
-
+# x_train만으로 MinMax scaling : RMSE : 12.013473382237372
+# x_train만 가지고 Standard스케일링: 20.39037099368951
+# x_train만 가지고 MaxAbs 스케일링: 11.12472809697239
+# x_train만 가지고 Robust 스케일링: 
 

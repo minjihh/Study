@@ -15,13 +15,15 @@ y = datasets.target
 print(x.shape, y.shape)  # (1797, 64) (1797,)
 print(np.unique(y, return_counts=True)) # (array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), array([178, 182, 177, 183, 181, 182, 181, 179, 174, 180]))
 
-y = pd.get_dummies(y)
+y = pd.get_dummies(y, dtype = int)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=1, stratify=y)
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
 
-scaler = MinMaxScaler()
+# scaler = MinMaxScaler()
+# scaler = StandardScaler()
+scaler = MaxAbsScaler()
 scaler = scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
@@ -65,7 +67,9 @@ def RMSE(y_test, y_predict):
 rmse = RMSE(y_test, y_pred)
 print("RMSE :", rmse)
 # 스케일링 없이 실행: 1.9460310986818883
-# x_train만 가지고 스케일링: 1.7040257344605167
-
+# x_train만 가지고 MinMax 스케일링: 1.7040257344605167
+# x_train만 가지고 Standard스케일링: 1.9488838211007213
+# x_train만 가지고 MaxAbs 스케일링: 1.2758439472669758
+# x_train만 가지고 Robust 스케일링: 
 
 # acc: 1.0

@@ -25,9 +25,11 @@ y = pd.get_dummies(y)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=1, stratify=y)
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
 
-scaler = MinMaxScaler()
+# scaler = MinMaxScaler()
+# scaler = StandardScaler()
+scaler = MaxAbsScaler()
 scaler = scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
@@ -74,9 +76,13 @@ def RMSE(y_test, y_predict):
 rmse = RMSE(y_test, y_pred)
 print("RMSE :", rmse)
 # 스케일링 없이 실행: 1.0469764005252644
-# x_train만 가지고 스케일링: 0.8720461431932777
-
+# x_train만 가지고 MinMax 스케일링: 0.8720461431932777
+# x_train만 가지고 Standard스케일링:  0.9029299501906831
+# x_train만 가지고 MaxAbs 스케일링: 0.7926675107714721
+# x_train만 가지고 Robust 스케일링: 
 
 # 시간재기
 # 배치 크게
 # acc 0.93
+
+3103 2211

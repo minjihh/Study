@@ -17,7 +17,7 @@ x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, 
 
 #2. 모델 구성
 model =Sequential()
-model.add((Dense(3, input_dim=13)))
+model.add(Dense(3, input_dim=13))
 model.add(Dense(1))
 
 
