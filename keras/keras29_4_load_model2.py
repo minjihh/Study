@@ -1,4 +1,4 @@
-# 29-1 카피
+# 29-3 카피
 
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense
@@ -41,6 +41,8 @@ print(np.min(x_test), np.max(x_test))
 
 
 #2. 모델구성
+# 모델구성 단계에서 가중치 저장하는 경우: 모델의 구조를 저장하고 싶을때 (weight까지 저장하고 싶으면 훈련까지 마친 가중치를 저장해야 함)
+
 # model = Sequential()
 # model.add(Dense(5, input_dim=8, activation = 'relu'))
 # model.add(Dense(40, activation = 'relu'))
@@ -52,8 +54,7 @@ print(np.min(x_test), np.max(x_test))
 
 path = './_save/keras29/'
 # model.save(path + 'keras29_1_save_model.keras')   # 최신버전은 keras확장자. 옛날 모델은 h5 사용하기도 함
- 
-model = load_model(path + 'keras29_1_save_model.keras')  # 여기서 저장하면 가중치 초기값이 저장됨
+model = load_model(path + 'keras29_3_save_model.keras')  # 여기서 저장하면 가중치 초기값이 저장됨
 
 model.summary()
 
@@ -61,29 +62,31 @@ model.summary()
 
 #3. 컴파일, 훈련
 
-model.compile(loss='mse', optimizer='adam')
+# model.compile(loss='mse', optimizer='adam')
 
-es = EarlyStopping(
-    monitor = 'val_loss',
-    mode = 'auto',
-    patience = 100,
-    restore_best_weights= True
-)
+# es = EarlyStopping(
+#     monitor = 'val_loss',
+#     mode = 'auto',
+#     patience = 10,
+#     restore_best_weights= True
+# )
 
-start_time = time.time()
-hist = model.fit(x_train, y_train, epochs=100000, batch_size=4, verbose=1, validation_data = (x_val, y_val),
-        #   valdiatoin_split=0.5,
-        callbacks = [es]
-          )
-end_time = time.time()
+# start_time = time.time()
+# hist = model.fit(x_train, y_train, epochs=100000, batch_size=4, verbose=1, validation_data = (x_val, y_val),
+#         #   valdiatoin_split=0.5,
+#         callbacks = [es]
+#           )
+# end_time = time.time()
+
+# model.save(path + 'keras29_3_save_model.keras')
 
 #4. 평가, 예측
 loss = model.evaluate(x_test, y_test)
 y_predict = model.predict(x_test)
 
-print("걸린시간: ", round(end_time - start_time, 2), "초")
+# print("걸린시간: ", round(end_time - start_time, 2), "초")
 
-
+# mse, RMSE 등 이용해서 최적의 weight인지 판단 후 저장
 
 def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))  
