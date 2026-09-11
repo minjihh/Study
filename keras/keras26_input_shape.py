@@ -32,7 +32,7 @@ print(np.unique(y, return_counts=True)) # 이 코드를 쓰면 분류문제를 �
 # print(y)
 # print(y.shape)   # (150, 3)
 
-####################### 원핫2. padas #######################
+####################### 원핫2. pandas #######################
 
 # y = pd.get_dummies(y)  # default dtype: bool
 # y = pd.get_dummies(y, dtype=int) # dtype 없어도 실행에 문제 없으나 혹시나 문제 없을 경우에는 int타입으로 변경

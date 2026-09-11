@@ -47,28 +47,36 @@ end_time = time.time()
 #4. 평가, 예측
 
 loss = model.evaluate(x_test, y_test)
-results = model.predict(x_test)
+y_predict = model.predict(x_test)
 
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
 
+from sklearn.metrics import mean_squared_error
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
+
+rmse = RMSE(y_test, y_predict)
+print("RMSE :", rmse)
+
 #### plot 그리기 ####
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
-plt.rcParams["font.family"] = "Malgun Gothic"
-plt.figure(figsize=(9,6))
+# plt.rcParams["font.family"] = "Malgun Gothic"
+# plt.figure(figsize=(9,6))
 
-plt.plot(hist.history['loss'], c = 'red', label = 'loss')
-plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
+# plt.plot(hist.history['loss'], c = 'red', label = 'loss')
+# plt.plot(hist.history['val_loss'], c = 'blue', label = 'val_loss')
 
-plt.legend(loc = 'upper right')
+# plt.legend(loc = 'upper right')
 
-plt.title('diabetes loss')
+# plt.title('diabetes loss')
 
-plt.xlabel('epoch')
-plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.ylabel('loss')
 
-plt.grid()
-plt.show()
+# plt.grid()
+# plt.show()
 

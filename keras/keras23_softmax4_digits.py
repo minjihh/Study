@@ -1,6 +1,6 @@
 from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, mean_squared_error
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
@@ -51,7 +51,11 @@ acc_score = accuracy_score(y_test, y_pred)
 print("acc_score: ", acc_score)
 print("걸린시간: ", round((end_time - start_time),2), "초")
 
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
 
+rmse = RMSE(y_test, y_pred)
+print("RMSE :", rmse)
 
 
 

@@ -1,6 +1,6 @@
 # 27-1 카피
 # 사실 27-1 코드는 틀린코드 
-# train_test_split 전에 해줘야함
+# train_test_split 후에 해줘야함
 # 스케일링 -> 모든 x값에 대해서 같은 비율로 처리하면 데이터 조작 문제 없음
 # x의 값이 너무 클 경우, 역전파할때도 스케일링 하는게 성능향상에 도움될 수 있음
 # 역전파시 가장 잘되는 데이터 -> 부동소수점 형태
@@ -8,6 +8,9 @@
 # x_train만 가지고 scaling x_test는 나중에 추론시 x_train에 적용했던 스케일링 비율 그대로 x_test에 적용
 # 이에따라 x_test는 1이 넘어가거나 0보다 작은값이 나올 수 있음 
 # x_test까지 scaling 비율에 이용할 경우 과적합의 위험 있음
+
+# scaling 하는 이유: 특정 피처가 큰값을 가지는 경우 과도하게 영향을 미치는 것 방지
+# 컬럼별로 scaling 적용 -> 컬럼별로 동등하게 영향을 미치도록
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense

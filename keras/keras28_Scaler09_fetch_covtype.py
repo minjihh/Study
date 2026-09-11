@@ -73,7 +73,7 @@ def RMSE(y_test, y_predict):
 
 rmse = RMSE(y_test, y_pred)
 print("RMSE :", rmse)
-# x 전체가지고 스케일링: 
+# 스케일링 없이 실행: 1.0469764005252644
 # x_train만 가지고 스케일링: 0.8720461431932777
 
 

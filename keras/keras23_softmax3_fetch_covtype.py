@@ -3,7 +3,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, mean_squared_error
 import time
 import numpy as np
 import pandas as pd
@@ -59,6 +59,12 @@ acc_score = accuracy_score(y_test, y_pred)
 
 print("acc_score: ", round(acc_score,2))
 print("걸린시간: ", round(end_time - start_time, 2), "초")
+
+def RMSE(y_test, y_predict):
+    return np.sqrt(mean_squared_error(y_test, y_predict))  
+
+rmse = RMSE(y_test, y_pred)
+print("RMSE :", rmse)
 
 
 # 시간재기

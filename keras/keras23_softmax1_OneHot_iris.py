@@ -1,13 +1,15 @@
 # 다중분류
 # softmax, categorical cross entropy
-# softmax : e를 이용해서 큰값으 더 크게 작은 값은 더 작게 만듦, e의 지수위치에 값을 넣어서 음수값이 나오지 않도록 하는 효과도 있음
+# softmax : e를 이용해서 큰값을 더 크게 작은 값은 더 작게 만듦, e의 지수위치에 값을 넣어서 음수값이 나오지 않도록 하는 효과도 있음
 # np.unique로 몇중분류인지 확인, 데이터 불균형 있는지도 확인, 불균형 있을경우 train_test_split에서 stratify 적용
 # tensorflow의 to_categorical사용해서 One Hot Encoding으로 데이터 변형
 # One Hotencoding의 세가지 방법 정리
-# train_ttest_split 하기 전에 one hotencoding 진행
+# train_test_split 하기 전에 one hotencoding 진행
 # softmax 통과후 argmax 사용해서 softmax 통과한 값을 class값으로 변형
 # 원핫인코딩 문제점: 메모리 많이 차지함, 0이 너무 많아짐, 성능저하 / 속도저하
 # 이진분류 loss: BCE, 다중분류 loss: categorical crossentropy 다른건 없음
+
+# train_test_split에서 shuffle옵션이랑 stratify 옵션
 
 """
                 회귀     분류(이진)      분류(다중)
@@ -80,6 +82,7 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 
 ####################### 원핫3. sklearn #######################
 # sklearn의 Onehotencoder 사용할때는 reshape에 유의
+# reshape 후에 ohe.fit_transform 적용
 # reshape 조건 1) 내용이 그대로 2) 순서가 그대로
 from sklearn.preprocessing import OneHotEncoder
 # ohe = OneHotEncoder()  # 혼돈행렬 형태로 나온다.
@@ -125,7 +128,7 @@ x_train, x_test, y_train, y_test = train_test_split(
     x, y,
     train_size=0.8,
     random_state=333,
-    shuffle = True,   # shuffle을 false로 할 경우, 뒤쪽의 2는 훈련에 안들거아서 문제발생
+    shuffle = True,   # shuffle을 false로 할 경우, 뒤쪽의 2는 훈련에 안들어가서 문제발생
     stratify = y,    # 
 
 )
