@@ -1,4 +1,5 @@
 # 29-2 카피
+# 컴파일, 훈련후에 가중치 저장 -> 최적의 weight를 저장
 
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense

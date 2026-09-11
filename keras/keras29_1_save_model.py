@@ -1,4 +1,5 @@
 # 28-1 카피
+# 모델구성 단계에서 가중치 저장 -> 가중치는 초기화 값이고 모델구조만 저장
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
