@@ -76,13 +76,13 @@ print(np.min(x_test), np.max(x_test))
 
 # 함수형
 input1 = Input(shape=(8,))
-dense1 = Dense(5)(input1)
+dense1 = Dense(5, activation='relu')(input1)
 drop1 = Dropout(0.2)(dense1)
-dense2 = Dense(40)(drop1)
+dense2 = Dense(40, activation='relu')(drop1)
 drop2 = Dropout(0.3)(dense2)
-dense3 = Dense(40)(drop2)
+dense3 = Dense(40, activation='relu')(drop2)
 drop3 = Dropout(0.5)(dense3)
-dense4 = Dense(40)(drop3)
+dense4 = Dense(40, activation='relu')(drop3)
 output1 = Dense(1)(dense4)
 
 model = Model(inputs = input1, outputs = output1)
