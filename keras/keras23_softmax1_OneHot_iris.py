@@ -1,9 +1,9 @@
 # 다중분류
-# softmax, categorical cross entropy
+# One Hotencoding의 세가지 방법 정리
+# 다중분류 -> last layer activation: softmax, loss: categorical cross entropy
 # softmax : e를 이용해서 큰값을 더 크게 작은 값은 더 작게 만듦, e의 지수위치에 값을 넣어서 음수값이 나오지 않도록 하는 효과도 있음
 # np.unique로 몇중분류인지 확인, 데이터 불균형 있는지도 확인, 불균형 있을경우 train_test_split에서 stratify 적용
 # tensorflow의 to_categorical사용해서 One Hot Encoding으로 데이터 변형
-# One Hotencoding의 세가지 방법 정리
 # train_test_split 하기 전에 one hotencoding 진행
 # softmax 통과후 argmax 사용해서 softmax 통과한 값을 class값으로 변형
 # 원핫인코딩 문제점: 메모리 많이 차지함, 0이 너무 많아짐, 성능저하 / 속도저하
@@ -141,7 +141,7 @@ print(y_train.shape, y_test.shape)  # (120, 3) (30, 3)
 model = Sequential()
 model.add(Dense(10, input_dim=4, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
-model.add(Dense(10))  # 중간에 activatoin 빼도 문제 없음
+model.add(Dense(10))  # 중간에 activation 빼도 문제 없음
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10, activation = 'relu'))
 model.add(Dense(3, activation = 'softmax'))  # softmax -> 모든 값 더했을때 1넘지 않도록 함

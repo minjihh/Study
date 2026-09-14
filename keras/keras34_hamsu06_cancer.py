@@ -1,4 +1,4 @@
-# 이진분류: load_breast_cancer 데이터 불러오기
+# load_breast_cancer 데이터 불러오기
 # type()를 통해 데이터 형태 확인
 # numpy와 pandas 각각을 활용해서 레이블당 데이터 개수 확인
 # train_test_split에서 stratify 설정 (분류모델일 경우)
@@ -27,12 +27,12 @@ round처리
 
 import numpy as np
 import pandas as pd
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.models import Sequential, Model
+from tensorflow.keras.layers import Dense, Dropout, Input
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import time
-from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 from sklearn.datasets import load_breast_cancer  # 유방암관련 데이터셋 불러오기
 
@@ -84,20 +84,61 @@ print(np.unique(y_test, return_counts=True))
 print(x_train.shape, x_test.shape)  # (398, 30) (171, 30)
 print(y_train.shape, y_test.shape)  # (398,) (171,)
 
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
+from sklearn.preprocessing import RobustScaler
+
+# scaler = MinMaxScaler()
+# scaler = StandardScaler()
+# scaler = MaxAbsScaler()
+scaler = RobustScaler()
+
+scaler = scaler.fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
+
+
 #2. 모델 구성
 
-model = Sequential()
-model.add(Dense(5, input_dim = 30, activation= 'relu'))
-model.add(Dense(40, activation= 'relu'))
-model.add(Dense(40, activation= 'relu'))
-model.add(Dense(40, activation= 'relu'))
-model.add(Dense(40, activation= 'relu'))
-model.add(Dense(1, activation= 'sigmoid'))  # 통과후 0과 1사이의 값으로 나옴
+# model = Sequential()
+# model.add(Dense(5, input_dim = 30, activation= 'relu'))
+
+# model.add(Dense(40, activation= 'relu'))
+# model.add(Dropout(0.5))
+
+# model.add(Dense(40, activation= 'relu'))
+# model.add(Dropout(0.5))
+
+# model.add(Dense(40, activation= 'relu'))
+# model.add(Dropout(0.5))
+
+# model.add(Dense(40, activation= 'relu'))
+# model.add(Dropout(0.5))
+
+# model.add(Dense(1, activation= 'sigmoid'))  # 통과후 0과 1사이의 값으로 나옴
 
 # 마지막 layer의 activation은 sigmoid
 # activation 명시하지 않을경우 default = linear
 
+# 함수형
+
+input1 = Input(shape=(30,))
+dense1 = Dense(5)(input1)
+dense2 = Dense(40)(dense1)
+drop1 = Dropout(0.5)(dense2)
+dense3 = Dense(40)(drop1)
+drop2 = Dropout(0.5)(dense3)
+dense4 = Dense(40)(drop2)
+drop3 = Dropout(0.5)(dense4)
+dense5 = Dense(40)(drop3)
+drop4 = Dropout(0.5)(dense5)
+output1 = Dense(1)(drop4)
+
+model = Model(inputs = input1, outputs =output1)
+model.summary()
+
+
 #3. 컴파일 훈련
+import datetime
 
 model.compile(loss='binary_crossentropy', optimizer='adam',   # 이진분류 loss는 무조건 BCE
               # metrics = ['accuracy'],   # compile에 accuracy 추가함으로서 훈련로그에 accuracy가 같이 찍혀나오게 됨
@@ -110,13 +151,32 @@ es  = EarlyStopping(
     monitor='val_loss',
     mode = 'min',
     patience = 10,
-    restore_best_weights=True
+    restore_best_weights=True,
+    verbose=1
 )
+
+
+date = datetime.datetime.now()
+date = date.strftime("%m%d_%H%M")
+
+pt_path = './_save/keras34/'
+filename = '{epoch:04d}-{val_loss:.4f}.keras'
+filepath = "".join([pt_path, "k34_dropout_cancer", date, "-", filename])
+
+mcp = ModelCheckpoint(
+    monitor = 'val_loss',
+    mode = 'auto',
+    save_best_only=True,
+    verbose=1,
+    filepath = filepath
+)
+
+
 start_time = time.time()
 hist = model.fit(x_train, y_train, epochs = 100000, batch_size = 32, 
                  verbose=1,
                 #  validation_data = (x_val, y_val), 
-                 callbacks = [es], validation_split=0.3)
+                 callbacks = [es, mcp], validation_split=0.3)
 end_time = time.time()
 
 print("걸린시간: ", round(end_time - start_time, 2))
@@ -146,7 +206,23 @@ def RMSE(y_test, y_predict):
 
 rmse = RMSE(y_test, y_pred)
 print("RMSE :", rmse)
+# x 전체가지고 스케일링: RMSE : 0.26490647239986226
+# x_train만 가지고 MinMax 스케일링: RMSE : 0.25362863769573435
+# x_train만 가지고 Standard스케일링: 0.22941573472520196
+# x_train만 가지고 MaxAbs 스케일링: 0.21629522898011255
+# x_train만 가지고 Robust 스케일링: 
 
+
+# acc_score:  0.9590643274853801
+# RMSE : 0.20232566030934981
+
+# dropout 적용후
+# acc_score:  0.9590643274853801
+# RMSE : 0.20232566030934981
+
+# 함수형
+# acc_score:  0.005847953216374269
+# RMSE : 10.85039147580504
 
 # import matplotlib.pyplot as plt
 

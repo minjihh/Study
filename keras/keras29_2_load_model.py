@@ -38,16 +38,18 @@ print(np.min(x_test), np.max(x_test))
 
 #2. 모델구성
 
-model = Sequential()
-model.add(Dense(5, input_dim = 8, activation = 'relu'))
-model.add(Dense(40, activation = 'relu'))
-model.add(Dense(40, activatoin = 'relu'))
-model.add(Dense(40, activatoin = 'relu'))
-model.add(Dense(40, activatoin = 'relu'))
-model.add(Dense(1))
+# model = Sequential()
+# model.add(Dense(5, input_dim = 8, activation = 'relu'))
+# model.add(Dense(40, activation = 'relu'))
+# model.add(Dense(40, activatoin = 'relu'))
+# model.add(Dense(40, activatoin = 'relu'))
+# model.add(Dense(40, activatoin = 'relu'))
+# model.add(Dense(1))
 
 path = './_save/'
-model = load_model(path + 'keras29.keras')
+
+# 저장된 모델을 불러오므로 모델 정의부분은 생략해도 문제없음
+model = load_model(path + 'keras29.keras') 
 
 model.summary()
 
