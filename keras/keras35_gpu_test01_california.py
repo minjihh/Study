@@ -1,5 +1,5 @@
 # 30-1 카피
-# drop out : 모델쪽에서 과적합 방지할 수 있는 방법, #2 모델구성단계에서 적용
+# drop out : 모델쪽에서 과적합 방지할 수 있는 방법
 # 추론시에는 dropout 적용하면 안됨
 
 # ##데이터셋
@@ -16,8 +16,8 @@
 # 09 fetch_convtype 
 # 10 digits
 
-from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.models import Sequential, load_model, Model
+from tensorflow.keras.layers import Dense, Dropout, Input
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
@@ -25,7 +25,7 @@ import numpy as np
 import time
 
 
-path = './_save/keras30/'
+path = './_save/keras35/'
 
 
 #1. 데이터
@@ -60,19 +60,33 @@ print(np.min(x_test), np.max(x_test))
 
 #2. 모델구성
 # 통상적으로 dropout 0.5이상을 잘 주지 않음
-model = Sequential()
-model.add(Dense(5, input_dim=8, activation = 'relu'))
-model.add(Dropout(0.2))
+# model = Sequential()
+# model.add(Dense(5, input_dim=8, activation = 'relu'))
+# model.add(Dropout(0.2))
 
-model.add(Dense(40, activation = 'relu'))
-model.add(Dropout(0.3))
+# model.add(Dense(40, activation = 'relu'))
+# model.add(Dropout(0.3))
 
-model.add(Dense(40, activation = 'relu'))
-model.add(Dropout(0.5))
+# model.add(Dense(40, activation = 'relu'))
+# model.add(Dropout(0.5))
 
-model.add(Dense(40, activation = 'relu'))
+# model.add(Dense(40, activation = 'relu'))
 
-model.add(Dense(1))
+# model.add(Dense(1))
+
+# 함수형
+input1 = Input(shape=(8,))
+dense1 = Dense(5, activation='relu')(input1)
+drop1 = Dropout(0.2)(dense1)
+dense2 = Dense(40, activation='relu')(drop1)
+drop2 = Dropout(0.3)(dense2)
+dense3 = Dense(40, activation='relu')(drop2)
+drop3 = Dropout(0.5)(dense3)
+dense4 = Dense(40, activation='relu')(drop3)
+output1 = Dense(1)(dense4)
+
+model = Model(inputs = input1, outputs = output1)
+model.summary()
 
 #3. 컴파일, 훈련
 
@@ -95,7 +109,7 @@ mcp = ModelCheckpoint(
     monitor='val_loss',    # loss로 해도 상관없음
     mode = 'auto',
     save_best_only = True,
-    filepath = path + 'keras30_mcp1.keras',
+    filepath = path + 'keras34_california.keras',
     verbose = 1,
 )
 
@@ -103,9 +117,9 @@ mcp = ModelCheckpoint(
 
 start_time = time.time()
 hist = model.fit(x_train, y_train,
-                epochs=1000, batch_size=32, verbose=1, validation_data = (x_val, y_val),
+                epochs=100, batch_size=32, verbose=1, validation_data = (x_val, y_val),
         #   valdiatoin_split=0.5,
-                callbacks = [es, mcp]
+                # callbacks = [mcp]
           )
 end_time = time.time()
 
@@ -113,7 +127,10 @@ end_time = time.time()
 mse = model.evaluate(x_test, y_test)
 y_predict = model.predict(x_test)
 
-# print("걸린시간: ", round(end_time - start_time, 2), "초")
+print("걸린시간: ", round(end_time - start_time, 2), "초")
+# cpu 걸린시간: 48.33 초
+# gpu 걸린시간: 95.17 초
+
 
 print("mse: ", mse)
 
@@ -140,6 +157,11 @@ print("RMSE :", rmse)
 # mse:  0.4394420385360718
 # r2:  0.664943073293314
 # RMSE : 0.6629042407562711
+
+# 함수형
+# mse:  1.2540855407714844
+# r2:  0.043810157603821454
+# RMSE : 1.1198595551093624
 
 
 # print("===================== history ========================")

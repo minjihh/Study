@@ -20,12 +20,15 @@ x = datasets.data
 y = datasets.target
 
 print(x.shape, y.shape)
-
+print(np.unique(y, return_counts=True))
 
 # scaling, one hot encoding
 
-# from tensorflow.keras.utils import to_categorical
-# y = to_categorical
+from tensorflow.keras.utils import to_categorical
+y = to_categorical(y)
+
+
+
 
 # y = pd.get_dummies(y)
 
@@ -64,16 +67,22 @@ model.add(Dense(40, activation='relu'))
 model.add(Dense(40, activation='relu'))
 model.add(Dense(40, activation='sigmoid'))
 
-input1 = Input(shape = (3,))
-dense1 = Dense(10, name='ys1')(input1)
-drop1 = Dropout(0.2)(dense1)
-dense2 = Dense(9, name='ys2')(drop1)
-drop2 = Dropout(0.2)(dense2)
-output1 = Dense(1)(drop2)
 
-model2 = Model(inputs = input1, outputs = output1)
 
-model2.summary()
+input1 = Input(shape= (30,))
+dense1 = Dense(4, activation='relu')(input1)
+drop1 = Dropout(0.5)(dense1)
+dense2 = Dense(40, activatoin='relu')(drop1)
+drop2 = Dropout(0.5)(dense2)
+dense3 = Dense(40, activation = 'relu')(drop2)
+drop3 = Dropout(0.5)(dense3)
+output1 = Dense(40, activation='softmax')(drop3)
+
+model = Model(inputs = input1, outputs = output1)
+
+
+
+model.summary()
 
 #3. 컴파일 훈련
 
@@ -89,28 +98,28 @@ es = EarlyStopping(
     verbose=1
 )
 
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 import datetime
 
-date = datetime.datetime.now
-date = date.strf('%m%d-%H%M')
-filename = '{epoch:04d}-{val_loss:.4f}.keras'
-filepath = "".join([path, 'K30_', date, "-", filename])
-
-
-import datetime
 date = datetime.datetime.now()
-date = date.strftime("%m%d_%H%M")
-filename = '{epoch: 04d}-{val_loss:4f}.keras'
+date = date.strftime('%m%d-%H%M')
 
-path = './_save/'
+pt_path = './_save/keras34/'
+filename = '{epoch:4d}-{val_loss:.4f}.keras'
+filepath = "".join([pt_path, date, "-", filename])
 
 mcp = ModelCheckpoint(
     monitor = 'val_loss',
     mode = 'auto',
+    verbose = 1,
     save_best_only=True,
-    filepath = path + 'checkpoint.weights.keras',
-    verbose=1
+    filepath = filepath
 )
+
+
+
+
+
 
 start_time = time.time()
 hist = model.fit(x_train, y_train,
