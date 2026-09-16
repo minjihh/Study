@@ -8,6 +8,7 @@ from tensorflow.keras.layers import Dense, Conv2D
 
 model = Sequential()
 model.add(Conv2D(10, (3,3), input_shape = (10,10,1)))   # (3,3) 커널 사이즈  # 10 x 10 사이즈의 흑백이미지
+# input_shape = (height, width, channel)
 model.add(Conv2D(5, (2,2)))
 
 
