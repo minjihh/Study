@@ -1,6 +1,6 @@
 # 36-5 카피, 데이터셋 cifar100으로 변경
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Conv2D, Flatten
+from tensorflow.keras.layers import Dense, Dropout, Conv2D, Flatten, MaxPooling2D, GlobalAveragePooling2D
 from tensorflow.keras.datasets import cifar100
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import accuracy_score
@@ -48,14 +48,17 @@ print(y_test.shape)
 #2. 모델구성
 
 model = Sequential()
-model.add(Conv2D(128, (3,3), input_shape = (32, 32, 3), activation = 'relu'))
-model.add(Conv2D(64, (3,3), activation = 'relu'))
-model.add(Conv2D(32, (3,3), activation = 'relu'))
-model.add(Conv2D(32, (3,3), activation = 'relu'))
-model.add(Conv2D(32, (3,3), activation = 'relu'))
-model.add(Conv2D(32, (3,3), activation = 'relu'))
-model.add(Conv2D(32, (3,3), activation = 'relu'))
-model.add(Conv2D(32, (3,3), activation = 'relu'))
+model.add(Conv2D(32, (3,3), input_shape = (32, 32, 3), activation = 'relu'))
+model.add(Conv2D(64, (3,3), activation = 'relu', padding = 'same'))
+model.add(Conv2D(128, (3,3), activation = 'relu', padding = 'same'))
+model.add(MaxPooling2D()) 
+model.add(Dropout(0.2))
+model.add(Conv2D(256, (3,3), activation = 'relu', padding = 'same'))
+model.add(MaxPooling2D()) 
+model.add(Dropout(0.2))
+model.add(Conv2D(512, (3,3), activation = 'relu', padding = 'same'))
+
+
 
 
 
@@ -64,7 +67,8 @@ model.add(Dense(40, activation ='relu'))
 model.add(Dropout(0.2))
 model.add(Dense(30, activation ='relu'))
 model.add(Dropout(0.2))
-model.add(Flatten())
+# model.add(Flatten()
+model.add(GlobalAveragePooling2D())
 model.add(Dense(100, activation ='softmax'))
 
 
@@ -75,7 +79,7 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics = ['acc
 es = EarlyStopping(
     monitor = 'val_loss',
     mode = 'auto',
-    patience=500,
+    patience=100,
     verbose=1,
     restore_best_weights=True
 )
@@ -112,4 +116,14 @@ print("걸린시간: ", round(end_time - start_time, 2), '초')
 # acc_score:  0.21
 # acc_score:  0.17
 # acc_score:  0.18
-# acc_score:  0.19
+# acc_score:  0.19s
+
+# acc_score:  0.28  xception
+
+# MaxPool, Dropout 적용
+# acc_score:  0.01
+# 걸린시간:  86.86 초
+
+## GAP 적용
+# acc_score:  0.09
+# 걸린시간:  292.76 초

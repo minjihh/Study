@@ -25,7 +25,7 @@ print(np.unique(y_train, return_counts=True))
 #OHE
 
 ### pd.get_dummies()  ###
-y_train = y_train.reshape(-1,)
+y_train = y_train.reshape(-1,)   # (50000, 1) 을 (50000,) 으로 reshape
 y_train = pd.get_dummies(y_train, dtype=int)
 print(y_train.shape)
 
@@ -63,6 +63,17 @@ model.add(Dense(40, activation ='relu'))
 model.add(Dense(30, activation ='relu'))
 model.add(Flatten())
 model.add(Dense(10, activation ='softmax'))
+
+from tensorflow.keras.layers import MaxPooling2D
+
+model.add(Conv2D(10, (2,2), input_shape = (10, 10, 1),
+                 strides=1,
+                 padding = 'same'))
+
+model.add(MaxPooling2D())
+model.add(Conv2D(filters = 9, kernel_size = (3,3),
+                 strides=1,
+                 padding = 'valid'))
 
 
 #3. 컴파일 훈련

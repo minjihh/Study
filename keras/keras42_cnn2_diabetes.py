@@ -1,6 +1,6 @@
 from sklearn.datasets import load_diabetes    # import 후에 ctrl + space 하면 어떤 리스트들이 있는지 확인 가능
 from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Dense, Dropout, Input
+from tensorflow.keras.layers import Dense, Dropout, Input, Conv2D, Flatten
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
@@ -18,19 +18,34 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, rand
 # x_val, x_test, y_val, y_test = train_test_split(x_test, y_test, train_size=0.5, random_state=1)
 print(x_train.shape, y_train.shape) # (309, 10) (309,)
 
+### robust scaling ###
+# from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
+# from sklearn.preprocessing import RobustScaler
 
-## robust scaling ##
-from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
-from sklearn.preprocessing import RobustScaler
+# # scaler = MinMaxScaler()
+# # scaler = StandardScaler()
+# # scaler = MaxAbsScaler()
+# scaler = RobustScaler()
 
-# scaler = MinMaxScaler()
-# scaler = StandardScaler()
-# scaler = MaxAbsScaler()
-scaler = RobustScaler()
+# scaler = scaler.fit(x_train)
+# x_train = scaler.transform(x_train)
+# x_test = scaler.transform(x_test)
 
-scaler = scaler.fit(x_train)
-x_train = scaler.transform(x_train)
-x_test = scaler.transform(x_test)
+
+### 스케일링 1 MinMax
+# mnist -> minmax scaling이 적절. maxabs도 동일
+x_train = x_train/255.   # .을 붙임으로서 float 형태로 출력하게 됨
+x_test = x_test/255.
+
+print(np.min(x_train), np.max(x_train)) # 0.0 1.0
+print(np.min(x_test), np.max(x_test)) # 0.0 1.0
+
+
+print(x_train.shape, x_test.shape)  # (309, 10) (133, 10)
+
+x_train = x_train.reshape(-1,5,2,1)
+x_test = x_test.reshape(-1,5,2,1)
+print(x_train.shape, x_test.shape) # 
 
 
 #2. 모델 구성
@@ -45,14 +60,32 @@ x_test = scaler.transform(x_test)
 # model.add(Dense(1))
 
 
-input1 = Input(shape = (10,))
-dense1 = Dense(5, activation='relu')(input1)
-# drop1 = Dropout(0.5)(dense1)
-dense2 = Dense(9, activation='relu')(dense1)
-# drop2 = Dropout(0.5)(dense2)
-output1 = Dense(1)(dense2)
+# input1 = Input(shape = (10,))
+# dense1 = Dense(5, activation='relu')(input1)
+# # drop1 = Dropout(0.5)(dense1)
+# dense2 = Dense(9, activation='relu')(dense1)
+# # drop2 = Dropout(0.5)(dense2)
+# output1 = Dense(1)(dense2)
 
-model = Model(inputs=input1, outputs=output1)
+# model = Model(inputs=input1, outputs=output1)
+
+model = Sequential()
+model.add(Conv2D(64, (2,1), input_shape=(5,2,1,), padding='same')) 
+model.add(Conv2D(filters=32, kernel_size=(2,1), activation = 'relu', strides = 1, padding = 'same')) # (24,24,32)
+model.add(Dropout(0.2))
+# model.add(Conv2D(32, (2,1), activation = 'relu', strides = 1, padding = 'same'))  # (23, 23, 32)
+# model.add(Conv2D(16, (2, 2), activation = 'relu'))  # (22, 22, 16)
+# model.add(Dropout(0.2))   # dropout의 파라미터의 개수 없음
+# model.add(Conv2D(16, (2, 2), activation = 'relu'))  # (21, 21, 16)
+# model.add(Dropout(0.2))   # dropout의 파라미터의 개수 없음
+# model.add(Conv2D(16, (2, 2), activation = 'relu'))  # (20, 20, 16)
+
+model.add(Flatten())
+model.add(Dense(units=32, activation = 'relu'))  # units
+model.add(Dropout(0.2))
+model.add(Dense(units=16, input_shape = (32,), activation = 'relu'))
+model.add(Dense(1))  
+
 model.summary()
 
 
@@ -139,3 +172,9 @@ print("RMSE :", rmse)
 # mse:  26087.681640625
 # r2:  -4.181814258010112
 # RMSE : 161.5168220040415
+
+# cnn으로 
+# 걸린시간:  3.85 초
+# mse:  5029.4794921875
+# r2:  0.0009911675254793417
+# RMSE : 70.9188205119668

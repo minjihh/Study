@@ -17,7 +17,7 @@ cuda toolkit donwload 검색 -> archive of previous CUDA -> cuda 11.2.2
 
 다운된 cuda 설치프로그램 실행 -> default 경로에 설치 -> 사용자정의 설치 ->
 CUDA 항목에서 visual studio integration, samples, documentaion 설정 해제 ->
-Driver components/Display Driver 설정 해제 (해제 안하면 드라이버버전 다운그레이드됨)
+Driver components/ Display Driver 설정 해제 (해제 안하면 드라이버버전 다운그레이드됨)
 -> other components/PhysX 설정 해제 -> default 세팅으로 진행 -> 다음 -> 닫기
 
 

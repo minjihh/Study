@@ -13,7 +13,7 @@ from tensorflow.keras.layers import Dense, Conv2D, Flatten, MaxPooling2D
 model = Sequential()
 model.add(Conv2D(10, (2,2), input_shape = (10, 10, 1 ),   # 10, 10, 10
                  strides = 1,  # stride '1' default
-                 padding = 'same',  
+                 padding = 'same',  # convolution 전후 사이즈를 같게 만들수 있는 padding을 적용하겠다.
                    ))
 # 통상적으로 convolution 이후에 max pooling 사용
 model.add(MaxPooling2D())  # max pool 써서 size줄일때와 같은 효과를 convolution으로 내기 위해서는 훨씬 더 많은 parameter가 필요
