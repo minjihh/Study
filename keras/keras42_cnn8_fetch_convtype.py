@@ -168,3 +168,8 @@ print("RMSE :", rmse)
 # acc_score:  0.15
 # 걸린시간:  39.93 초
 # RMSE : 2.010719734280636
+
+# cnn으로 돌림
+# acc_score:  0.78
+# 걸린시간 (fetch_covtype data):  189.43 초
+# RMSE : 1.1315404091096952

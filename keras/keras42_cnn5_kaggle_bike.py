@@ -95,9 +95,6 @@ model.summary()
 
 
 
-
-
-
 #3. 컴파일 훈련
 ### mse  ###
 model.compile(loss = 'mse', optimizer = 'adam')
@@ -131,7 +128,7 @@ mcp = ModelCheckpoint(
 
 start_time =time.time()
 hist = model.fit(x_train, y_train, 
-                 epochs = 100, 
+                 epochs = 10, 
                  batch_size=4, 
                  validation_split=0.33, 
                 #  callbacks = [es, mcp],
@@ -142,11 +139,16 @@ end_time = time.time()
 #4. 평가 예측
 
 loss = model.evaluate(x_test, y_test)
-y_predict = model.predict(test_csv)
+# y_predict = model.predict(test_csv)
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
+print("loss: ", loss)
 # cpu 걸린시간:  144.68 초
 # gpu 걸린시간:  325.86 초
+
+# cnn으로 돌릴때
+# 걸린시간:  45.05 초
+# loss:  23427.8046875
 
 # def RMSE(y_test, y_predict):
 #     return np.sqrt(mean_squared_error(y_test, y_predict))  
@@ -154,7 +156,7 @@ print("걸린시간: ", round(end_time - start_time, 2), "초")
 # rmse = RMSE(y_test, y_predict)
 # print("RMSE :", rmse)
 
-submission['count'] = y_predict
+# submission['count'] = y_predict
 # submission.to_csv(path + 'submit/submission_0911_MaxAbs.csv')
 
 # #### plot 그리기 ####

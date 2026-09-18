@@ -100,7 +100,7 @@ model.add(Flatten())
 model.add(Dense(units=32, activation = 'relu'))  # units
 model.add(Dropout(0.2))
 model.add(Dense(units=16, input_shape = (32,), activation = 'relu'))
-model.add(Dense(2, activation = 'softmax'))  
+model.add(Dense(1, activation = 'sigmoid'))  
 
 
 model.summary()
@@ -146,7 +146,7 @@ print("걸린시간 (santander data): ", round((end_time-start_time),2), "초")
 # gpu 걸린시간 (santander data):  28.51 초
 
 y_pred = model.predict(test_csv)
-y_pred = np.argmax(y_pred, axis=1)  # argmax시 axis=1 설정 주의
+y_pred = round(y_pred)  
 
 # def RMSE(y_test, y_predict):
 #     return np.sqrt(mean_squared_error(y_test, y_predict))  

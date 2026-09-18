@@ -1,4 +1,4 @@
-## test data reshape
+## test data reshape: x_test = x_test.values.reshape(-1, 9, 1, 1) 
 
 
 import numpy as np
@@ -49,9 +49,9 @@ test_csv = scaler.transform(test_csv)
 
 print(x.shape, test_csv.shape)  # (929, 9) (200, 9)
 
-x = x.reshape(-1,9,1,1)
-test_csv = test_csv.reshape(-1,9,1,1)
-x_test = x_test.reshape(-1,9,1,1)
+x = x.reshape(-1,9,1,1)   # numpy array reshaping 방법
+test_csv = test_csv.reshape(-1,9,1,1)  # numpy array reshaping 방법
+x_test = x_test.values.reshape(-1, 9, 1, 1)  # pandas일때 reshape 하는 방법 (convert to a NumPy array first, then reshape:)
 
 # train_csv = train_csv.reshape(-1,9,1,1)
 print(x.shape, test_csv.shape, x_test.shape) # 
@@ -92,6 +92,7 @@ model.add(Dense(1))
 
 
 model.summary()
+
 
 #3. 컴파일 훈련
 
@@ -143,8 +144,13 @@ y_predict = model.predict(test_csv)
 
 
 print("걸린시간: ", round(end_time - start_time, 2), "초")
+print("loss: ", loss)
 # cpu 걸린시간:  2.73 초
 # gpu 걸린시간:  4.72 초
+
+# cnn모델로 돌렸을때
+# 걸린시간:  9.88 초
+# loss:  1333419136.0
 
 
 # def RMSE(y_test, y_predict):

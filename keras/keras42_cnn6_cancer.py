@@ -157,7 +157,7 @@ model.add(Flatten())
 model.add(Dense(units=32, activation = 'relu'))  # units
 model.add(Dropout(0.2))
 model.add(Dense(units=16, input_shape = (32,), activation = 'relu'))
-model.add(Dense(2, activation = 'sigmoid'))  
+model.add(Dense(1, activation = 'sigmoid'))  
 
 model.summary()
 
@@ -252,6 +252,11 @@ print("RMSE :", rmse)
 # 함수형
 # acc_score:  0.005847953216374269
 # RMSE : 10.85039147580504
+
+# cnn에서 돌렸을때
+# acc_score:  0.9590643274853801
+# RMSE : 0.20232566030934981
+
 
 # import matplotlib.pyplot as plt
 
