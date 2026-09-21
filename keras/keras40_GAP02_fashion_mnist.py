@@ -46,7 +46,8 @@ model.add(Dense(10))
 model.add(Dense(units = 16, activation = 'relu'))
 model.add(Dense(10, activation = 'softmax'))
 
-
+model.summary()
+exit()
 #3. 컴파일 훈련
 model.compile(loss='categorical_crossentropy', optimizer = 'adam',
               metrics = ['acc'])

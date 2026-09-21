@@ -1,3 +1,4 @@
+# https://www.kaggle.com/datasets/tongpython/cat-and-dog/data    # 데이터셋
 # 실습
 # 맹그러봐!!
 # 100x100 이하 사이즈로는 하지 말 것

@@ -34,7 +34,7 @@ path_test = './_data/image/brain/test/'
 xy_train = train_datagen.flow_from_directory(
     path_train, # 경로
     target_size=(150, 150),
-    batch_size=160,
+    batch_size=160,    # 통배치로 세팅
     class_mode='binary', # 이진분류
     color_mode='grayscale',  # 흑백
     shuffle = True,
@@ -44,12 +44,13 @@ xy_train = train_datagen.flow_from_directory(
 xy_test = test_datagen.flow_from_directory(
     path_test,
     target_size=(150, 150),
-    batch_size=120,
+    batch_size=120,    # 통배치로 세팅
     class_mode='binary', # 이진분류
     color_mode='grayscale',  # 흑백
     shuffle = False,  # test에서는 shuffle 필요 없음 # shuffle default = True
 )
 # Found 120 images belonging to 2 classes.
+
 
 x_train = xy_train[0][0]
 y_train = xy_train[0][1]
@@ -132,7 +133,7 @@ loss = model.evaluate(x_test, y_test)
 print("loss: ", loss)
 
 y_pred = model.predict(x_test)
-y_pred = np.round(y_pred)
+y_pred = np.round(y_pred)   # 이진분류는 np.round, 다중분류는 np.argmaxr( , axis = 1)
 
 
 acc_score = accuracy_score(y_test, y_pred)

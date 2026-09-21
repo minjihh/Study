@@ -1,4 +1,4 @@
-# 이진분류 데이터 다중분류 방식으로 풀어보기
+# 이진분류 데이터 다중분류 방식으로 풀어보기 -> tabular data를 cnn에 넣을 수 있도록 4차원으로 reshape 필요
 # 이진분류로 했을때랑 비교해보기
 # 판다스의 series 데이터의 경우 vector형태라서 reshape이 안되는 경우가 있는데 이대 numpy로 변환해주면됨
 # y = np.array(y) == y = y.to_numpy()
