@@ -15,14 +15,14 @@ from sklearn.model_selection import train_test_split# 이진분류를 softmax로
 #1. 데이터
 
 
-data_path = 'c:/Users/Admin/Desktop/Study_data/image/rps/'
+data_path = 'c:/Users/Admin/Desktop/Study_data/_data/image/rps/'
 
 datagen = ImageDataGenerator(
     rescale = 1/255.
 )
 
 xy = datagen.flow_from_directory(data_path,
-                                 target_size = (200, 200),
+                                 target_size = (150, 150),
                                  batch_size = 2000,
                                  class_mode = 'categorical',
                                  color_mode = 'rgb',
@@ -47,7 +47,7 @@ print(x.shape, y.shape)  # (100, 200, 200, 3) (100, 3)
 
 print(np.unique(y, return_counts = True))
 
-np_path = './_data/rps_npy/'
+np_path = 'c:/Users/Admin/Desktop/Study_data/_data/rps_npy/'
 np.save(np_path + 'keras46_rps_x.npy', arr=x)
 np.save(np_path + 'keras46_rps_y.npy', arr=y)
 
@@ -65,7 +65,7 @@ print(x_train.shape, y_train.shape)  #  (70, 200, 200, 3) (70, 3)
 #2. 모델구성
 
 model = Sequential()
-model.add(Conv2D(32,(3,3), input_shape = (200,200,3), activation = 'relu', padding = 'same'))
+model.add(Conv2D(32,(3,3), input_shape = (150,150,3), activation = 'relu', padding = 'same'))
 model.add(Conv2D(64,(3,3), activation = 'relu', padding = 'same'))
 model.add(Conv2D(128,(3,3), activation = 'relu', padding = 'same'))
 
@@ -88,7 +88,7 @@ es = EarlyStopping(
     monitor ='val_loss',
     mode = 'auto',
     verbose = 1,
-    patience=200,
+    patience=100,
     restore_best_weights = True,
 )
 

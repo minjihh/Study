@@ -1,4 +1,5 @@
 # 48 카피
+# ㅁ넘파이 형태일때 3차원데이터 4차원으로 변환하기
 
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -30,11 +31,11 @@ print(arr.shape)   # (1, 200, 200, 3)
 
 datagen = ImageDataGenerator(
     rescale = 1./255,  # 전처리
-    # horizontal_flip = True, # 수평 뒤집기
+    horizontal_flip = True, # 수평 뒤집기
     # vertical_flip = True,  # 수직 뒤집기 (상하반전)
     width_shift_range=0.1, # 평형이동
     # height_shift_range=0.1, 
-    rotation_range=5, # 각도조절(정해진 각도만큼 이미지 회전)
+    rotation_range=15, # 각도조절(정해진 각도만큼 이미지 회전)
     # zoom_range = 1.1,
     # shear_range = 0.7, # 좌표하나를 규정하고 다른 몇개의 좌표를 이동 (한마디로 찌부)
     fill_mode = 'nearest'  # 이미지를 수평이동 했을때 빈공간을 가까운 값으로 채우겠다.

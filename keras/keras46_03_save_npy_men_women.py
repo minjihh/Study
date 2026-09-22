@@ -13,14 +13,14 @@ from sklearn.model_selection import train_test_split  # 이진분류를 softmax�
 #1. 데이터
 
 
-data_path = 'c:/Users/Admin/Desktop/Study_data/image/faces/'
+data_path = 'c:/Users/Admin/Desktop/Study_data/_data/image/faces/'
 
 datagen = ImageDataGenerator(
     rescale = 1/255.
 )
 
 xy = datagen.flow_from_directory(data_path,
-                                 target_size = (200, 200),
+                                 target_size = (150, 150),
                                  batch_size = 10000,
                                  class_mode = 'binary',
                                  color_mode = 'rgb',
@@ -34,9 +34,11 @@ print(x.shape, y.shape)  # (100, 200, 200, 3) (100, 3)
 
 print(np.unique(y, return_counts = True))
 
-np_path = './_data/gender_npy/'
+np_path = 'c:/Users/Admin/Desktop/Study_data/_data/gender_npy/'
 np.save(np_path + 'keras46_gender_x.npy', arr=x)
 np.save(np_path + 'keras46_gender_y.npy', arr=y)
+# one hot encoding, rescaling 적용된 npy 저장
+
 
 # x = np.load(np_path + 'keras46_rps_x.npy')
 # y = np.load(np_path + 'keras46_rps_y.npy')
@@ -56,7 +58,7 @@ print(x_train.shape, y_train.shape)  #  (70, 200, 200, 3) (70, 3)
 #2. 모델구성
 
 model = Sequential()
-model.add(Conv2D(32,(3,3), input_shape = (200,200,3), activation = 'relu', padding = 'same'))
+model.add(Conv2D(32,(3,3), input_shape = (150,150,3), activation = 'relu', padding = 'same'))
 model.add(MaxPooling2D())
 model.add(Dropout(0.2))
  
@@ -90,7 +92,7 @@ model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['acc'
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 import datetime
 
-path_pt = './_save/keras46/'
+path_pt = 'c:/Users/Admin/Desktop/Study_data/_save/keras46/'
 date = datetime.datetime.now()
 date = date.strftime("%m%d_%H%M")
 filename = '{epoch:04d}-{val_loss:.4f}-gender.keras'
@@ -141,8 +143,5 @@ print("acc_score: ", round(acc_score, 2))
 print("걸린시간: ", round(end_time - start_time, 2))
 
 
-# acc_score:  0.7
-# 걸린시간:  46.57
-
-# acc_score:  0.73
-# 걸린시간:  108.42
+# acc_score:  0.88
+# 걸린시간:  547.12

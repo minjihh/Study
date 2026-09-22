@@ -16,16 +16,16 @@ from sklearn.model_selection import train_test_split
 #1. 데이터
 
 
-data_path = 'c:/Users/Admin/Desktop/Study_data/image/horse-or-human/'
+data_path = 'c:/Users/Admin/Desktop/Study_data/_data/image/horse-or-human/'
 
 datagen = ImageDataGenerator(
     rescale = 1/255.
 )
 
 xy = datagen.flow_from_directory(data_path,
-                                 target_size = (200, 200),
+                                 target_size = (150, 150),
                                  batch_size = 1000,
-                                 class_mode = 'binary',
+                                 class_mode = 'categorical',
                                  color_mode = 'rgb',
                                  shuffle = True,
 )
@@ -39,7 +39,7 @@ print(x.shape, y.shape)  # (100, 200, 200, 3) (100,)
 
 print(np.unique(y, return_counts = True))
 
-np_path = './_data/horse_human_npy/'
+np_path = 'c:/Users/Admin/Desktop/Study_data/_data/horse_human_npy/'
 np.save(np_path + 'keras46_horse_x.npy', arr=x)
 np.save(np_path + 'keras46_horse_y.npy', arr=y)
 
@@ -52,17 +52,20 @@ x_train, x_test, y_train, y_test = train_test_split(x, y,
 
 print(x_train.shape, y_train.shape)  #  (70, 200, 200, 3) (70,)
 print(x_train[0])
+print(y_train.shape) # (700,)
+
 
 #2. 모델구성
 
 model = Sequential()
-model.add(Conv2D(32,(3,3), input_shape = (200,200,3), activation = 'relu', padding = 'same'))
+model.add(Conv2D(32,(3,3), input_shape = (150,150,3), activation = 'relu', padding = 'same'))
 model.add(Conv2D(64,(3,3), activation = 'relu', padding = 'same'))
 model.add(Conv2D(128,(3,3), activation = 'relu', padding = 'same'))
 
 
-model.add(Dense(64, activation = 'relu'))
+
 model.add(Flatten())
+model.add(Dense(64, activation = 'relu'))
 model.add(Dense(2, activation = 'softmax'))
 
 model.summary()
