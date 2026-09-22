@@ -50,7 +50,7 @@ print(aaa.shape)  # (100, 28, 28, 1)
 # exit()
 
 
-## reshape(28*28) 이유?
+## reshape(28*28) 이유? 안하면 imshow할때 그림이 이상하게 뜸
 xy_data = datagen.flow(
         np.tile(x_train[0].reshape(28*28), augment_size).reshape(-1,28,28,1),  # x_train[0].reshape(28*28) -> flatten과 비슷한 느낌 이미지한장한장을 1차원데이터 형태로
         np.zeros(augment_size),
