@@ -1,5 +1,5 @@
 # 50-1 카피
-# np.t
+# np.tile
 
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array

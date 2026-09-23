@@ -1,4 +1,5 @@
 # 50-2 카피
+# randidx 생성해서 x_train의 랜덤한 인덱스값으로 랜덤한 train 데이터에 augment적용
 
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -111,7 +112,7 @@ x_test = datagen_origin.flow(
 print(x_train.shape)    # (60000, 28, 28, 1)
 print(y_train.shape)    # (60000,)
 
-exit()
+# exit()
 
 print(x_test.shape)    # (10000, 28, 28, 1)
 
