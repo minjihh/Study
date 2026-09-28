@@ -1,5 +1,6 @@
 # 48 카피
-# ㅁ넘파이 형태일때 3차원데이터 4차원으로 변환하기
+# 넘파이 형태일때 3차원데이터 4차원으로 변환하기
+# 라벨링: 알파벳순
 
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array

@@ -24,7 +24,7 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x,y, epochs=100, batch_size=2)    # 데이터 6개일때 batch_size 4로 설정하면 4개/2개 순서로 훈련됨, tensorflow default batch size: 32
+model.fit(x,y, epochs=100, batch_size=2)    # 데이터 6개일때 batch_size 4로 설정하면 4개/2개 순서로 훈련됨(행방향으로 짜름), tensorflow default batch size: 32
  
 #4. 평가, 예측
 loss = model.evaluate(x, y)

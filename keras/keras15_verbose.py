@@ -1,5 +1,6 @@
 # 9-1 카피
 # model.fit에서 verbose 파라미터 설정하는 법
+# verbose를 설정하는 것 자체도 delay
 
 import numpy as np
 from tensorflow.keras.models import Sequential

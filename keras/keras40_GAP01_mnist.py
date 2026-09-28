@@ -1,5 +1,7 @@
-# GAP: flatten 자리에 사용. 성능도 좋아지고 속도도 빨라짐# 파라미터 개수 계산하기: (필터개수 x (kenel_size(가로 x 세로) X input channel + 바이어스(커널당 하나)))
+# GAP: flatten 자리에 사용. 성능도 좋아지고 속도도 빨라짐
+# 파라미터 개수 계산하기: (필터개수 x (kenel_size(가로 x 세로) X input channel + 바이어스(커널당 하나)))
 # convolution 적용시 입력채널이 여러개일 경우 채널마다 가중치가 달라지게 됨
+# GAP 이후에 dense 한두번 해줘야 성능 좋음
 
 import numpy as np
 import pandas as pd

@@ -1,5 +1,5 @@
 # 23-1 카피
-# 모델구성 단계에서 input_dim말고 input_shape 사용
+# 다차원 데이터의 경우 모델구성 단계에서 input_dim말고 input_shape 사용
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris

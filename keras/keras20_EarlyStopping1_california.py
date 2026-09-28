@@ -37,7 +37,7 @@ es = EarlyStopping(
     monitor='val_loss',
     mode = ' min',    # 사용하는 metric따라 다르게. accuracy라면 max가 좋음
     patience = 10,
-    restore_best_weights=True,   # restore_best_weights 의 default 값은 False, 원칙은 True나 실제로 돌려보면 False일때 잘나오는 경우도 있음
+    restore_best_weights=True,   # restore_best_weights 의 default 값은 False, 원칙은 True나 실제로 돌려보면 False일때 잘나오는 경우도 있음 (validation으로 판단하기 때문에 test data에서는 성능이 다를수도 있음)
 )
 
 start_time = time.time()

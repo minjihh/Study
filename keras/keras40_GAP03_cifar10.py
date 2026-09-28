@@ -1,6 +1,8 @@
 # 코드실행으로 데이터 다운로드가 안되어 CIFAR10을 수동으로 파일을 받아서 옮김
 # 'C:\Users\Admin\.keras\datasets'  경로에 파일 붙여넣기
 # y데이터가 매트릭스 형태라서 pd.get_dummies() 적용하기 위해서 행렬 형태로 reshape
+# y_train = y_train.reshape(-1,)
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Conv2D, Flatten, MaxPooling2D, GlobalAveragePooling2D
 from tensorflow.keras.datasets import cifar10

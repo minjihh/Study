@@ -2,6 +2,7 @@
 # 여자 데이터 증폭해서 성능 올려봐!!
 # np.where 이용해서 여자 데이터만 분류
 # concat후에 indice 섞어서 shuffle
+# indices = np.random.permutation(len(x_train))
 
 # https://www.kaggle.com/datasets/maciejgronczynski/biggest-genderface-recognition-dataset/data
 
@@ -91,6 +92,7 @@ xy_w_augmented = datagen.flow(
                 batch_size = augment_size,
                 shuffle = False,
 ).next()[0]  
+# datagen.flow에 사용된 x_train_w_augmented, y_train_w_augmented는 dataget 적용된 상태로 x_train_w_augmented, y_train_w_augmented로 불러와도 문제 없음
 
 
 # concat후 셔플 필요

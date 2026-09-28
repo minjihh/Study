@@ -1,6 +1,6 @@
 # padding 적용
 # kernel이 convolution할때 중첩이 없는 세팅은 권하지 않음
-# shape 유지하고 싶을때 -> 패딩
+# shape 유지 목적 -> 패딩
 # stride 크게줘서 사이즈 확 줄일 수 있음
 
 import numpy as np
