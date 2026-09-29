@@ -2,6 +2,7 @@
 # LSTM은 RNN의 연산량의 4배 -> 느리다.
 # 장기기억력은 LSTM이 RNN보다 좋다. 
 # RNN 3차원 인풋
+# x값 모델에 들어가기전에 reshape 주의
 
 import numpy as np
 from tensorflow.keras.models import Sequential

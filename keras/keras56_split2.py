@@ -56,6 +56,9 @@ def split_x(data, size):
 
 bbb = split_x(a, size)
 
+print(bbb.shape)  # (6, 4, 2)
+
+# exit()
 
 x = bbb[:,:-1,:]   # x = [:, :-1] 
 y = bbb[:,-1,1]    # y = [:,-1,-1]

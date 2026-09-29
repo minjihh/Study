@@ -34,7 +34,7 @@ print(x)
 #2. 모델구성
 model = Sequential()
 # model.add(SimpleRNN(units = 10, input_shape = (3, 1)))
-model.add(SimpleRNN(10, input_shape = (3, 1)))  # activation tanh 적용됨
+model.add(SimpleRNN(3, input_shape = (3, 1)))  # activation tanh 적용됨
 # 3차원으로 들어가서 2(1)차원으로 나옴 -> 바로 Dense와 연결가능
 model.add(Dense(10, activation = 'relu'))  # 중간에 activation sigmoid 써도 문제없음. 성능이 좋다면 쓰면 됨
 model.add(Dense(20, activation = 'relu'))
@@ -44,6 +44,9 @@ model.add(Dense(10, activation = 'relu'))
 
 
 model.add(Dense(1))
+
+model.summary()
+exit()
 
 #3. 컴파일, 훈련
 model.compile(loss= 'mse', optimizer = 'adam')

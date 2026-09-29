@@ -1,6 +1,7 @@
 # 30-1 카피
 # drop out : 모델쪽에서 과적합 방지할 수 있는 방법
 # 추론시에는 dropout 적용하면 안됨
+# x값 reshape 주의: # (14447, 8) (3097, 8) -> # (14447, 4, 2, 1) (3097, 4, 2, 1)
 
 # ##데이터셋
 # 01 california 
@@ -68,7 +69,7 @@ print(np.min(x_train), np.max(x_train)) # 0.0 1.0
 print(np.min(x_test), np.max(x_test)) # 0.0 1.0
 
 
-print(x_train.shape, x_test.shape)
+print(x_train.shape, x_test.shape)  # (14447, 8) (3097, 8)
 
 x_train = x_train.reshape(-1,4,2,1)
 x_test = x_test.reshape(-1,4,2,1)

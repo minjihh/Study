@@ -39,6 +39,7 @@ model.add(SimpleRNN(10, input_shape = (3, 1)))   # input_shape = (timesteps, inp
 # 3차원으로 들어가서 2(1)차원으로 나옴 -> 바로 Dense와 연결가능
 # 파라미터 개수: units*features + units*bias + units*units
 # timestpe이 3 -> hidden state도 3까지 존재
+# RNN은 activation tahh가 unit * unit 만큼 존재함 (hidden쪽)
 model.add(Dense(7, activation = 'relu'))
 model.add(Dense(1))
 
