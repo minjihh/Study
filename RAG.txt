@@ -1,0 +1,21 @@
+#RAG란 무엇인가
+
+Retrieval 검색 - vector DB에서 작업
+Augmented 보강 (질문에 자료를 붙여)
+Generation 생성 (근거기반 답변을 만듬)
+
+
+# 선생님 키
+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
+
+
+# 설정한 가상환경이 안뜰때
+ctrl + shift + p 
+reload
+developer reload window  클릭하면 vs code 재실행됨
+
+# 
+window -> 시스템 환경변수 편집
+사용자변수 -> 새로만들기 -> 변수이름: "OPENAI_API_KEY" -> 변수값: 키입력 -> 확인
+
+

@@ -1,0 +1,5 @@
+# 윈도우 3600초 이후에 종료
+shutdown -s -t 3600
+
+# 취소하기
+shutdown -a

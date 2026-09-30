@@ -1,3 +1,5 @@
+# 58-1 카피
+
 # https://www.kaggle.com/datasets/stytch16/jena-climate-2009-2016
 
 # import os 
@@ -10,7 +12,7 @@
 import pandas as pd
 import numpy as np
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import SimpleRNN, Dense
+from tensorflow.keras.layers import SimpleRNN, Dense, Bidirectional
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
@@ -145,7 +147,7 @@ print(x_predict.shape)  # (1, 144, 13)
 #2. 모델구성
 
 model= Sequential()
-model.add(SimpleRNN(64, input_shape = (144,13)))
+model.add(Bidirectional(SimpleRNN(64), input_shape = (144,13)))
 model.add(Dense(30, activation = 'relu'))
 model.add(Dense(20, activation = 'relu'))
 model.add(Dense(144))
@@ -161,7 +163,7 @@ date = datetime.datetime.now()
 date = date.strftime("%m%d_%H%M")
 
 pt_path = './_save/keras58/'
-filename = '{epoch:04d}-{val_loss:.4f}_jena.keras'
+filename = '{epoch:04d}-{val_loss:.4f}_jena(Bidirectional).keras'
 filepath = "".join([pt_path, "k58_", date, "-", filename])
 
 
@@ -199,7 +201,7 @@ model.fit(x_train, y_train,
         #   validation_split=0.2,  # shuffle 없이 뒤에서 부터 해당 비율을 잘라 validation으로 이용, validation_data와 validation_split 동시에 있을경우 validation_data가 override
           validation_data = (x_test, y_test),
           verbose =1,
-        callbacks = [es, rlr, mcp])
+        callbacks = [es, rlr,mcp])
 end_time = time.time()
 
 #4. 평가 예측
@@ -228,3 +230,7 @@ print("RMSE :", rmse)
 # 50 epochs patience 10
 # loss:  12.25
 # RMSE : 3.499566659838593
+
+# Bidirectional
+# loss:  13.02
+# RMSE : 3.607879864624766
