@@ -67,12 +67,15 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 """
 ####################### 원핫1. to_categorical #######################
 # to_categorical 방식은 변경할때 0부터 시작함 -> 0클래스가 없는경우 값이 틀어짐
+# 나중에 argmax할때 +1하는 작업을 해줘야함
+# 데이터가 [0,1,4]라면 3에 대한 값이 없더라도 0~4에 각각에 해당하는 열이 생성됨. (OneHotEncoder와 차이점)
+# 텍스트, 토큰, 시퀀스, 이미지 라벨에서 주로 사용
 # from tensorflow.keras.utils import to_categorical
 # y = to_categorical(y)
 # print(y)
 # print(y.shape)   # (150, 3)
 
-####################### 원핫2. padas #######################
+####################### 원핫2. pandas #######################
 
 # y = pd.get_dummies(y)  # default dtype: bool
 # y = pd.get_dummies(y, dtype=int) # dtype 없어도 실행에 문제 없으나 혹시나 문제 없을 경우에는 int타입으로 변경
@@ -84,34 +87,19 @@ softmax사용해서 [1,1,0]과 같은 데이터 나오지 않도록 처리
 # sklearn의 Onehotencoder 사용할때는 reshape에 유의
 # reshape 후에 ohe.fit_transform 적용
 # reshape 조건 1) 내용이 그대로 2) 순서가 그대로
+# one hot encoder는 fit할때 참조한 데이터의 클래스 개수만큼 열개수 생성
+# 테이블데이터에서 주로 사용
+
 from sklearn.preprocessing import OneHotEncoder
 # ohe = OneHotEncoder()  # 혼돈행렬 형태로 나온다.
 ohe = OneHotEncoder(sparse_output=False)  # 혼동행렬 형태로 나오지 않도록 False 설정
 print(y)
-# [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-#  0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-#  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
-#  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-#  2 2]
+
 print("reshape전", y.shape)  # reshape전 (150,)
 y = y.reshape(len(y), 1)  # 아래 코드와 동일
 # y = y.reshape(-1,1)   # = y.reshape(150,1)
 print(y)
-# [[0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  [0]
-#  ...]
+
  
 print("reshape후", y.shape)  # reshape후 (150, 1)
 y = ohe.fit_transform(y)

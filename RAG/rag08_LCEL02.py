@@ -1,4 +1,6 @@
 # rag08_01 카피
+# 좀더 긴 prompt {how} 추가
+
 # LCEL = Langchain Expression Language
 # chain = prompt | model | output_parser
 

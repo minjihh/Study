@@ -26,7 +26,7 @@ model = ChatOpenAI(
 from langchain_core.output_parsers import StrOutputParser
 output_parser = StrOutputParser()
 
-# output_parser를 포함하면 content가 없어진다.
+# output_parser를 포함하면 response.content.content를 사용하지 않아도 답변내용만 볼 수 있다.
 chain = prompt | model | output_parser
 
 input = {"topic" : "양자컴퓨터 학습 원리"}

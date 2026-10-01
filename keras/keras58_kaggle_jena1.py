@@ -78,7 +78,7 @@ def xy_split(x, y, size):
     y_split = []
     for i in range(len(x_data) - size + 1):
         x_subset = x[i:i+size]
-        y_subset = y[i]
+        y_subset = y[i + i + size]
         x_split.append(x_subset)
         y_split.append(y_subset)
     return np.array(x_split), np.array(y_split)
@@ -199,7 +199,7 @@ model.fit(x_train, y_train,
         #   validation_split=0.2,  # shuffle 없이 뒤에서 부터 해당 비율을 잘라 validation으로 이용, validation_data와 validation_split 동시에 있을경우 validation_data가 override
           validation_data = (x_test, y_test),
           verbose =1,
-        callbacks = [es, rlr, mcp])
+        callbacks = [es, rlr])
 end_time = time.time()
 
 #4. 평가 예측

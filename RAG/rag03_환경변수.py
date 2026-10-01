@@ -2,7 +2,7 @@
 
 from langchain_openai import ChatOpenAI
 import os
-# 내컴퓨터의 환경변수에 api key를 넣음 (일회성으로 한번실행하고 주석처리하면 실행안됨)
+# 내컴퓨터 윈도우의 환경변수에 api key를 넣음 (일회성으로 한번실행하고 주석처리하면 실행안됨)
 # os.environ["OPENAI_API_KEY"] = ""키입력"
 
 
