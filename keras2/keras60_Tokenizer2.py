@@ -1,4 +1,7 @@
 # text가 2개일때
+# x = token.texts_to_sequences([text1, text2]) 적용후
+# np.concatenate(x) 적용
+
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 import numpy as np

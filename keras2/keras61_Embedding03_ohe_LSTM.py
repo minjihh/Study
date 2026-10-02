@@ -1,4 +1,7 @@
 # ohe 적용 #
+# 이 파일에서 사용하는 데이터는 개수가 많지 않아 ohe를 적용해도 큰 문제없음
+# 하지만 데이터가 많을때 ohe를 하면 0이 지나치게 많아지는 문제가 생김 -> Embedding으로 해결
+# -> x 쪽에서 ohe 하는건 큰 문제가 될 수 있음
 
 import numpy as np
 from tensorflow.keras.preprocessing.text import Tokenizer

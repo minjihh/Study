@@ -78,7 +78,7 @@ def xy_split(x, y, size):
     y_split = []
     for i in range(len(x_data) - size + 1):
         x_subset = x[i:i+size]
-        y_subset = y[i + i + size]
+        y_subset = y[i:i + size]
         x_split.append(x_subset)
         y_split.append(y_subset)
     return np.array(x_split), np.array(y_split)
@@ -211,7 +211,7 @@ print("걸린시간: ", round(end_time - start_time, 2))
 
 print("x_predict의 예측값: ", y_pred)
 loss = model.evaluate(x_predict, y_cor)
-print("loss: ", round(loss,2))
+print("loss: ", round(loss, 2))
 
 
 def RMSE(y_test, y_predict):

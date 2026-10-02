@@ -1,5 +1,6 @@
 # 61-3 카피
 # ohe 적용 #
+# Embedding: vector화 -> 이후 cosine 유사도와 같은 방법을 이용해서 유사도 측정
 
 import numpy as np
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -51,14 +52,17 @@ padded_x = pad_sequences(x,
 print(padded_x)
 print(padded_x.shape)  # (15, 5)
 
+exit()
 
 #2. 모델
 from tensorflow.keras.layers import Dense, Embedding, SimpleRNN
 
 model = Sequential() 
 ########### 임베딩1 #############
-# model.add(Embedding(input_dim=30, output_dim=100, input_length=5))
-# # input_dim: 단어사전의 갯수, output_dim: 차원, input_length: Length of input sequences
+# model.add(Embeding(input_dim=30, output_dim=100, input_length=5))
+# # input_dim: 단어d사전의 갯수, output_dim: 차원, input_length: Length of input sequences
+# input_length 값에 행무시 "열우선" 적용
+# Enbedding layer이후 시계열 게열 모델에 들어가기 때문에 3차원 형태로 출력
 # model.add(SimpleRNN(10))
 # model.add(Dense(1))
 
@@ -81,9 +85,9 @@ _________________________________________________________________
 
 
 ########### 임베딩3 #############
-# model.add(Embedding(30, 100,))  # 임베딩레이어에서는 앞에나오는 숫자가 인풋레이어 (다른 레이어에서는 앞에나오는 숫자가 아웃풋 숫자였음)
-# model.add(Embedding(30, 100, 5))  # input_dim, output_dim, input_length 안된다!
-# model.add(Embedding(30, 100, input_length=5))  # input_dim, output_dim, 안된다!!!
+model.add(Embedding(30, 100,))  # 임베딩레이어에서는 앞에나오는 숫자가 인풋레이어 (다른 레이어에서는 앞에나오는 숫자가 아웃풋 숫자였음)
+# model.add(Embedding(30, 100, 5))  # input_dim, output_dim, input_length 안된다! (input_length부분은 자동으로 잡아주므로 차라리 적지 않는게 나음)
+# model.add(Embedding(30, 100, input_length=5))  # 된다!!!
 
 model.add(SimpleRNN(10))
 model.add(Dense(1))
@@ -91,6 +95,10 @@ model.add(Dense(1))
 
 model.summary()
 
+#3. 컴파일 훈련
+
+model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics =['acc'])
+model.fit(padded_x, labels, epochs =3 )
 
 
 

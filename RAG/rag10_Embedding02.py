@@ -1,4 +1,6 @@
 # rag10_01 카피
+# "text-embedding-3-large" 모델 적용해보고
+# OpenAIEmbedding의 dimentions 기능 이용해서 임베딩 벡터 dimension 조절
 
 # LCEL = Langchain Expression Language
 # chain = prompt | model | output_parser

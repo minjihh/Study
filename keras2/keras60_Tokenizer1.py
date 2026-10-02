@@ -44,7 +44,7 @@ import numpy as np
 # x= np.array(x)
 # print(x.shape)  # (1,13)
 
-# x = x.reshape(-1,1)
+# x = x.reshape(-1,1)  # sklearn의 OneHotEncoder는 reshape 필요
 # print(x.shape)
 # print(x)
 
