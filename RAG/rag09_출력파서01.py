@@ -10,9 +10,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 api_key = os.environ["MONOROUTER_API_KEY"].strip()
 base_url = "https://monogpt.kr/api/monorouter/v1"
+
+
+
 
 prompt = PromptTemplate.from_template("{topic}에 대해 쉽게 설명해주세요.")
 

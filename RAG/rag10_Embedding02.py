@@ -32,7 +32,7 @@ embeddings = OpenAIEmbeddings(
 vector = embeddings.embed_query(prompt)
 print(vector)
 print("================================")
-print("임베딩 벡터의 차원 :", len(vector))  
+print("임베딩 벡터의 차원 :", len(vector))  # 1536
  
 
 

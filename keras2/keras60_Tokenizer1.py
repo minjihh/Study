@@ -1,3 +1,5 @@
+# tensorflow tokenizer로 어절 단위로 자르는 이코드방식은 실무에서는 쓰이는 방식은 아님
+
 from tensorflow.keras.preprocessing.text import Tokenizer
 
 text = '나는 지금 진짜 진짜 매우 매우 맛있는 김밥을 엄청 마구 마구 마구 먹었다.'

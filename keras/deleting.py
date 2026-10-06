@@ -1,18 +1,108 @@
-from tensorflow.keras.layers import Reshape
-#2. 모델구성
+import os
+from langchain_community.document_loaders import TextLoader
+from langchain_openai.embeddings import OpenAIEmbeddnigs
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
 
-model = Sequential()
-model.add(Dense(280, input_shape=(28,28)))  # ( N, 28, 28) -> (N, 28, 280)
-model.add(Reshape(target_shape = (28, 28, 10)))  # reshape -> 순서, 값이 바뀌면 안됨
+api_key = os.environ["MONOROUTER_API_KEY"].strip()
+base_url = ''
 
-model.add(Conv2D(64, (3,3), input_shape=(28, 28, 10)))  # (26,26,64) # conv2D에 넣기위한 4차원 데이터로 mnist 데이터의 shape 변환필요 # 첫번재 층에서는 linear
-model.add(Conv2D(filters=32, kernel_size=(3,3), activation = 'relu', padding = 'same')) # (24,24,32)
+textPath = ".."
 
-# model.add(Flatten())
-model.add(GlobalAveragePooling2D())
-model.add(Dense(units=32, activation = 'relu'))  # units
-model.add(Dropout(0.2))
-model.add(Dense(units=16, input_shape = (32,), activation = 'relu'))
-model.add(Dense(10, activation='softmax'))  # (10,)
 
-model.summary()
+loader1 = TextLoader(file_path = textPath + "samsung.txt", encoding = 'utf-8')
+loader2 = TextLoader(file_path = textPath + "nvidia.txt", encoding = 'utf-8')
+
+
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size = 300,
+    chunk_overlap = 100,
+    separator = ["\n\n", "\n", " ", ""]
+)
+
+
+
+split_doc1 = loader1.load_and_split(text_splitter = text_splitter)
+split_doc2 = loader2.load_and_split(text_splitter = text_splitter)
+
+from langchain_openai import OpenAIEmbeddings
+embeddings = OpenAIEmbeddings(
+    model = "text-embedding=3-small",
+    api_key = api_key,
+    base_url = base_url,
+)
+
+
+DB_PATH = './_db/Chroma11/'
+
+
+db = Chroma.from_documents(
+    documents = split_doc1 + split_doc2,
+    embedding = embeddings,
+    persist_directory = DB_PATH,
+    collection_name = 'chroma11',
+)
+
+
+print()
+
+api_key = os.environ["MONOROUTER_API_KEY"].strip()
+base_url = "httpes"
+
+textPath = "" 
+loader1 = TextLoader(file_path = textPath + "samsung.txt", encoding = 'utf-8')
+loader2 = TextLoader(file_path = textPath + "nv.txt", encoding = 'utf-8')
+
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size = 300,
+    chunk_overlap = 100,
+    saparator = ["\n\n", "\n", " ", ""]
+)
+
+
+split_doc1 = loader1.load_and_split(text_splitter = text_splitter)
+split_doc2 = loader2.load_and_split(text_splitter = text_splitter)
+
+import os 
+from langchain_community.document_loader import TextLoader
+from langchain_openai.embeddings import OpenAIEmbeddings
+from langchain_text_splitter import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+
+
+api_key = os.environ["MONOROUTER_API_KEY"].strip()
+base_url = ""
+
+
+textPath = ''
+loader1 = TextLoader(file_path = textPath + 'samsung.txt', encoding = 'utf-8')
+loader2 = TextLoader(file_path = textPath + 's.txt', encoding = 'utf-8')
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size = 300,
+    chunk_overlap=100,
+    saparator = ["\n\n", "\n", " ", ""]
+)
+
+
+split_doc1 = loader1.load_and_split(text_splitter = text_splitter)
+split_doc2 = loader1.load_and_split(text_splitter = text_splitter)
+
+
+from langchain_openai import OpenAIEmbeddings
+embeddings = OpenAIEmbeddings(
+    model = 'text-embedding-3-small',
+    api_key = api_key,
+    base_url = base_url,
+)
+
+
+DB_PATH = ''
+
+db = Chroma(
+embedding_function = embeddings, 
+persist_directory = DB_PATH,
+collectoin_name = 'chroma11',
+)
