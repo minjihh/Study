@@ -59,8 +59,8 @@ from tensorflow.keras.layers import Dense, Embedding, SimpleRNN
 
 model = Sequential() 
 ########### 임베딩1 #############
-# model.add(Embeding(input_dim=30, output_dim=100, input_length=5))
-# # input_dim: 단어d사전의 갯수, output_dim: 차원, input_length: Length of input sequences
+# model.add(Embedding(input_dim=30, output_dim=100, input_length=5))
+# # input_dim: 단어사전의 갯수, output_dim: 차원, input_length: Length of input sequences
 # input_length 값에 행무시 "열우선" 적용
 # Enbedding layer이후 시계열 게열 모델에 들어가기 때문에 3차원 형태로 출력
 # model.add(SimpleRNN(10))
