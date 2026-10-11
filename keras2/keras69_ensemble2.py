@@ -1,4 +1,5 @@
 # 케라스 69-1 카피
+# 69-1에서는 x1, x2만 있었고 동일한 코드에서 x3를 추가하여 수정
 # train_test_split 여러개 만들지 않고 여러개의 x의 그룹과 y그룹을 하나의 train_test_split으로 나눌 수 있다. 
 
 import numpy as np

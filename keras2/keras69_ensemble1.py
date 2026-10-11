@@ -1,3 +1,7 @@
+# x1은 2-1모델의 인풋으로 x2는 2-2모델의 인풋으로 들어간뒤 각각의 출력값을 2-3에서 concat한뒤에 dense 통과하여 y값을 뽑아냄 
+# -> 2개의 모델을 이용한 ensemble
+# train_test_split하는 부분 -> x1과 x2를 train_test_split 한번에 쪼개기 가능
+
 import numpy as np
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential, Model
@@ -16,17 +20,11 @@ x2_datasets = np.array([range(101, 201), range(411, 511),  # (100, 3)
 y = np.array(range(3001, 3101))
                 # 화성의 화씨 온도
 
+
 # train_test_split   
-
-
-x1_train, x1_val, y1_train, y1_val = train_test_split(x1_datasets, y,
-                                                      train_size=0.7,
-                                                      random_state = 1)
-
-x2_train, x2_val, y2_train, y2_val = train_test_split(x2_datasets, y,
-                                                      train_size=0.7,
-                                                      random_state = 1)
-
+x1_train, x1_val, x2_train, x2_val y_train, y_val= train_test_split(x1_datasets, x2_datasets, y,
+                                train_size=0.7,
+                                random_state = 1)
 
 
 #2-1. 모델 (함수형)
@@ -62,7 +60,7 @@ model.summary()
 
 #3. 컴파일, 훈련
 model.compile(loss = 'mse', optimizer='adam')
-model.fit([x1_train, x2_train], y1_train,
+model.fit([x1_train, x2_train], y_train,
           epochs =100,
           batch_size =8)
 
@@ -75,7 +73,7 @@ x2_pred = np.array([range(200,206), range(510,516),
 y_pred = model.predict([x1_pred, x2_pred])
 print("y_pred: ", y_pred)
 
-result = model.evaluate([x1_val, x2_val], y1_val)
+result = model.evaluate([x1_val, x2_val], y_val)
 print('loss : ', result)
 
 

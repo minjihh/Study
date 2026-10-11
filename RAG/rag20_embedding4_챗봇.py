@@ -1,4 +1,7 @@
-# 두종류의 임베딩 모델을 활용해서 Chroma와 Faiss를 활용해서 총 4종류의 챗봇 만들어보기
+# 두종류의 임베딩 모델(bge-m3, qwen3)과 Chroma와 Faiss를 조합해서 총 4종류의 챗봇 만들어보기
+# 03임베딩 부분(44~72라인)이랑 vectorDB 구성하는 부분(75~111라인) 이부분 조합 바꿔가면서 
+
+
 # 챗봇까지 맹그러봐요
 # transformer 논문을 벡터디비로 불러와서
 # 요약, 인용 등등 할 수 있는 챗봇으로!!
@@ -22,7 +25,7 @@ api_key = os.environ["MONOROUTER_API_KEY"].strip()
 base_url = "https://monogpt.kr/api/monorouter/v1"
 
 
-#1. 데이터
+#01. 데이터
 from langchain_community.document_loaders import TextLoader, PyPDFLoader
 
 path = './_data/'
@@ -66,7 +69,7 @@ embeddings = HuggingFaceEmbeddings(
         # "local_file_only" : True,  # 처음실행할때 내려받게되고 그이후로는 True옵션 켜놓고 사용하면 됨
     }
 )
-
+###### 임베딩 끝 ###### 
 
 
 # ##### Choma 시작 ######

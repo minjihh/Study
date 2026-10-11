@@ -1,5 +1,17 @@
 # 케라스 69-2 카피
+# 69-2에서는 (x1, x2, x3), (y)를 데이터로 사용했고 동일한 코드에서 y2를 추가하여 수정 
+# 아래 두부분에서 y값 들어가는 부분 수정
+"""
+model = Model(inputs = [input1, input21, input31], outputs = [last_output1, last_output2]) # outputs 두개 값 나오도록 수정
+
+model.fit([x1_train, x2_train, x3_train], [y1_train, y2_train],     # 훈련데이터 y값 y1_train, y2_train 사용
+          epochs =100,
+          batch_size =8)
+"""
 # train_test_split 여러개 만들지 않고 여러개의 x의 그룹과 y그룹을 하나의 train_test_split으로 나눌 수 있다. 
+
+# 결과값 출력시 69-1. 69-2코드와 다른점: loss를 출력하면 3개값을 가진 리스트로 나온다. 
+# 첫 번째 값 (전체 Loss), 두 번째 값 (분기1 Loss), 세 번째 값 (분기2 Loss)
 
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -11,6 +23,7 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 #1. 데이터
 x1_datasets = np.array([range(100), range(301, 401)]).T    # (100, 2)
                        # 삼성 종가      하이닉스 종가  
+
 x2_datasets = np.array([range(101, 201), range(411, 511),  # (100, 3)
                         # 원유가               환율
                         range(150, 250)]).transpose()     
