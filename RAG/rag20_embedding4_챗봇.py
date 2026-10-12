@@ -66,7 +66,7 @@ embeddings = HuggingFaceEmbeddings(
     model_name = "Qwen/Qwen3-Embedding-0.6B",  # 크기 조절해서 성능도 조절할 수 있음
     model_kwargs = {
         "device" : "cpu",    # gpu 쓰고 싶으면 "cuda"
-        # "local_file_only" : True,  # 처음실행할때 내려받게되고 그이후로는 True옵션 켜놓고 사용하면 됨
+        # "local_files_only" : True,  # 처음실행할때 내려받게되고 그이후로는 True옵션 켜놓고 사용하면 됨
     }
 )
 ###### 임베딩 끝 ###### 

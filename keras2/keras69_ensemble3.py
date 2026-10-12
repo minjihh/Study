@@ -85,8 +85,8 @@ merge3 = Dense(5, name = 'mg3')(merge2)
 
 # 2-5 분기1.
 last_dense1 = Dense(10, name = 'ld1')(merge3)
-last_dense2 = Dense(10, name = 'ld2')(last_dense1)
-last_output1 = Dense(1, name = 'last1')(merge3)
+# last_dense2 = Dense(10, name = 'ld2')(last_dense1)  # ?
+last_output1 = Dense(1, name = 'last1')(last_dense1)
 
 # 2-6 분기2.
 last_output2 = Dense(1, name = 'last2')(merge3)

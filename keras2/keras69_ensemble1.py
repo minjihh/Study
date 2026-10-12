@@ -22,7 +22,7 @@ y = np.array(range(3001, 3101))
 
 
 # train_test_split   
-x1_train, x1_val, x2_train, x2_val y_train, y_val= train_test_split(x1_datasets, x2_datasets, y,
+x1_train, x1_val, x2_train, x2_val, y_train, y_val= train_test_split(x1_datasets, x2_datasets, y,
                                 train_size=0.7,
                                 random_state = 1)
 

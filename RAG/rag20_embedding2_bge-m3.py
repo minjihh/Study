@@ -35,7 +35,7 @@ embeddings = HuggingFaceEmbeddings(
     model_name = "BAAI/bge-m3",
     model_kwargs = {
         "device" : "cpu",    # gpu 쓰고 싶으면 "cuda"
-        # "local_file_only" : True,
+        "local_files_only" : True,
     }
 )
 
