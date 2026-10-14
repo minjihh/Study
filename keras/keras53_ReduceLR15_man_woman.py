@@ -19,7 +19,7 @@ from sklearn.model_selection import train_test_split  # 이진분류를 softmax�
 #1. 데이터
 
 
-data_path = 'c:/Users/Admin/Desktop/Study_data/_data/image/faces/'
+data_path = './_data/image/faces/'
 
 datagen = ImageDataGenerator(
     rescale = 1/255.
@@ -40,7 +40,7 @@ datagen = ImageDataGenerator(
 
 # print(np.unique(y, return_counts = True))  # (array([0., 1.], dtype=float32), array([6473, 3527], dtype=int64))
 
-np_path = 'c:/Users/Admin/Desktop/Study_data/_data/gender_npy/'
+np_path = './_data/gender_npy/'
 
 
 x = np.load(np_path + 'keras46_gender_x.npy')
@@ -122,7 +122,7 @@ y_train = y_train[indices]
 # print(np.unique(y, return_counts = True))
 # exit()
 
-np_path = 'c:/Users/Admin/Desktop/Study_data/_data/keras51_faces_npy/'
+np_path = './_data/keras51_faces_npy/'
 
 # np.save(np_path + 'keras51_faces_x_train.npy', arr=x_train)
 # np.save(np_path + 'keras51_faces_y_train.npy', arr=y_train)
@@ -183,7 +183,7 @@ model.compile(loss = 'binary_crossentropy',
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 import datetime
 
-path_pt = 'c:/Users/Admin/Desktop/Study_data/_save/keras52/'
+path_pt = './_save/keras52/'
 date = datetime.datetime.now()
 date = date.strftime("%m%d_%H%M")
 filename = '{epoch:04d}-{val_loss:.4f}-gender.keras'

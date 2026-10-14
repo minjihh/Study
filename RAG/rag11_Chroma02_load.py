@@ -57,7 +57,7 @@ print("=====================================")
 print(db.get())
 
 print("=====================================")
-aaa = db.similarity_search("삼성전자 사업전망에 대해 알려줘", k=2)  # 디폴트 4
+aaa = db.similarity_search("삼", k=10)  # 디폴트 4
 # k값에 따라 document 수가 결정됨 (가장 가까운 chunk k개를 가져옴)
 
 print(aaa)

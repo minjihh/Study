@@ -1,3 +1,17 @@
+"""
+전이학습
+Transfer Learning
+
+Feature Extraction
+- 사전 학습된 모델을 고정된 특징 추출기로 활용
+
+Pre_trained Model
+사전 학습 모델
+
+사전학습 모델 기반의 파인튜닝(Fine_tuning)
+"""
+
+
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense

@@ -209,7 +209,7 @@ import gradio as gr
 def answer_invoke(message, history):  # history는 과가 message 내역
     chat_history = []
 
-    for item in history[-10:]:   # history에서 최근 10개의 메시지만 전달ㄹ
+    for item in history[-10:]:   # history에서 최근 10개의 메시지만 전달
         content = item["content"]
 
         if item["role"] == "user":
