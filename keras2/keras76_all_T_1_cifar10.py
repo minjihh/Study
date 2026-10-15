@@ -72,23 +72,23 @@ for model_i in model_list:
     rlr = ReduceLROnPlateau(
             monitor = 'val_loss',
             mode = 'auto',
-            patience = 20,
+            patience = 1,
             verbose = 1,
             factor = 0.5,  # lr을 50%로 줄이겠다.
     )
 
 
-    model.fit(x_train, y_train, epochs = 1000,
+    model.fit(x_train, y_train, epochs = 100,
               batch_size = 32,
-              verbose = 0,
+              verbose = 1,
               validation_split = 0.2,
               callbacks = [es, rlr]
               )
 
-#4. 평가 예측
-loss = model.evaluate(x_test, y_test, verbose = 0)
-print("=====================================")
-print("모델명 :", model_i.name, 'loss :', loss[0], 'acc: ', loss[1])
+    #4. 평가 예측
+    loss = model.evaluate(x_test, y_test, verbose = 0)
+    print("=====================================")
+    print("모델명 :", model_i.name, 'loss :', loss[0], 'acc: ', loss[1])
 
 
 

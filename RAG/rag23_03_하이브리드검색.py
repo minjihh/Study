@@ -1,0 +1,144 @@
+# rag 23-2 카피
+
+# 하이브리드 검색 (앙상블 검색)
+# pip install rank_bm25
+from langchain_core.documents import Document
+
+texts = [
+    Document(page_content="삼성전자는 반도체를 생산하는 기업이다."),
+    Document(page_content="삼성전자는 갤럭시 스마트폰을 판매한다."),
+    Document(page_content="SK하이닉스는 메모리 반도체를 생산한다."),
+    Document(page_content="엔비디아는 인공지능 연산용 GPU를 설계한다."),
+    Document(page_content="애플은 아이폰을 개발하는 기업이다."),
+    Document(page_content="테슬라는 전기자동차를 제조한다."),
+    Document(page_content="삼성전자는 AI 반도체 기술을 연구한다."),
+    Document(page_content="반도체는 컴퓨터의 핵심 부품이다."),
+]
+
+
+query = "삼성전자의 반도체 사업"
+
+################### BM25 검색 ################### 
+# BM25는 키워드 기반 검색. Best Match 25
+from langchain_community.retrievers import BM25Retriever
+
+bm25_retriever = BM25Retriever.from_documents(texts)
+bm25_retriever.k = 3
+
+# bm25_docs = bm25_retriever.invoke(query)  # 유사도쓰지 않고 단어 중복과 같은 부분 참고해서 출력
+
+# print("================== BM25 검색 결과 ===================")
+
+# for doc in bm25_docs:
+#     print(doc.page_content)
+
+######################################################################
+######################################################################
+########################### 벡터검색 #############################
+
+import os
+from langchain_community.document_loaders import TextLoader
+from langchain_openai.embeddings import OpenAIEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+
+# pip install faiss-cpu
+# faiss는 유클리드 거리기반 계산
+import faiss  
+from langchain_community.vectorstores import FAISS
+from langchain_community.docstore.in_memory import InMemoryDocstore
+
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.environ["MONOROUTER_API_KEY"].strip()
+base_url = "https://monogpt.kr/api/monorouter/v1"
+
+
+#01. 데이터
+from langchain_community.document_loaders import TextLoader, PyPDFLoader
+
+path = './_data/'
+pdf_loader = PyPDFLoader(path + "Attention is all you need.pdf")
+# pdf_docs = pdf_loader.load()
+
+text_splitter= RecursiveCharacterTextSplitter(
+    chunk_size = 300,
+    chunk_overlap=100,  # chunk_overlap은 chunk_size보다 작아야함
+    separators = ["\n\n", "\n", " ", ""]
+)
+
+pdf_split = pdf_loader.load_and_split(text_splitter = text_splitter)
+
+
+
+######  임베딩 모델2: Qwen/Qwen3-Embedding-0.6B   ######
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
+
+# pip install langchain_huggingface 
+# pip install sentence-transformers
+from langchain_openai import OpenAIEmbeddings
+embeddings = HuggingFaceEmbeddings(
+    model_name = "BAAI/bge-m3",
+    model_kwargs = {
+        "device" : "cpu",    # gpu 쓰고 싶으면 "cuda"
+        "local_files_only" : True,
+    }
+)
+###### 임베딩 끝 ###### 
+
+
+# ##### Choma 시작 ######
+
+DB_PATH = './_db/Chroma20'
+
+# vector_store = Chroma.from_documents(
+#     documents= texts,
+#     embedding = embeddings,
+#     persist_directory = DB_PATH,
+#     collection_name = 'chroma20_bge-m3',
+
+# )
+
+
+vector_store = Chroma(
+    embedding_fundction = embeddings,
+    persist_directory = DB_PATH,
+    collection_name = 'chroma20_bge-m3',
+)
+
+
+vector_retriever = vector_store.as_retriever(
+    search_kwardgs = {"k":3}
+)
+
+# vector_docs = vector_retriever.invoke(query)
+
+# print("=================== 벡터디비 검색 결과===================")
+# for doc in vector_docs:
+#     print(doc.page_content)
+
+
+######################################################################
+######################################################################
+########################### 벡터검색 #############################
+
+from langchain_classic.retrievers import EnsembleRetriever
+
+# hybrid retriever: 통상적으로 성격이 다른 retriever를 모았을때. 
+# ensemble은 hybrid를 포함하는 더 큰 개념
+
+hybrid_retriever = EnsembleRetriever(
+    retrievers = [
+        bm25_retriever, 
+        vector_retriever,
+    ],
+    weights = [0.5, 0.5] 
+)
+
+hybrid_docs = hybrid_retriever.invoke(query)
+
+print("================== 벡터디비 검색 결과 ===================")
+
+for doc in hybrid_docs:
+    print(doc.page_content)

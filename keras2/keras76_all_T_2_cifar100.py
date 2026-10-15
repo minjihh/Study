@@ -80,15 +80,15 @@ for model_i in model_list:
 
     model.fit(x_train, y_train, epochs = 1000,
               batch_size = 32,
-              verbose = 0,
+              verbose = 1,
               validation_split = 0.2,
               callbacks = [es, rlr]
               )
 
-#4. 평가 예측
-loss = model.evaluate(x_test, y_test, verbose = 0)
-print("=====================================")
-print("모델명 :", model_i.name, 'loss :', loss[0], 'acc: ', loss[1])
+    #4. 평가 예측
+    loss = model.evaluate(x_test, y_test, verbose = 0)
+    print("=====================================")
+    print("모델명 :", model_i.name, 'loss :', loss[0], 'acc: ', loss[1])
 
 
 
