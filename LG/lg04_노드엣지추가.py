@@ -86,3 +86,5 @@ for i,msg in enumerate(response['messages']):
 # [3] ai :답변 처리가 완료되었습니다.
 
 
+
+
