@@ -69,7 +69,7 @@ def analysis_agent(state: State):
     return {"analysis_result": response.content}
 
 
-def merge_agent(state: State):
+def merge_agent(state: State):  ## 단순 concat
     result = (
         state["search_result"]
         + "\n\n"
