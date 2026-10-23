@@ -1,0 +1,30 @@
+Windos powershell (리눅스환경)
+
+# powershell에서 wsl 설치
+wsl.exe --install
+wsl --install -d Ubuntu-24.04 --name hermes11
+-> 버전 설정안하면 Ubuntu로 설치
+
+# 설치된 버전 확인
+wsl -l -v
+
+# 설치할 수 있는 리눅스 버전확인
+wsl -l -o
+
+# 설치한거 실행
+wsl.ext -d hermes11
+
+# 홈으로
+cd ~ 
+
+#경로 오픈
+explorer.exe .
+
+# gateway start
+hermes gateway start
+
+# dashboard
+hermes gateway status
+
+# 모델변경
+hermes setup model
