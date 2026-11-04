@@ -1,0 +1,64 @@
+https://developer.furiosa.ai/latest/en/get_started/furiosa_llm.html
+
+# 윈도우 powershell
+ssh furiosa-npu
+
+## 가중치는 통산 FP 16비트 -> 모델명이 FP8일경우 이미 양자화가 되어있음
+## FP8일경우에 8B = 약 8G
+
+
+
+## Installing Furiosa-LLM
+pip install --upgrade pip setuptools wheel uv
+uv pip install --upgrade --torch-backend=auto furiosa-llm
+
+
+hf -- version
+
+pip install huggingface_hub
+
+hf auth login
+
+# llm 올리기 (furiosa root에서)
+furiosa-llm serve furiosa-ai/Qwen3-8B-FP8
+
+# cache 히스토리 확인
+hf cache ls
+
+### conda 안먹힐때
+source ~/.bashrc
+grep -q 'source ~/.bashrc' ~/.bash_profile 2>/dev/null || echo 'source ~/.bashrc' >> ~/.bash_profile
+
+# powershell 재실행
+ssh furiosa-npu
+
+apt-get update
+
+apt-get install --no-install-recommends gcc-aarch64-linux-gnu libc6-dev-arm64-cross
+
+fxb build Qwen/Qwen3-8B-FP8 qwen3-8b-fp8
+
+fxb build Qwen/Qwen3-8B-FP8 qwen3-8b-fp8 --dry-run
+
+fxb add ./qwen3-8b-fp8.fxb
+
+## furiosa가 fxb에 지정해놓은 모델을 위와같이 실행하면 npu에서 실행할 수 있다.
+
+
+# 파일 확인
+ls -a 
+
+# 서버 상태로 켜놓기
+furiosa-llm serve
+
+# status에서 device 번호 확인후 맞춰줘야함
+furiosa-llm serve furiosa-ai/Qwen3-8B-FP8 --devices npu:5 --host 0.0.0.0 --port 8000
+
+# 등록된 cache 확인
+fxb cache ls
+
+# cache 등록
+fxb add ./qwen3-8b-fp8.fxb
+
+# local 모델 실행
+furiosa-llm serve Qwen/Qwen3-8B-FP8 --fxb ./qwen3-8b-fp8.fxb

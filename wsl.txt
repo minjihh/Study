@@ -1,5 +1,8 @@
 Windos powershell (리눅스환경)
 
+# window에서 wsl 검색해서 들어가면 가장 대표인것으로 자동 연결 (powershell에서 "wsl -l -v" 입력했을때 * 표시된 환경)
+# powershell에서 연결해야됨
+
 # powershell에서 wsl 설치
 wsl.exe --install
 wsl --install -d Ubuntu-24.04 --name hermes11
@@ -13,6 +16,10 @@ wsl -l -o
 
 # 설치한거 실행
 wsl.ext -d hermes11
+wsl -d hermes11
+
+# 나가기
+exit
 
 # 홈으로
 cd ~ 
@@ -28,3 +35,17 @@ hermes gateway status
 
 # 모델변경
 hermes setup model
+
+# 리눅스 깔은 후 sudo update 실행
+sudo apt update
+
+# telegram bot 설정하기 
+hermes gateway setup
+telegram 선택 -> y -> 2-> telegram에서 "BotFather" 추가 -< [open]버튼 클릭 -> [create a new bot] 버튼 클릭
+-> 이름설정 ->[copy]버튼 클릭 -> powershell 창에서 우클릭하여 붙여넣기 -> telegram에서 "myidbot"검색 -> [start] 버튼 클릭
+-> 발급된 번호 복사해서 powershell에 붙여넣기 -> search에서 생성한 봇이름 검색해서 추가
+
+
+
+
+

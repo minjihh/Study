@@ -1,4 +1,5 @@
 ﻿.env
 _data/
 _save/
-_db/
+_db/hf_token.txt
+hf_token.txt
