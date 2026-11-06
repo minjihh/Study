@@ -1,0 +1,18 @@
+# p32 카피
+
+from p31_sample import test
+
+x = 222
+
+def main_func():
+    print('x :', x)
+main_func()
+
+test()
+
+
+############################################################
+
+print("================================")
+import p31_sample
+p31_sample.test()

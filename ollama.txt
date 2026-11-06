@@ -1,0 +1,131 @@
+### ollama 
+
+wsl --install -d Ubuntu-24.04 --name quant
+
+# wsl 설치후 항상 실행
+sudo apt update
+
+# 메모리 사용 확인
+free -h
+
+# filesystem이랑 용량 확인
+df -h ~
+
+ollama --version
+
+
+# 설치된 리스트 아래 둘중 하나로 확인
+ollama ps  # 실행중인 것만 나옴
+ollama list
+
+sudo apt update
+
+sudo apt install -y cmake build-essential python3-pip
+
+ls -a
+cd llama.cpp
+ls -a
+
+# build에 환경작업
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+# build하기
+cmake --build build --config Release -j 8
+
+
+./build/bin/llama-quantize --help
+
+
+
+# python3
+python3 convert_hf_to_gguf.py \
+  --outfile ../gemma4-e2b-bf16.gguf \
+  --outtype bf16 \
+  --remote google/gemma-4-E2B-it
+
+
+-> ModuleNotFoundError: No module named 'torch'
+-> torch를 깔아야함
+
+# venv: python에서 환경설정을 해줌
+sudo apt install -y python3-venv
+
+# .venv 가상환경 설정
+python3 -m venv ~/gemma4-quant/.venv
+
+source ~/gemma4-quant/.venv/bin/activate
+
+python -m pip install --upgrade pip
+
+# requirement 인스톨
+python -m pip install -r requirements/requirements-convert_hf_to_gguf.txt
+
+# torch 다운 된것 확인하기
+python -c "import torch; print(torch.__version__)"
+
+# txt 파일 문서 내용 보기
+cat requirements.txt
+cat requirements-convert_hf_to_gguf.txt
+
+python3 convert_hf_to_gguf.py \
+  --outfile ../gemma4-e2b-bf16.gguf \
+  --outtype bf16 \
+  --remote google/gemma-4-E2B-it
+
+# 세개 다운로드
+python -m pip install --upgrade transformers tokenizers sentencepiece
+
+# 충돌 있는지 확인
+python -m pip check
+
+
+# 재실행
+python3 convert_hf_to_gguf.py \
+  --outfile ../gemma4-e2b-bf16.gguf \
+  --outtype bf16 \
+  --remote google/gemma-4-E2B-it
+
+
+
+### 다운로드 실패해서 디스크로 받음
+
+# Modelfile 만들기
+echo "FROM ./gemma4-e2b-q4_k_m.gguf" > Modelfile
+
+
+
+
+### BF16 → Q4_K_M 양자화
+## 원본 BF16
+## 변환 BF16 -> GGUF
+## 양자화 GGUF -> Q4_K_M
+
+
+# cd llama.cpp에서
+
+./build/bin/llama-quantize \
+./gemma4-e2b-bf16.gguf \
+./gemma4-e2b-Q4_K_M.gguf \
+Q4_K_M
+
+echo "FROM ./gemma4-e2b-Q4_K_M.gguf" > Modelfile
+
+ollama create gemma4-e2b-myq4 -f Modelfile
+
+ollama run gemma4-e2b-myq4
+
+
+# cd llama.cpp에서 qwen모델
+./build/bin/llama-quantize \
+../Qwen3-4B-bf16.gguf \
+../Qwen3-4B-Q4_K_M.gguf Q4_K_M
+
+
+# gemma4_quant 폴더에서
+
+echo "FROM ./Qwen3-4B-Q4_K_M.gguf" > Modelfile
+
+ollama create Qwen3-4B-myq4 -f Modelfile
+
+ollama run Qwen3-4B-myq4
+
