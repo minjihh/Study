@@ -34,6 +34,7 @@ xgb = XGBClassifier()
 model = GridSearchCV(xgb, parameters, cv=kfold,
              verbose = 1,
              n_jobs = -1, # 모든 cpu 다 쓰겠다.
+             refit = True,
              )
 
 #3. 훈련
