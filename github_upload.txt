@@ -5,3 +5,4 @@ git push origin main --force
 
 - 한번 추적된 폴더 다시 안올라가도록 설정
 git rm -r --cached _save
+
